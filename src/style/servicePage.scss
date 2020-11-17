@@ -1,0 +1,460 @@
+.servicePage {
+
+    .phone, .schedule, .companyTagline{
+        display:none;
+    }
+
+    .header-inner {
+        width: 70%;
+        justify-content: center;
+        // flex-direction: column;
+
+        @include tablet-landscape {
+            width: 100%;
+        }
+    }
+
+    .flexWrapper {
+        display: flex;
+        flex-direction: row-reverse;
+
+        .pagewrap {
+            position: relative;
+            height: 100%;
+            width: 70%;
+
+            @include tablet-landscape {
+                width: 100%;
+            }
+
+            .pageHeader {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                .overlay {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    display: block;
+                }
+
+                h1 {
+                    color: #fff;
+                    position: relative;
+                    text-align: center;
+                }
+
+                hr {
+                    width: 150px;
+                    height: 2px;
+                    position: relative;
+                }
+            }
+        }
+
+        .usp_section {
+            padding: 2em 1em;
+
+            @include tablet-landscape {
+                padding: 4em 4em;
+            }
+
+            @include phone-only {
+                padding: 4em 1.5em 1em;
+            }
+
+            .three-columns {
+                display: flex;
+                justify-content: space-between;
+                position: relative;
+
+                @include desktop {
+                    flex-wrap: wrap;
+                }
+
+                .column {
+                    padding: 0em 2em 2em;
+                    margin: 0 1em;
+                    position: relative;
+                    width: 33%;
+                    color: #353535;
+                    display: flex;
+                    flex-direction: column;
+                    background-color: rgba(255, 255, 255, 0.4);
+
+                    @include desktop {
+                        width: 100%;
+                        flex: 100%;
+                        margin-bottom: 1em;
+                    }
+
+                    @include tablet-portrait {
+                        padding: 1.5em 1.5em 1.5em;
+                    }
+
+                    h2 {
+                        text-transform: uppercase;
+                        font-size: 1.2em;
+                        max-width: 300px;
+                        line-height: 1.5em;
+                        margin-top: -1.2em;
+
+                        @include tablet-portrait {
+                            font-size: 1.2em;
+                            margin-bottom: 0;
+                        }
+                    }
+
+                    p {}
+
+                    svg {
+                        position: relative;
+                        top: 30px;
+                        // left: -50px;
+                        align-self: flex-end;
+
+                        @include big-desktop {
+                            font-size: 2.5em !important;
+                            right: -0.5em;
+                        }
+
+                        @include desktop {
+                            top: 0.5em;
+                            right: -0.5em;
+                            font-size: 2em !important;
+                        }
+
+                        @include tablet-landscape {
+                            top: 0;
+                            right: 0.5em;
+                        }
+                    }
+                }
+
+                .column1 {}
+
+                .column2 {}
+
+                .column3 {}
+            }
+        }
+    }
+
+    .rightSection {
+        h2 {
+            text-align: center;
+            color: #fff;
+            font-weight: 400;
+        }
+    }
+
+    .serviceRightSide {
+        width: 30%;
+
+        @include tablet-landscape {
+            display: none;
+        }
+
+        .innerWrapper {
+            position: fixed;
+            top: 0;
+            z-index: 999;
+            width: 30%;
+
+            .companyPhone {
+                text-align: right;
+                margin-top: 70px;
+                margin-right: 50px;
+
+                a {
+                    color: #fff;
+                    padding: 20px 30px;
+                    margin-top: 20px;
+
+                    &:hover {
+                        background-color: #fff !important;
+                        color: #353535;
+                    }
+                }
+            }
+        }
+
+        .serviceCoupon {
+            padding-top: 2em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: #fff;
+
+            .date {}
+
+            .coupon {
+                font-weight: 700;
+                font-style: italic;
+                font-size: 3em;
+                line-height: 150%;
+            }
+
+            .couponType {
+                font-size: 1.5em;
+                font-weight: 700;
+                line-height: 150%;
+            }
+
+            .bottomwrapper {
+                display: flex;
+                justify-content: space-between;
+                width: 80%;
+                align-items: center;
+                margin-top: 2em;
+
+                .printCoupon {
+                    padding: 15px 25px;
+                    cursor: pointer;
+                    transition: all ease 0.3s;
+
+                    &:hover {
+                        background-color: #fff !important;
+                        color: #353535;
+                        transition: all ease 0.3s;
+                    }
+
+                    .mobileCouponText {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        .serviceForm {
+            position: initial;
+            background: initial;
+            width: 90%;
+            height: 100vh;
+            box-shadow: none;
+            margin: 1em auto 0;
+
+            h2 {
+                color: #fff;
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                padding-top: 0.5em;
+
+                input[type="text"],
+                input[type="email"],
+                input[type="tel"],
+                textarea {
+                    margin-bottom: 10px;
+                    font-size: 0.8em;
+                    padding-left: 10px;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    border: 1px solid #BAB8B8;
+                    font-weight: 500;
+                    // border-bottom: 2px solid #fff;
+                    outline: none;
+                    -webkit-appearance: none;
+                    transition: all ease 0.2s;
+                    border-radius: 3px;
+
+                    &:focus {
+                        border-color: rgb(56, 172, 207);
+                        transition: all ease 0.2s;
+                    }
+                }
+
+                #mail-honey {
+                    display: none;
+                }
+
+                .error-border {
+                    border-color: #c52626 !important;
+                    background-color: rgba(228, 67, 67, 0.3);
+                }
+
+                button {
+                    color: #fff;
+                    display: block;
+                    width: 220px;
+                    margin: 0 auto;
+                    border: 0;
+                    text-transform: uppercase;
+                    font-size: 0.9em;
+                    padding: 15px 30px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: $transition;
+
+                    &:hover {
+                        background-color: #656566 !important;
+                        color: #fff;
+                        transition: $transition;
+                    }
+
+                    @include tablet-portrait() {
+                        position: initial;
+                        text-align: center;
+                    }
+                }
+            }
+
+            .form-message {
+                display: none;
+                background-color: #4fb14f;
+                padding: 15px;
+                text-transform: uppercase;
+                font-size: 0.7em !important;
+                font-weight: 700;
+                color: #fff;
+            }
+        }
+    }
+    .row.mobile{
+        display:none;
+        @include tablet-portrait(){
+            display:block;
+            padding: 3em;
+        }
+        .mobileCoupon{
+            display:flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items:center;
+            .date{
+                color:#fff;
+                margin-bottom: 1em;
+            }
+            .coupon{
+                font-weight: 700;
+                font-style: italic;
+                font-size: 3em;
+                line-height: 150%;
+                text-align: center;
+                color: #fff;
+            }
+            .couponType{
+                font-size: 1.5em;
+                font-weight: 700;
+                line-height: 150%;
+                text-align: center;
+                color: #fff;
+                margin-bottom: 1em;
+            }
+            .bottomwrapper{
+                width: 300px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .restrictions{
+                    color: #fff;
+                    font-size: 1em;
+                }
+                .printCoupon{
+                    padding: 0.6em 1em;
+                    svg{
+                        fill:#fff;
+                    }
+                    .mobileCouponText{
+                        display:none;
+                    }
+                }
+            }
+        }
+    }
+
+    footer {
+        width: 70%;
+        @include tablet-portrait{
+            width: 100%;
+        }
+    }
+}
+
+
+/*=== COUPON PRINT CODE ===*/
+
+@media print {
+    @page {
+        size: auto;
+        /* auto is the initial value */
+        margin: 0mm;
+        /* this affects the margin in the printer settings */
+    }
+    header{
+        box-shadow: none !important;
+        position: relative;
+    }
+    body{
+        *{
+            background-color: #fff !important;
+        }
+    }
+    .servicePage {
+        .serviceRightSide {
+            width: 100% !important;
+            display: block !important;
+
+            .innerWrapper {
+                position: initial !important;
+                width: 100% !important;
+
+                .companyPhone {
+                    display: none;
+                }
+            }
+        }
+
+        .flexWrapper {
+            display: block !important;
+            width: 100% !important;
+        }
+    }
+    .pageHeader{
+        display:none !important;
+    }
+    .serviceRightSide{
+        background: #fff !important;
+        .innerWrapper{
+            background: #fff !important;
+        }
+    }
+    .serviceCoupon{
+        display:flex !important;
+        flex-direction: column !important;
+        background:none !important;
+
+        .date{
+            display:none;
+        }
+
+        *{
+            color: #353535 !important;
+        }
+        .coupon{
+            background: none !important;
+            color: #353535 !important;
+        }
+        .bottomwrapper{
+            justify-content: center !important;
+            width: 100% !important;
+            .restrictions{
+                text-align: center;
+            }
+            .printCoupon{
+                display:none !important;
+            }
+        }
+    }
+    .mobile{
+        display:none !important;
+    }
+
+}

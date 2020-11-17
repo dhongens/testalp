@@ -1,0 +1,231 @@
+/**************************************
+*********** MAIN STYLESHEET ***********
+***MADE BY VITALSTORM MARKETING INC***
+**************************************/
+
+
+$transition: 0.2s ease all;
+
+/**** IMPORTS ****/
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap');
+
+@import './variables/media_queries.scss';
+
+
+
+
+
+/**** MEDIA QUERIES ****/
+@mixin small-phone {
+    @media (max-width: 400px) { @content; }
+}
+@mixin phone-only {
+    @media (max-width: 599px) { @content; }
+}
+@mixin tablet-portrait {
+    @media (max-width: 768px) { @content; }
+}
+@mixin tablet-landscape {
+    @media (max-width: 900px) { @content; }
+}
+@mixin desktop {
+    @media (max-width: 1200px) { @content; }
+}
+@mixin big-desktop {
+    @media (max-width: 1600px) { @content; }
+}
+
+/**** COMPONENTS ****/
+@import './components/pageHeader.scss';
+@import './components/footer.scss';
+@import './components/header.scss';
+@import './components/uspSection.scss';
+/**** PAGES ****/
+@import './ourServices.scss';
+@import './servicePage.scss';
+@import './reviews.scss';
+@import './coupons.scss';
+@import './form.scss';
+@import './404.scss';
+
+body{
+    background: #f9f9f9;
+    font-family: "Montserrat" !important;
+    
+    h1, h2, h3, h4, h5, h6{
+        font-family: "Montserrat";
+    }
+    h1{
+        font-size: 1.6em;
+        font-weight: 600;
+    }
+    .pagewrapper{
+        width:100%;
+        overflow: hidden;
+        position: relative;
+    }
+    p{
+        margin:0;
+        font-size: 0.9em !important;
+        line-height: 200% !important;
+    }
+    a{
+        font-size: 0.9em !important;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all ease 0.3s;
+        color: #36c3fa;
+        &:hover{
+            color: #175c77;
+            transition: all ease 0.3s;
+        }
+    }
+    ul{
+        margin-top: 15px;
+        li{
+            font-size: 0.9em !important;
+        }
+    }
+    .container{
+        max-width: 1100px;
+        margin:auto;
+        @include desktop{
+            width:90%;
+        }
+        @include tablet-landscape{
+            width:700px;
+        }
+        @include tablet-portrait{
+            width:500px;
+        }
+        @include phone-only{
+            width:360px;
+        }
+    }
+    
+    ul{
+        li{
+            color: #353535;
+            font-size: 1em;
+        }
+    }
+.pageHeaderbg{
+    background-position: center;
+}
+    
+    .pageContent{
+        .row{
+            padding: 60px 0; 
+        }
+
+    }
+    .servicesRow{
+     display:flex; 
+        .leftSection{
+            width:50%;
+            @include tablet-portrait(){
+                display:none;
+            }
+        }
+        .rightSection{
+            width:50%;
+            padding: 4.5em;
+            @include tablet-portrait(){
+                width:100%;
+            }
+            @include phone-only(){
+                padding: 4em 2em;
+            }
+            
+            position: relative;
+            .servicesBlockTitle{
+                text-align: center;
+                h2{
+                    color:#fff;
+                    font-weight: 400;
+                    margin-bottom: 0;
+                }
+            }
+            hr{
+                height:2px;
+                border:0;
+                width: 150px;
+                margin: 20px auto;
+            }
+            p{
+                color: #fff;
+            }  
+            a{
+                position: absolute;
+                right:0;
+                bottom: 0;
+                padding: 15px 50px;
+
+                color: #fff;
+                text-decoration: none;
+                text-transform: uppercase;
+                transition: all ease 0.2s;
+                &:hover{
+                    transition: all ease 0.2s;
+                    background-color: #f9f9f9 !important;
+                    color: #353535;
+                }
+                @include tablet-portrait(){
+                    position: relative;
+                    top: 20px;
+                }
+            }
+        }
+    }
+    
+    .reviewRow{
+        .review{
+            padding: 40px 30px;
+            margin-bottom: 30px;
+            background-color: #fff;
+
+            svg{
+                margin: 5px 10px;
+                transform: scale(1.4);
+            }
+            .author{
+                text-align: right;
+                font-weight: 600;
+                font-size: 1.1em;
+            }
+        }
+    }
+}
+
+.scheduleMobile{
+    display:none;
+    cursor:pointer;
+    position: fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    z-index: 99;
+    @include tablet-portrait(){
+        display:flex;
+    }
+    .innerSchedule{
+        text-align: center;
+        padding: 20px 0;
+        width: 50%;
+        svg{
+            fill:#fff;
+        }
+        span{
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+    }
+    .innerPhone{
+        width: 50%;
+        text-align: center;
+        padding: 20px 0;
+        text-transform: uppercase;
+        color: #fff;
+    }
+}
