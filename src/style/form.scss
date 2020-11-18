@@ -163,8 +163,6 @@
               flex-direction: column;
               align-items: center;
               position: relative;
-              background-image: url("../images/form-image.png");
-
               @include desktop(){
                   height: auto;
               }
@@ -352,8 +350,8 @@
           visibility: visible;
       }
       .popupForm{
-          display:block;
-      }
+        display:block;
+    }
   }
   body{
       &:before{

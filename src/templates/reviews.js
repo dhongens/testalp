@@ -147,7 +147,7 @@ export default ({ data }) => (
             <title>{data.sanityCompanyInfo.companyname} | {data.sanityPages.pagetitle}</title>
             
         </Helmet>
-        <Form />
+        <div className="popupForm"><Form /></div>
         <BackgroundImage
             style={{
                 height: "100%",

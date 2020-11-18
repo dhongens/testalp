@@ -133,7 +133,7 @@ export default ({ data }) => (
         </Helmet>
     <Layout>
             <div className="flexWrapper">
-                <Form />
+        <div className="popupForm"><Form /></div>
                 <div className="serviceRightSide" style={{ backgroundColor:  data.sanityCompanyInfo.accentcolor.hex }}>
                     <div className="innerWrapper" style={{ backgroundColor:  data.sanityCompanyInfo.accentcolor.hex }}>
                     <div className="companyPhone">
