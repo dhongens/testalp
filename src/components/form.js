@@ -121,7 +121,7 @@ export default class ContactForm extends React.Component {
                    <div className="popupForm">
                    <div className="form">
                       <div className="two_columns">
-                        <div className="column1">
+                        <div className="column1" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex }}>
                         <Image location=""
                             fluid={data.sanityCompanyInfo.logo.asset.fluid}
                             style={{ height: "auto", width: "200px" }}
