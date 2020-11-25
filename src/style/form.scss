@@ -179,10 +179,11 @@
                   height: 1000px;
                 }
               .tagline{
-                  font-size: 1.1em !important;
+                  font-size: 0.8em !important;
                   font-style: italic;
                   color: #fff;
                   margin-bottom: 2em;
+                  text-align: center;
                   @include desktop{
                       font-size: 1em !important;
                   }
