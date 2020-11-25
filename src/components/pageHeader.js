@@ -83,7 +83,7 @@ render={ data => (
         <p className="couponType">{data.sanityPages.coupon.type}</p>
         <div className="schedulebtn-container">
           <span className="schedulebtn" style={{backgroundColor: data.sanityCompanyInfo.accentcolor.hex}} onClick={changeActive}>Schedule</span>
-          <span className="printCoupon" onClick={printCoupon} style={{ backgroundColor: data.sanityCompanyInfo.accentcolor.hex }}><FaPrint /> <span className="mobileCouponText">Claim Offer</span></span>
+          {/* <span className="printCoupon" onClick={printCoupon} style={{ backgroundColor: data.sanityCompanyInfo.accentcolor.hex }}><FaPrint /> <span className="mobileCouponText">Claim Offer</span></span> */}
         </div>
         <p className="restrictions">*Restrictions may apply</p>
       </div>
