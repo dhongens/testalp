@@ -144,14 +144,14 @@ var city = getUrlVars()["city"];
 
 
 /***** ADD CITY TO URLS IN PAGE *****/
-function addCity(){
-    if(typeof window !== 'undefined' && city !== undefined){
-        $('div.pageContent a').attr('href', function(i, href){
-            city= getUrlVars()['city'];
-            return href + "?city=" +  city; 
-        });
-    }  
-}
+// function addCity(){
+//     if(typeof window !== 'undefined' && city !== undefined){
+//         $('div.pageContent a').attr('href', function(i, href){
+//             city= getUrlVars()['city'];
+//             return href + "?city=" +  city; 
+//         });
+//     }  
+// }
 
 
 /***** FUNCTION FOR BLOCK CONTENT LINKS *****/
@@ -159,7 +159,7 @@ const serializers = {
     marks: {
         internalLink: ({mark, children}) => {
             const {slug = {}} = mark
-            const href = `/{slug.current}?city={city}`
+            const href = `/{slug.current}`
             return <Link to={href}>{children}</Link>
           }
       }
@@ -240,7 +240,7 @@ export default ({ data }) => (
             <div className="container pageContent" >
                 <div className="row firstCopy">
 
-                        <PortableText blocks={data.sanityPages._rawFirstcopy} serializers={serializers} onClick={addCity()} />
+                        <PortableText blocks={data.sanityPages._rawFirstcopy} serializers={serializers} />
                 </div>
             </div>
             <div className="row servicesRow">
