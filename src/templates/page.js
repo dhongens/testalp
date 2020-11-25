@@ -177,7 +177,6 @@ export default ({ data }) => (
         </div>
         <div className="container pageContent thispage">
             <div className="row">
-                <h1>{data.sanityPages.pagetitle}</h1>
                 <BlockContent blocks={data.sanityPages._rawFirstcopy} />
             </div>
         </div>    
