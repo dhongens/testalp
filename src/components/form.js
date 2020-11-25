@@ -33,10 +33,10 @@ export default class ContactForm extends React.Component {
       honeypot: "",
       tel: "",
       message: "",
-      // vsref: "",
+      vsref: "",
       gclid: "",
       submitted: false,
-      formAction: 'https://metrics.vitalstorm.com/email_form_submission/OTkwMjkyMjdhYThjZTBmMGM0NDNkM2Y2YzE2MWEzMjU/'
+      formAction: 'https://metrics.vitalstorm.com/email_form_submission/ODVhZDUyZDljNDY5YjJkNmM2ZTQxMjgwOWI3YjIyM2U/'
     };
   }
   handleInputChange(event){
@@ -81,8 +81,12 @@ export default class ContactForm extends React.Component {
        }
     });
   }
+  
+ 
 
-  render() {
+  
+   render() {
+    
     return (
       <>
       <StaticQuery
@@ -91,7 +95,8 @@ export default class ContactForm extends React.Component {
                 sanityCompanyInfo {
                   companyname
                   phone
-                  logo {
+                  companyTagline
+                  logoWhite {
                     asset {
                       fluid{
                         ...GatsbySanityImageFluid
@@ -112,44 +117,46 @@ export default class ContactForm extends React.Component {
               }
             `}
                  render={data => (
-        <>
-          <div className="form">
-            <div className="two_columns">
-              <div className="column1" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex}}>
-
-              <Image location=""
-                  fluid={data.sanityCompanyInfo.logo.asset.fluid}
-                  style={{ height: "auto", width: "200px" }}
-                  className="align-center"
-                  alt="Logo"
-                />
-                <a href={"tel:" + data.sanityCompanyInfo.phone} className="formPhone"><FaPhone /> {data.sanityCompanyInfo.phone}</a>
-              </div>
-              <div className="column2">
-                <div className="innerColumn">
-                  <h2>Schedule Service</h2>
-                  <p>Fill out the form below and we'll reach out to schedule your service appointment. </p>
-                  <span className="closeForm" onClick={this.changeActive} style={{fill: data.sanityCompanyInfo.primarycolor.hex}}><FaTimesCircle /></span>
-                  <form ref={this.formRef} id="form-metrics" onSubmit={this.handleSubmit} action={this.state.formAction} method="POST">
-                    <input id="mail-name" className="inputfield" type="text" name="name" value={this.state.name} onChange={this.handleInputChange} placeholder="Enter your full name" required />
-                    <input id="mail-email" className="inputfield" type="text" name="honeypot" value={this.state.honeypot} onChange={this.handleInputChange} placeholder="Email address" minLength="3" maxLength="64" required />
-                    <input id="mail-honey" className="inputfield" type="text" name="email" />
-                    <input id="mail-tel" className="inputfield" name="tel" value={this.state.tel} type="tel" onChange={this.handleInputChange} placeholder="(123) 456-7890" required />
-                    <input id="mail-message" className="inputfield" type="text" value={this.state.message} onChange={this.handleInputChange} name="message" placeholder="Request a service" required />
-                    <input type="hidden" name="gclid" value="" />
-                    <input type="hidden" name="vsref" value="" />
-                    <div className="ajax-button">
-                        <button id="mail-submit" type="submit" name="mail-submit" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex}}>Send Request</button>
+                   <>
+                   <div className="popupForm">
+                   <div className="form">
+                      <div className="two_columns">
+                        <div className="column1">
+                        <Image location=""
+                            fluid={data.sanityCompanyInfo.logoWhite.asset.fluid}
+                            style={{ height: "auto", width: "200px" }}
+                            className="align-center"
+                            alt="Plumbit Logo"
+                          />
+                          <p className="tagline">{data.sanityCompanyInfo.companyTagline}</p>
+                          <a href={"tel:" + data.sanityCompanyInfo.phone} className="formPhone"><FaPhone /> {data.sanityCompanyInfo.phone}</a>
+                        </div>
+                        <div className="column2">
+                          <div className="innerColumn">
+                            <h2>Schedule Service</h2>  
+                            <p>Fill out the form below and we'll reach out to schedule your service appointment. </p>
+                            <span className="closeForm" onClick={this.changeActive} style={{fill: data.sanityCompanyInfo.primarycolor.hex}}><FaTimesCircle /></span>
+                            <form ref={this.formRef} id="form-metrics" onSubmit={this.handleSubmit} action={this.state.formAction} method="POST">
+                              <input id="mail-name" className="inputfield" type="text" name="name" value={this.state.name} onChange={this.handleInputChange} placeholder="Enter your full name" required />
+                              <input id="mail-email" className="inputfield" type="text" name="honeypot" value={this.state.honeypot} onChange={this.handleInputChange} placeholder="Email address" minLength="3" maxLength="64" required />
+                              <input id="mail-honey" className="inputfield" type="text" name="email" />
+                              <input id="mail-tel" className="inputfield" name="tel" value={this.state.tel} type="tel" onChange={this.handleInputChange} placeholder="(123) 456-7890" required />
+                              <input id="mail-message" className="inputfield" type="text" value={this.state.message} onChange={this.handleInputChange} name="message" placeholder="Request a service" required />
+                              <input type="hidden" name="gclid" value="" />
+                              <input type="hidden" name="vsref" value="" />
+                              <div className="ajax-button">
+                                  <button id="mail-submit" type="submit" name="mail-submit" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex}}>Send Request</button>
+                              </div>
+                              <FormMessage submitted={this.state.submitted} />
+                            </form>
+                            </div>
+                        </div>
+                      </div>
                     </div>
-                    <FormMessage submitted={this.state.submitted} />
-                  </form>
-                  </div>
-              </div>
-            </div>
-          </div>
-        </>
-      )}
-      />
+                    </div>
+                    </>
+                  )}  
+              />
       </>
     )
   }
