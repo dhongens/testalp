@@ -96,7 +96,7 @@ export default class ContactForm extends React.Component {
                   companyname
                   phone
                   companyTagline
-                  logo {
+                  logoWhite {
                     asset {
                       fluid{
                         ...GatsbySanityImageFluid
@@ -123,7 +123,7 @@ export default class ContactForm extends React.Component {
                       <div className="two_columns">
                         <div className="column1" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex }}>
                         <Image location=""
-                            fluid={data.sanityCompanyInfo.logo.asset.fluid}
+                            fluid={data.sanityCompanyInfo.logoWhite.asset.fluid}
                             style={{ height: "auto", width: "200px" }}
                             className="align-center"
                             alt="Plumbit Logo"
