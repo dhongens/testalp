@@ -127,7 +127,9 @@ render={data => (
                                 <button id="mail-submit" type="submit" name="mail-submit" style={{backgroundColor: data.sanityCompanyInfo.secondarycolor.hex}} >Send Request</button> 
                             </div>
                             <p className="form-message"><FaEnvelope /> </p>
+                            <FormMessage submitted={this.state.submitted} />
                             </form>
+
                     </div>
         </>
         )}
