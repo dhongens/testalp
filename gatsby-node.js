@@ -45,14 +45,14 @@ exports.createPages = async ({ actions, graphql }) => {
                         slug: project.slug.current
                     }
                 })
-                else if (project.slug.current == "special-offers"){
-                    actions.createPage({
-                       path: project.slug.current,
-                       component: path.resolve('./src/templates/coupons.js'),
-                       context: {
-                           slug: project.slug.current
-                       }
-                   })
+        } else if (project.slug.current == "special-offers"){
+            actions.createPage({
+               path: project.slug.current,
+               component: path.resolve('./src/templates/coupons.js'),
+               context: {
+                   slug: project.slug.current
+               }
+           })
         } else if (project.slug.current == "reviews") {
             actions.createPage({
                 path: project.slug.current,
