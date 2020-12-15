@@ -166,8 +166,6 @@ export default ({ data }) => (
                                 opacity: "0.7"
                         }}>
                         </div>
-                            <hr style={{ backgroundColor:  data.sanityCompanyInfo.accentcolor.hex }} />
-
                     </div>
                 </BackgroundImage>
                 <div className="row mobile" style={{ backgroundColor: data.sanityCompanyInfo.accentcolor.hex }}>
