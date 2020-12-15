@@ -166,6 +166,9 @@ export default ({ data }) => (
                                 opacity: "0.7"
                         }}>
                         </div>
+                            <h1>{data.sanityPages.pagetitle} Services</h1>
+                            <hr style={{ backgroundColor:  data.sanityCompanyInfo.accentcolor.hex }} />
+
                     </div>
                 </BackgroundImage>
                 <div className="row mobile" style={{ backgroundColor: data.sanityCompanyInfo.accentcolor.hex }}>
@@ -182,7 +185,6 @@ export default ({ data }) => (
                     <UspSection />
                     <div className="container pageContent">
                         <div className="row">
-                            <h1>{data.sanityPages.pagetitle}</h1>
                             <BlockContent blocks={data.sanityPages._rawFirstcopy} />
                         </div>
                     </div>
