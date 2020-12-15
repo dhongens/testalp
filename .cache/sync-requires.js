@@ -6,6 +6,7 @@ const preferDefault = m => m && m.default || m
 
 exports.components = {
   "component---src-templates-servicepage-js": hot(preferDefault(require("/Users/pietertenret/Documents/VitalStorm/Sandbox/Dring/gatsby/src/templates/servicepage.js"))),
+  "component---src-templates-coupons-js": hot(preferDefault(require("/Users/pietertenret/Documents/VitalStorm/Sandbox/Dring/gatsby/src/templates/coupons.js"))),
   "component---src-templates-page-js": hot(preferDefault(require("/Users/pietertenret/Documents/VitalStorm/Sandbox/Dring/gatsby/src/templates/page.js"))),
   "component---src-templates-reviews-js": hot(preferDefault(require("/Users/pietertenret/Documents/VitalStorm/Sandbox/Dring/gatsby/src/templates/reviews.js"))),
   "component---src-templates-our-services-js": hot(preferDefault(require("/Users/pietertenret/Documents/VitalStorm/Sandbox/Dring/gatsby/src/templates/ourServices.js"))),
