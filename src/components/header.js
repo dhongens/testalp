@@ -43,7 +43,7 @@ export default () => (
               <div className="header-inner">
               <Image location=""
                   fluid={data.sanityCompanyInfo.logo.asset.fluid}
-                  style={{ height: "auto", width: "150px" }}
+                  style={{ height: "auto", width: "250px" }}
                   className="align-center"
                   alt="Plumbit Logo"
                 />
