@@ -257,7 +257,25 @@ if(typeof window !== 'undefined'){
 
     </Helmet>
     <div className="pagewrapper">
-      <Header siteTitle={data.site.siteMetadata.title} />
+    <header>
+              <div className="header-inner">
+              <Image location=""
+                  fluid={data.sanityCompanyInfo.logo.asset.fluid}
+                  style={{ height: "auto", width: "250px" }}
+                  className="align-center"
+                  alt="Plumbit Logo"
+                />
+                <div className="headerBtns">
+                  <span className="companyTagline" style={{color: data.sanityCompanyInfo.secondarycolor.hex}}>{data.sanityCompanyInfo.companyTagline}</span>
+                  <div className="btns-wrap">
+                    <span className="headerbtn schedule" onClick={changeActive} 
+                    style={{ backgroundColor: data.sanityCompanyInfo.secondarycolor.hex, borderColor: data.sanityCompanyInfo.secondarycolor.hex }}
+                    > <FaCalendarAlt /> Schedule</span>
+                    <a className="headerbtn phone" style={{ backgroundColor: data.sanityCompanyInfo.accentcolor.hex, borderColor: data.sanityCompanyInfo.accentcolor.hex}} href={"tel:" + data.sanityCompanyInfo.phone}><FaPhone /> {data.sanityCompanyInfo.phone}</a>
+                  </div>
+                </div>
+              </div>
+          </header>
           <div>
             <main>{children}</main>
             <div className="scheduleMobile" >
