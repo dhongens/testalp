@@ -124,7 +124,7 @@ function printCoupon() {
 export default ({ data }) => (
     <Layout>
     <Helmet>
-      <title>{`data.sanityCompanyInfo.companyname`} | {`data.sanityPages.pagetitle`}</title>
+    <title>{data.sanityCompanyInfo.companyname} | {data.sanityPages.pagetitle}</title>
       
     </Helmet>
     <div className="popupForm"><Form /></div>
