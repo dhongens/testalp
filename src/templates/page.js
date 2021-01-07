@@ -9,6 +9,8 @@ import Form from "../components/form"
 import UspSection from "../components/uspSection"
 import Helmet from 'react-helmet'
 import $ from 'jquery'
+import PortableText from '@sanity/block-content-to-react'
+
 
 
 export const query = graphql`
@@ -121,42 +123,36 @@ function printCoupon() {
 
 export default ({ data }) => (
     <Layout>
-        <Helmet>
-            <title>{data.sanityCompanyInfo.companyname} | {data.sanityPages.pagetitle}</title>
-        </Helmet>
-        <div className="popupForm"><Form /></div>
-        <BackgroundImage
-            style={{
-                height: "100%",
-                backgroundPosition: "center"
-            }}
-            fluid={data.sanityPages.headerimage.asset.fluid}>
+    <Helmet>
+      <title>{`data.sanityCompanyInfo.companyname`} | {`data.sanityPages.pagetitle`}</title>
+      
+    </Helmet>
+    <div className="popupForm"><Form /></div>
+    <BackgroundImage
+      style={{
+        height: "100%",
+        backgroundPosition: "center"
+      }}
+      fluid={data.sanityPages.headerimage.asset.fluid}>
 
-            <div className="pageHeader">
-                <div className="innerLeft">
-                <div className="pgHeaderBackground" style={{
-                        backgroundColor: data.sanityCompanyInfo.primarycolor.hex,
-                        opacity: "0.9"
-                    }}></div>
-                    <h1>{data.sanityPages.pagetitle}</h1>
-                    <p>Schedule This <b>{today}</b> for </p>
-                    <p className="coupon">{data.sanityPages.coupon.title}</p> 
-                    <p className="couponType">{data.sanityPages.coupon.type}</p>
-                    <div className="schedulebtn-container">
-                        <span className="schedulebtn" 
-                            style={{
-                                backgroundColor: data.sanityCompanyInfo.accentcolor.hex,
-                            }}
-                        onClick={changeActive}>Schedule</span>
-                    <span className="printCoupon" onClick={printCoupon} style={{ backgroundColor: data.sanityCompanyInfo.accentcolor.hex }}><FaPrint /> <span className="mobileCouponText">Claim Offer</span></span>
-
-                    </div>
-                    <p className="restrictions">*Restrictions may apply</p>
-                </div>
-
-            </div>
-        </BackgroundImage>
-        <div className="usp_section" style={{backgroundColor: '#ededed'}}>
+      <div className="pageHeader">
+        <div className="innerLeft">
+          <div className="pgHeaderBackground" style={{
+              backgroundColor: data.sanityCompanyInfo.primarycolor.hex,
+              opacity: "0.9"
+          }}></div>
+          <p className="day">Schedule This <b>{today}</b> for </p>
+          <p className="coupon">{data.sanityPages.coupon.title}</p>
+          <p className="couponType">{data.sanityPages.coupon.type}</p>
+          <div className="schedulebtn-container">
+            <span className="schedulebtn" style={{backgroundColor: data.sanityCompanyInfo.accentcolor.hex}} onClick={changeActive}>Schedule</span>
+            {/* <span className="printCoupon" onClick={printCoupon} style={{ backgroundColor: data.sanityCompanyInfo.accentcolor.hex }}><FaPrint /> <span className="mobileCouponText">Claim Offer</span></span> */}
+          </div>
+          <p className="restrictions">*Restrictions may apply</p>
+        </div>
+      </div>
+    </BackgroundImage>
+    <div className="usp_section" style={{backgroundColor: '#ededed'}}>
             <div className="three-columns">
                 <div className="column column1">
                     <i className={"fa fa-" + data.sanityPages.usp1.icon} style={{ fontSize: '2em', color: data.sanityCompanyInfo.primarycolor.hex }}/>
@@ -175,28 +171,29 @@ export default ({ data }) => (
                 </div>
             </div>
         </div>
-        <div className="container pageContent thispage">
-            <div className="row">
-                <BlockContent blocks={data.sanityPages._rawFirstcopy} />
-            </div>
-        </div>    
-        <div className="row servicesRow">
-                <div className="leftSection">
-                <BackgroundImage
-                    style={{ height: "100%" }}
-                    fluid={data.sanityPages.serviceimage.asset.fluid}>
-                </BackgroundImage>
-                </div>
-            <div className="rightSection" style={{ backgroundColor: data.sanityCompanyInfo.primarycolor.hex }}>
-                <span className="servicesBlockTitle"><h2>Our Services</h2></span>
-                <BlockContent blocks={data.sanityPages._rawServices} />
-                <a className="ourServices" href={{ourServices}} style={{ backgroundColor: data.sanityCompanyInfo.accentcolor.hex }}>View our Services</a>
-                </div>
-            </div>
-        <div className="container pageContent">    
-            <div className="row">
-                <BlockContent blocks={data.sanityPages._rawSecondcopy} />
-            </div>
-        </div>
-    </Layout>
+    <div className="container pageContent homepage">
+      <div className="row">
+        <PortableText blocks={data.sanityPages._rawFirstcopy} />
+      </div>
+    </div>
+    <div className="row servicesRow">
+      <div className="leftSection">
+        <BackgroundImage 
+        style={{height: "100%"}}
+        fluid={data.sanityPages.serviceimage.asset.fluid}>
+        </BackgroundImage>
+      </div>
+      <div className="rightSection" style={{ backgroundColor: data.sanityCompanyInfo.primarycolor.hex }}>
+        <span className="servicesBlockTitle"><h2>Our Services</h2></span>
+        <hr style={{ backgroundColor: data.sanityCompanyInfo.accentcolor.hex }} />
+        <PortableText blocks={data.sanityPages._rawServices} />
+        <a className="ourServices" href={{ourServices}} style={{ backgroundColor: data.sanityCompanyInfo.accentcolor.hex }}>View our Services</a>
+      </div>
+    </div>
+    <div className="container pageContent">
+      <div className="row">
+        <BlockContent blocks={data.sanityPages._rawSecondcopy} />
+      </div>
+    </div>
+  </Layout>
 )
