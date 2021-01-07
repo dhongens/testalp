@@ -271,7 +271,8 @@ if(typeof window !== 'undefined'){
                     <span className="headerbtn schedule" onClick={changeActive} 
                     style={{ backgroundColor: data.sanityCompanyInfo.secondarycolor.hex, borderColor: data.sanityCompanyInfo.secondarycolor.hex }}
                     > <FaCalendarAlt /> Schedule</span>
-                    <a className="headerbtn phone" style={{ backgroundColor: data.sanityCompanyInfo.accentcolor.hex, borderColor: data.sanityCompanyInfo.accentcolor.hex}} href={"tel:" + data.sanityCompanyInfo.phone}><FaPhone /> {data.sanityCompanyInfo.phone}</a>
+                    <a className="headerbtn phone phonenumber" style={{ backgroundColor: data.sanityCompanyInfo.accentcolor.hex, borderColor: data.sanityCompanyInfo.accentcolor.hex}} href={"tel:" + data.sanityCompanyInfo.phone}><FaPhone /> <span id="number_rewrite">{data.sanityPages.phonenumber}</span></a>
+
                   </div>
                 </div>
               </div>
