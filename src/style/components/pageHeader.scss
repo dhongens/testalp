@@ -176,10 +176,12 @@
         justify-content: center !important;
     }
     .pageHeader{
+        display:block !important;
         .innerLeft{
             padding:1em;
-            .coupon, .couponType, .restrictions{
-                visibility: visible !important;
+            .coupon{
+                background: none !important;
+                color: #353535 !important;
             }
             .date{
                 display:none !important;
@@ -192,7 +194,9 @@
     .pageContent, .servicesRow, footer, .printCoupon, .form, .scheduleMobile{
         display:none !important;
     }
-
+    .schedulebtn{
+        display:none;
+    }
     .serviceCoupon{
         display:block !important;
     }
