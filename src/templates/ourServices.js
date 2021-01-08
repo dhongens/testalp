@@ -187,7 +187,30 @@ export default ({ data }) => (
             <title>{data.sanityCompanyInfo.companyname} | {data.sanityPages.pagetitle}</title>
 
         </Helmet>
-        <div className="popupForm"><Form /></div>
+        {/* <div className="popupForm"><Form /></div> */}
+        <div className="popupForm">
+                   <div className="form">
+                      <div className="two_columns">
+                        <div className="column1" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex }}>
+                        <Image location=""
+                            fluid={data.sanityCompanyInfo.logoWhite.asset.fluid}
+                            style={{ height: "auto", width: "200px" }}
+                            className="align-center"
+                            alt="Plumbit Logo"
+                          />
+                          <p className="tagline">{data.sanityCompanyInfo.companyTagline}</p>
+                          <a href={"tel:" + data.sanityCompanyInfo.phone} className="formPhone"><FaPhone /> {data.sanityCompanyInfo.phone}</a>
+                        </div>
+                        <div className="column2">
+                          <div className="innerColumn">
+                            <h2>Schedule Service</h2>  
+                            <p>Fill out the form below and we'll reach out to schedule your service appointment. </p>
+                            
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
         <BackgroundImage
             style={{
                 height: "100%",
