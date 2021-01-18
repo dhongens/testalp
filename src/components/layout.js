@@ -146,7 +146,7 @@ if(typeof window !== 'undefined'){
     }
 });
 
-$(window).on('keypress' , function(){
+$(".inputfield").on('input' , function(){
   //PULL PHONE NUMBER INTO FORM
   var timesChecked = 0;
   var $vsref = $('input[name=vsref]');
