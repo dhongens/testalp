@@ -145,7 +145,30 @@ if(typeof window !== 'undefined'){
         });
     }
 });
+
+//PULL PHONE NUMBER INTO FORM
+var timesChecked = 0;
+var $vsref = $('input[name=vsref]');
+
+var _vsrkpd = window._vsrkpd;
+var interval = setInterval(function(){
+  if(typeof _vsrkpd == 'object' && typeof _vsrkpd.d != 'undefined'){
+    if(_vsrkpd.d == null){
+      $vsref.val($('#number_rewrite').text().replace(/[^0-9]/g,''));
+    }else{
+      $vsref.val(_vsrkpd.d[0].num);
+    }
+    clearInterval(interval);
+  }else if(timesChecked > 50){
+    $vsref.val($('#number_rewrite').text().replace(/[^0-9]/g,''));
+    clearInterval(interval);
+  }else{
+    timesChecked++;
+  }
+},100);
 }
+
+
 
   return (
     <>
@@ -254,29 +277,6 @@ if(typeof window !== 'undefined'){
               <script>{`var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(${data.sanityCompanyInfo.clicky});`}</script>
               <script async src="//static.getclicky.com/js"></script>
               <script src="https://kit.fontawesome.com/4ab4233178.js" crossorigin="anonymous"></script>
-              <script type="text/javascript">{`
-                  //PULL PHONE NUMBER INTO FORM
-                  var timesChecked = 0;
-                  var $vsref = $('input[name=vsref]');
-              
-                  var _vsrkpd = window._vsrkpd;
-                  var interval = setInterval(function(){
-                    if(typeof _vsrkpd == 'object' && typeof _vsrkpd.d != 'undefined'){
-                      if(_vsrkpd.d == null){
-                        $vsref.val($('#number_rewrite').text().replace(/[^0-9]/g,''));
-                      }else{
-                        $vsref.val(_vsrkpd.d[0].num);
-                      }
-                      clearInterval(interval);
-                    }else if(timesChecked > 50){
-                      $vsref.val($('#number_rewrite').text().replace(/[^0-9]/g,''));
-                      clearInterval(interval);
-                    }else{
-                      timesChecked++;
-                    }
-                  },100);
-              `}</script>
-
     </Helmet>
     <div className="pagewrapper">
     <header>
