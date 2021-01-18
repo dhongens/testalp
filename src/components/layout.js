@@ -146,28 +146,28 @@ if(typeof window !== 'undefined'){
     }
 });
 
-$(".inputfield").on('input' , function(){
-  //PULL PHONE NUMBER INTO FORM
-  var timesChecked = 0;
-  var $vsref = $('input[name=vsref]');
+// $(".inputfield").on('input' , function(){
+//   //PULL PHONE NUMBER INTO FORM
+//   var timesChecked = 0;
+//   var $vsref = $('input[name=vsref]');
 
-  var _vsrkpd = window._vsrkpd;
-  var interval = setInterval(function(){
-    if(typeof _vsrkpd == 'object' && typeof _vsrkpd.d != 'undefined'){
-      if(_vsrkpd.d == null){
-        $vsref.val($('#number_rewrite').text().replace(/[^0-9]/g,''));
-      }else{
-        $vsref.val(_vsrkpd.d[0].num);
-      }
-      clearInterval(interval);
-    }else if(timesChecked > 50){
-      $vsref.val($('#number_rewrite').text().replace(/[^0-9]/g,''));
-      clearInterval(interval);
-    }else{
-      timesChecked++;
-    }
-  },100);
-});
+//   var _vsrkpd = window._vsrkpd;
+//   var interval = setInterval(function(){
+//     if(typeof _vsrkpd == 'object' && typeof _vsrkpd.d != 'undefined'){
+//       if(_vsrkpd.d == null){
+//         $vsref.val($('#number_rewrite').text().replace(/[^0-9]/g,''));
+//       }else{
+//         $vsref.val(_vsrkpd.d[0].num);
+//       }
+//       clearInterval(interval);
+//     }else if(timesChecked > 50){
+//       $vsref.val($('#number_rewrite').text().replace(/[^0-9]/g,''));
+//       clearInterval(interval);
+//     }else{
+//       timesChecked++;
+//     }
+//   },100);
+// });
 
 }
 
