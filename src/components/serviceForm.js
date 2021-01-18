@@ -116,14 +116,14 @@ render={data => (
     <>
                     <div className="serviceForm">
                         <h2>Schedule Service</h2>
-                        <form id="form-metrics" onSubmit={this.handleSubmit} action="https://metrics.vitalstorm.com/email_form_submission/9fff182e-caa8-4473-a3d9-914f190c440e/" method="POST">
+                        <form id="form-metrics" onSubmit={this.handleSubmit} action={this.state.formAction} method="POST">
                             <input id="mail-name" className="inputfield" type="text" name="name" value={this.state.name} onChange={this.handleInputChange} placeholder="Enter your full name" required />
                             <input id="mail-email" className="inputfield" type="text" name="honeypot" value={this.state.honeypot} onChange={this.handleInputChange} placeholder="Email address" minLength="3" maxLength="64" required />
                             <input id="mail-honey" className="inputfield" type="text" name="email" />
                             <input id="mail-tel" className="inputfield" name="tel" value={this.state.tel} type="tel" onChange={this.handleInputChange} placeholder="(123) 456-7890" required />
                             <input id="mail-message" className="inputfield" type="text" value={this.state.message} onChange={this.handleInputChange} name="message" placeholder="Request a service" required />
                             <input type="hidden" name="gclid" value="" />
-                            <input type="hidden" name="vsref" value="6028420262" />
+                            <input type="hidden" name="vsref" value={this.state.vsref} />
                             <div className="ajax-button">
                                 <button id="mail-submit" type="submit" name="mail-submit" style={{backgroundColor: data.sanityCompanyInfo.secondarycolor.hex}} >Send Request</button> 
                             </div>

@@ -142,7 +142,7 @@ export default class ContactForm extends React.Component {
                               <input id="mail-tel" className="inputfield" name="tel" value={this.state.tel} type="tel" onChange={this.handleInputChange} placeholder="(123) 456-7890" required />
                               <input id="mail-message" className="inputfield" type="text" value={this.state.message} onChange={this.handleInputChange} name="message" placeholder="Request a service" required />
                               <input type="hidden" name="gclid" value="" />
-                              <input type="hidden" name="vsref" value="4809006031" />
+                              <input type="hidden" name="vsref" value={this.state.vsref} />
                               <div className="ajax-button">
                                   <button id="mail-submit" type="submit" name="mail-submit" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex}}>Send Request</button>
                               </div>
