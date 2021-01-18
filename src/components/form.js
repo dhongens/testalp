@@ -51,7 +51,6 @@ export default class ContactForm extends React.Component {
   changeActive(event){
     $(".form").toggleClass("expanded");
     $("body").toggleClass("formExpanded");
-    console.log("expanded");
 
   }
   handleSubmit(event){
