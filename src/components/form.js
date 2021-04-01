@@ -33,10 +33,10 @@ export default class ContactForm extends React.Component {
       honeypot: "",
       tel: "",
       message: "",
-      vsref: "4809006031",
+      vsref: "3302697007",
       gclid: "",
       submitted: false,
-      formAction: 'https://metrics.vitalstorm.com/email_form_submission/ca8b3f4a-3997-4a2f-b909-67c511812aa9/'
+      formAction: 'https://metrics.vitalstorm.com/email_form_submission/3cd73ece-d524-42a0-b663-872748721a2d/'
     };
   }
   handleInputChange(event){
@@ -134,7 +134,7 @@ export default class ContactForm extends React.Component {
                           <div className="innerColumn">
                             <h2>Schedule Service</h2>  
                             <p>Fill out the form below and we'll reach out to schedule your service appointment. </p>
-                            <span className="closeForm" onClick={this.changeActive} style={{fill: data.sanityCompanyInfo.primarycolor.hex}}><FaTimesCircle /></span>
+                            <span className="closeForm" onClick={this.changeActive} style={{fill: "#fff"}}><FaTimesCircle /></span>
                             <form ref={this.formRef} id="form-metrics" onSubmit={this.handleSubmit} action={this.state.formAction} method="POST">
                               <input id="mail-name" className="inputfield" type="text" name="name" value={this.state.name} onChange={this.handleInputChange} placeholder="Enter your full name" required />
                               <input id="mail-email" className="inputfield" type="text" name="honeypot" value={this.state.honeypot} onChange={this.handleInputChange} placeholder="Email address" minLength="3" maxLength="64" required />

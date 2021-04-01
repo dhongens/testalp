@@ -89,8 +89,10 @@ function getUrlVars(){
 
 var city = getUrlVars()["city"];
 const ourServices = "/our-services?city=" + city;
-console.log("ourServices: " + ourServices);
-console.log("city: " + city);
+var cityurl = getUrlVars()["city"];
+if(cityurl !== undefined ){
+    var city = cityurl.replace(/-/g, " ");
+}
 
 if(city === null) {
     city = "";
@@ -113,6 +115,9 @@ else if(city === undefined){
         $(".ourServices").attr('href', "/our-services/");
     }
 } 
+
+
+
 function printCoupon() {
     if(typeof window !== 'undefined'){
         window.print();
