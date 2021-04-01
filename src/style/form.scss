@@ -130,7 +130,10 @@
           cursor: pointer;
   
           svg {
-              fill: #fff;
+              @include tablet-landscape(){
+                  fill: #fff;
+              }
+              fill: #353535;
               transition: $transition;
           }
           &:hover{
