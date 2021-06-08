@@ -30,9 +30,12 @@ export default class ContactForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
 
     
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const gclid = urlParams.get('gclid')
+    if(typeof window !== 'undefined') {
+      var queryString = window.location.search;
+      var urlParams = new URLSearchParams(queryString);
+      var gclid = urlParams.get('gclid')
+    }
+    
 
     // console.log(queryString);
     // document.onload = function(){
