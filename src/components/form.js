@@ -21,6 +21,7 @@ const FormMessage = props => {
 
 
 export default class ContactForm extends React.Component {
+  
   constructor(props) {
     super(props);
     this.formRef = React.createRef();
@@ -28,13 +29,25 @@ export default class ContactForm extends React.Component {
     this.changeActive = this.changeActive.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
+    
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const gclid = urlParams.get('gclid')
+
+    // console.log(queryString);
+    // document.onload = function(){
+    //   var phonenumber = document.getElementById("number_rewrite");
+    //   // var vsrefnumber = phonenumber.innerHTML;
+    //   console.log(phonenumber);
+    // }
+    
     this.state = {
       name: "",
       honeypot: "",
       tel: "",
       message: "",
       vsref: "3302697007",
-      gclid: "",
+      gclid: gclid,
       submitted: false,
       formAction: 'https://metrics.vitalstorm.com/email_form_submission/3cd73ece-d524-42a0-b663-872748721a2d/'
     };
@@ -141,7 +154,7 @@ export default class ContactForm extends React.Component {
                               <input id="mail-honey" className="inputfield" type="text" name="email" />
                               <input id="mail-tel" className="inputfield" name="tel" value={this.state.tel} type="tel" onChange={this.handleInputChange} placeholder="(123) 456-7890" required />
                               <input id="mail-message" className="inputfield" type="text" value={this.state.message} onChange={this.handleInputChange} name="message" placeholder="Request a service" required />
-                              <input type="hidden" name="gclid" value="" />
+                              <input type="hidden" name="gclid" value={this.state.gclid} />
                               <input type="hidden" name="vsref" value={this.state.vsref} />
                               <div className="ajax-button">
                                   <button id="mail-submit" type="submit" name="mail-submit" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex}}>Send Request</button>
