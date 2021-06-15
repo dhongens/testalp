@@ -1,11 +1,11 @@
 var plugins = [{
-      plugin: require('/Users/pietertenret/Documents/VitalStorm/Sandbox/Panda Roofing/gatsby/node_modules/gatsby-plugin-react-helmet/gatsby-ssr'),
+      plugin: require('/Users/pietertenret/Documents/VitalStorm/Sandbox/DiBara Masonry/gatsby/node_modules/gatsby-plugin-react-helmet/gatsby-ssr'),
       options: {"plugins":[]},
     },{
-      plugin: require('/Users/pietertenret/Documents/VitalStorm/Sandbox/Panda Roofing/gatsby/node_modules/gatsby-source-sanity/gatsby-ssr'),
-      options: {"plugins":[],"projectId":"j0f418h3","dataset":"production","overlayDrafts":true,"watchMode":true},
+      plugin: require('/Users/pietertenret/Documents/VitalStorm/Sandbox/DiBara Masonry/gatsby/node_modules/gatsby-source-sanity/gatsby-ssr'),
+      options: {"plugins":[],"projectId":"t466b1et","dataset":"production","overlayDrafts":true,"watchMode":true},
     },{
-      plugin: require('/Users/pietertenret/Documents/VitalStorm/Sandbox/Panda Roofing/gatsby/node_modules/gatsby-plugin-styled-components/gatsby-ssr'),
+      plugin: require('/Users/pietertenret/Documents/VitalStorm/Sandbox/DiBara Masonry/gatsby/node_modules/gatsby-plugin-styled-components/gatsby-ssr'),
       options: {"plugins":[]},
     }]
 // During bootstrap, we write requires at top of this file which looks like:

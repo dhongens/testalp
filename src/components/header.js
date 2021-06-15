@@ -43,9 +43,9 @@ export default () => (
               <div className="header-inner">
               <Image location=""
                   fluid={data.sanityCompanyInfo.logo.asset.fluid}
-                  style={{ height: "auto", width: "250px" }}
+                  style={{ height: "auto", width: "100px" }}
                   className="align-center"
-                  alt="Plumbit Logo"
+                  alt="Logo"
                 />
                 <div className="headerBtns">
                   <span className="companyTagline" style={{color: data.sanityCompanyInfo.secondarycolor.hex}}>{data.sanityCompanyInfo.companyTagline}</span>
