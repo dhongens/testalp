@@ -35,21 +35,19 @@ export default class ContactForm extends React.Component {
       var urlParams = new URLSearchParams(queryString);
       var gclid = urlParams.get('gclid')
     }
-    
 
-    // console.log(queryString);
-    // document.onload = function(){
-    //   var phonenumber = document.getElementById("number_rewrite");
-    //   // var vsrefnumber = phonenumber.innerHTML;
-    //   console.log(phonenumber);
-    // }
+    if(typeof document !== 'undefined'){
+      var phone = document.getElementById("number_rewrite").innerHTML;
+      var vsref = phone.replace(/-/g, "");
+      console.log(vsref);
+    }
     
     this.state = {
       name: "",
       honeypot: "",
       tel: "",
       message: "",
-      vsref: "xxx",
+      vsref: vsref,
       gclid: gclid,
       submitted: false,
       formAction: 'https://metrics.vitalstorm.com/email_form_submission/xxx/'
