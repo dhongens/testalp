@@ -114,11 +114,7 @@ body{
     background-position: center;
 }
     
-.formLogo{
-    @include tablet-landscape(){
-        width: 100px !important;
-    }
-}
+
     .pageContent{
         .row{
             padding: 60px 0; 
