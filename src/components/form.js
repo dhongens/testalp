@@ -36,18 +36,18 @@ export default class ContactForm extends React.Component {
       var gclid = urlParams.get('gclid')
     }
 
-    if(typeof document !== 'undefined'){
-      var phone = document.getElementById("number_rewrite").innerHTML;
-      var vsref = phone.replace(/-/g, "");
-      console.log(vsref);
-    }
+    // if(typeof document !== 'undefined'){
+    //   var phone = document.getElementById("number_rewrite").innerHTML;
+    //   var vsref = phone.replace(/-/g, "");
+    //   console.log(vsref);
+    // }
     
     this.state = {
       name: "",
       honeypot: "",
       tel: "",
       message: "",
-      vsref: vsref,
+      // vsref: vsref,
       gclid: gclid,
       submitted: false,
       formAction: 'https://metrics.vitalstorm.com/email_form_submission/xxx/'
@@ -137,9 +137,9 @@ export default class ContactForm extends React.Component {
                         <div className="column1" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex }}>
                         <Image location=""
                             fluid={data.sanityCompanyInfo.logoWhite.asset.fluid}
-                            style={{ height: "auto", width: "200px" }}
+                            style={{ height: "200px", width: "200px" }}
                             className="align-center"
-                            alt="Plumbit Logo"
+                            alt="Logo" className="formLogo"
                           />
                           <p className="tagline">{data.sanityCompanyInfo.companyTagline}</p>
                           <a href={"tel:" + data.sanityCompanyInfo.phone} className="formPhone"><FaPhone /> {data.sanityCompanyInfo.phone}</a>
