@@ -3,6 +3,12 @@
     .phone, .schedule, .companyTagline{
         display:none;
     }
+    .pageHeader{
+        @include tablet-landscape{
+            height: 180px;
+            margin-top: 80px;
+        }
+    }
 
     .header-inner {
         width: 70%;
@@ -337,7 +343,7 @@
             .coupon{
                 font-weight: 700;
                 font-style: italic;
-                font-size: 3em;
+                font-size: 2em;
                 line-height: 150%;
                 text-align: center;
                 color: #fff;

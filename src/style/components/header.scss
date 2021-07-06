@@ -16,6 +16,9 @@ header{
         }
         .gatsby-image-wrapper{
             width: 100px;
+            @include tablet-portrait{
+                width: 60px !important;
+            }
         }
         .leftColumn{
             text-align: center;
