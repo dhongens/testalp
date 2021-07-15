@@ -172,14 +172,15 @@
             width: 30%;
 
             .companyPhone {
-                text-align: right;
+                text-align: center;
                 margin-top: 70px;
-                margin-right: 50px;
+                // margin-right: 20px;
 
                 a {
                     color: #fff;
                     padding: 20px 30px;
                     margin-top: 20px;
+                    font-size: 1em !important;
 
                     &:hover {
                         background-color: #fff !important;
@@ -196,6 +197,7 @@
             align-items: center;
             flex-direction: column;
             color: #fff;
+            // margin-right: 30px;
 
             .date {}
 
@@ -216,10 +218,14 @@
 
             .bottomwrapper {
                 display: flex;
-                justify-content: space-between;
+                justify-content: center;
                 width: 80%;
                 align-items: center;
                 margin-top: 2em;
+                text-align: right;
+                .restrictions{
+                    text-align: center;
+                }
 
                 .printCoupon {
                     padding: 15px 25px;
@@ -245,10 +251,11 @@
             width: 90%;
             height: 100vh;
             box-shadow: none;
-            margin: 1em auto 0;
+            margin: 2em auto 0;
 
             h2 {
                 color: #fff;
+                text-align: center;
             }
 
             form {
@@ -273,6 +280,7 @@
                     transition: all ease 0.2s;
                     border-radius: 3px;
 
+
                     &:focus {
                         border-color: rgb(56, 172, 207);
                         transition: all ease 0.2s;
@@ -287,7 +295,9 @@
                     border-color: #c52626 !important;
                     background-color: rgba(228, 67, 67, 0.3);
                 }
-
+                .ajax-button{
+                    text-align: right;
+                }
                 button {
                     color: #fff;
                     display: block;
@@ -300,6 +310,7 @@
                     font-weight: 600;
                     cursor: pointer;
                     transition: $transition;
+
 
                     &:hover {
                         background-color: #656566 !important;
@@ -361,9 +372,11 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                text-align: center;
                 .restrictions{
                     color: #fff;
                     font-size: 1em;
+                    text-align: center;
                 }
                 .printCoupon{
                     padding: 0.6em 1em;
@@ -453,6 +466,7 @@
         .bottomwrapper{
             justify-content: center !important;
             width: 100% !important;
+            text-align: center;
             .restrictions{
                 text-align: center;
             }
