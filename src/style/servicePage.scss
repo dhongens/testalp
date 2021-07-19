@@ -112,12 +112,17 @@
                         @include tablet-portrait {
                             font-size: 1.2em;
                             margin-bottom: 0;
+                            margin-top: 0;
+                        }
+                        @include desktop-small{
+                            margin-top: 1em;
+                            max-width: auto;
                         }
                     }
 
                     p {}
 
-                    svg {
+                    svg,i {
                         position: relative;
                         top: 30px;
                         // left: -50px;
@@ -133,10 +138,14 @@
                             right: -0.5em;
                             font-size: 2em !important;
                         }
+                        @include desktop-small{
+                            display: none;
+                        }
 
                         @include tablet-landscape {
                             top: 0;
                             right: 0.5em;
+                            display: block;
                         }
                     }
                 }
@@ -147,6 +156,9 @@
 
                 .column3 {}
             }
+        }
+        .pageContent{
+            padding: 0 20px;
         }
     }
 
@@ -160,16 +172,21 @@
 
     .serviceRightSide {
         width: 30%;
-
+        
+        
         @include tablet-landscape {
             display: none;
         }
-
+        
         .innerWrapper {
             position: fixed;
             top: 0;
             z-index: 999;
             width: 30%;
+            @include desktop-small(){
+                overflow:scroll;
+                height: 100%;
+            }
 
             .companyPhone {
                 text-align: center;
@@ -207,6 +224,9 @@
                 font-size: 3em;
                 line-height: 150%;
                 text-align: center;
+                @include desktop{
+                    font-size: 2em;
+                }
             }
 
             .couponType {
