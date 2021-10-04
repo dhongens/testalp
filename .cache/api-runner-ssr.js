@@ -3,7 +3,7 @@ var plugins = [{
       options: {"plugins":[]},
     },{
       plugin: require('/Users/pietertenret/Documents/VitalStorm/Sandbox/Peter Levi/gatsby/node_modules/gatsby-source-sanity/gatsby-ssr'),
-      options: {"plugins":[],"projectId":"t466b1et","dataset":"production","overlayDrafts":true,"watchMode":true},
+      options: {"plugins":[],"projectId":"1zi3jpzu","dataset":"production","overlayDrafts":true,"watchMode":true},
     },{
       plugin: require('/Users/pietertenret/Documents/VitalStorm/Sandbox/Peter Levi/gatsby/node_modules/gatsby-plugin-styled-components/gatsby-ssr'),
       options: {"plugins":[]},

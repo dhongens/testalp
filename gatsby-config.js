@@ -19,7 +19,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-sanity',
       options: {
-        projectId: 't466b1et',
+        projectId: '1zi3jpzu',
         dataset: 'production', 
         overlayDrafts: true,
         watchMode: true,
