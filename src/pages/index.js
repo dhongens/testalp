@@ -4,7 +4,6 @@ import Layout from "../components/layout"
 import UspSection from "../components/uspSection"
 import BlockContent from '../components/block-content'
 import BackgroundImage from 'gatsby-background-image'
-import { FaPrint, FaStar, FaUserShield, FaRegClock, FaShieldAlt } from "react-icons/fa"
 import Form from "../components/form"
 import Helmet from 'react-helmet'
 import PortableText from '@sanity/block-content-to-react'
@@ -145,7 +144,6 @@ const IndexPage = ( {data }) => (
           <p className="couponType">{data.sanityPages.coupon.type}</p>
           <div className="schedulebtn-container">
             <span className="schedulebtn" style={{backgroundColor: data.sanityCompanyInfo.accentcolor.hex}} onClick={changeActive}>Schedule</span>
-            {/* <span className="printCoupon" onClick={printCoupon} style={{ backgroundColor: data.sanityCompanyInfo.accentcolor.hex }}><FaPrint /> <span className="mobileCouponText">Claim Offer</span></span> */}
           </div>
           <p className="restrictions">*Restrictions may apply</p>
         </div>

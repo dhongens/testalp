@@ -211,15 +211,8 @@ export default ({ data }) => (
                                 backgroundColor: data.sanityCompanyInfo.accentcolor.hex,
                             }}
                         onClick={changeActive}>Schedule</span>
-                    {/* <span className="printCoupon" onClick={printCoupon} style={{ backgroundColor: data.sanityCompanyInfo.accentcolor.hex }}><FaPrint /> <span className="mobileCouponText">Claim Offer</span></span> */}
-
                     </div>
                     <p className="restrictions">*Restrictions may apply</p>
-
-                    {
-                        // IF COUPON IS PRINTABLE -> SHOW PRINT BUTTON
-                        // data.sanityPages.coupon.printable  && <span className="printCoupon" onClick={printCoupon} style={{ backgroundColor: data.sanityCompanyInfo.accentcolor.hex }}><FaPrint /> <span className="mobileCouponText">Claim Offer</span></span> }
-                    }
 
                 </div>
 
