@@ -1,1 +1,1 @@
-# Dibara Masonry Automated Landing Pages
+# Automated Landing Pages
