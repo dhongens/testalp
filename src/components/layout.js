@@ -259,7 +259,7 @@ if(typeof window !== 'undefined'){
               <script src="https://kit.fontawesome.com/4ab4233178.js" crossorigin="anonymous"></script>
     </Helmet>
     <div className="pagewrapper">
-    <header style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex }}>
+    <header>
               <div className="header-inner">
               <Image location=""
                   fluid={data.sanityCompanyInfo.logo.asset.fluid}
