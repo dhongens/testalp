@@ -36,17 +36,17 @@ export default class ContactForm extends React.Component {
       var gclid = urlParams.get('gclid')
     }
 
-    if(typeof document !== 'undefined'){
-      var phone = document.getElementById("number_rewrite").innerHTML;
-      var vsref = phone.replace(/-/g, "");
-    }
+    // if(typeof document !== 'undefined'){
+    //   var phone = document.getElementById("number_rewrite").innerHTML;
+    //   var vsref = phone.replace(/-/g, "");
+    // }
     
     this.state = {
       name: "",
       honeypot: "",
       tel: "",
       message: "",
-      vsref: vsref,
+      // vsref: vsref,
       gclid: gclid,
       submitted: false,
       formAction: 'https://metrics.vitalstorm.com/email_form_submission/xxx/'
@@ -136,7 +136,7 @@ export default class ContactForm extends React.Component {
                         <div className="column1" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex }}>
                         <Image location=""
                             fluid={data.sanityCompanyInfo.logoWhite.asset.fluid}
-                            style={{ height: "90px", width: "300px",  }}
+                            style={{ height: "150px", width: "300px",  }}
                             className="align-center"
                             alt="Logo" className="formLogo"
                           />

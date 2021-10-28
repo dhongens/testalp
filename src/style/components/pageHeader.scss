@@ -30,7 +30,7 @@
                 justify-content: space-between;
             }
             .schedulebtn{
-                color: #fff;
+                color: #353535;
                 text-transform: uppercase;
                 padding: 0.5em 2em;
                 cursor: pointer;
@@ -40,7 +40,7 @@
                 // display:inline-block;
                 height: 100%;
                 @include phone-only{
-                    width: 80%;
+                    width: 100%;
                 }
                 &:before{
                     content:'\f073';

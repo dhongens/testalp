@@ -80,7 +80,7 @@ body{
         transition: all ease 0.3s;
         color: #1A2537;
         &:hover{
-            color: #175c77;
+            color: #f8a102;
             transition: all ease 0.3s;
         }
     }
@@ -171,7 +171,7 @@ body{
                 bottom: 0;
                 padding: 15px 50px;
 
-                color: #fff;
+                color: #353535;
                 text-decoration: none;
                 text-transform: uppercase;
                 transition: all ease 0.2s;
@@ -223,10 +223,10 @@ body{
         padding: 20px 0;
         width: 50%;
         svg{
-            fill:#fff;
+            fill:#353535;
         }
         span{
-            color: #fff;
+            color: #353535;
             text-transform: uppercase;
             font-weight: 500;
         }
@@ -236,6 +236,6 @@ body{
         text-align: center;
         padding: 20px 0;
         text-transform: uppercase;
-        color: #fff;
+        color: #353535;
     }
 }
