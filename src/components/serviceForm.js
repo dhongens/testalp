@@ -34,20 +34,20 @@ export default class ContactForm extends React.Component {
       var gclid = urlParams.get('gclid')
     }
 
-    // if(typeof document !== 'undefined'){
-    //   var phone = document.getElementById("number_rewrite").innerHTML;
-    //   var vsref = phone.replace(/-/g, "");
-    // }
+    if(typeof document !== 'undefined'){
+      var phone = document.getElementById("number_rewrite").innerHTML;
+      var vsref = phone.replace(/-/g, "");
+    }
 
     this.state = {
       name: "",
       honeypot: "",
       tel: "",
       message: "",
-      // vsref: vsref,
+      vsref: vsref,
       gclid: gclid,
       submitted: false,
-      formAction: 'https://metrics.vitalstorm.com/email_form_submission/xxx/'
+      formAction: 'https://metrics.vitalstorm.com/email_form_submission/ce26b7d0-3391-4c9f-82c5-1064c64c6f1a/'
 
     };
   }
@@ -68,30 +68,67 @@ export default class ContactForm extends React.Component {
   }
   handleSubmit(event){
     event.preventDefault();
-    const fieldData = new URLSearchParams({
-      name: this.state.name,
-      honeypot: this.state.honeypot,
-      tel: this.state.tel,
-      message: this.state.message,
-      vsref: this.state.vsref,
-      gclid: this.state.gclid,
-    });
-    $.ajax({
-      type: "POST",
-       url: this.state.formAction,
-       data:  fieldData.toString(), // serializes the form's elements.
-       success: data => {
-          this.setState({
-            name: "",
-            honeypot: "",
-            tel: "",
-            message: "",
-            vsref: "",
-            gclid: "",
-            submitted: true
-          });
-       }
-    });
+    //phone number validation
+    var phoneno = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+    var phoneinput = document.getElementById('mail-tel');
+    
+    //email validation
+    const emailvalidation = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    var emailinput = document.getElementById('mail-email');
+    var emailinputValue = emailinput.value;
+    
+    var emailerrormsg = document.createElement("p");
+    emailerrormsg.classList.add('form-error-text');
+    emailerrormsg.innerHTML = "Wrong Email Format, please check and fix before submitting";
+
+    function emailIsValid (email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+    }
+
+    if (/*phoneinput.value.match(phoneno) &&*/ emailIsValid(emailinputValue)){
+      const elements = document.getElementsByClassName('form-error-text-shown');
+
+      emailinput.classList.remove('form-error'); 
+      // emailerrormsg.classList.remove('form-error-text-shown');
+      while(elements.length > 0){
+        elements[0].parentNode.removeChild(elements[0]);
+      }
+      const fieldData = new URLSearchParams({
+        name: this.state.name,
+        honeypot: this.state.honeypot,
+        message: this.state.message,
+        tel: this.state.tel,
+        city: this.state.city,
+        zipcode: this.state.zipcode,
+        vsref: this.state.vsref,
+        gclid: this.state.gclid,
+        });
+        $.ajax({
+          type: "POST",
+           url: this.state.formAction,
+           data:  fieldData.toString(), // serializes the form's elements.
+           success: data => {
+              this.setState({
+                name: "",
+                honeypot: "",
+                tel: "",
+                city: "",
+                zipcode: "",
+                message: "",
+                vsref: "",
+                gclid: "",
+                submitted: true
+              });
+           }
+          })
+    } else if (emailIsValid(emailinputValue) == false){
+      emailinput.parentNode.insertBefore(emailerrormsg, emailinput.nextSibling);
+      emailinput.classList.add('form-error');
+      emailerrormsg.classList.add('form-error-text-shown');
+      emailinput.focus();
+      console.log('wrong email');
+    }    
   }
   render() {
     
@@ -131,7 +168,6 @@ render={data => (
                             <input id="mail-name" className="inputfield" type="text" name="name" value={this.state.name} onChange={this.handleInputChange} placeholder="Enter your full name" required />
                             <input id="mail-email" className="inputfield" type="text" name="honeypot" value={this.state.honeypot} onChange={this.handleInputChange} placeholder="Email address" minLength="3" maxLength="64" required />
                             <input id="mail-honey" className="inputfield" type="text" name="email" />
-                            <input id="mail-tel" className="inputfield" name="tel" value={this.state.tel} type="tel" onChange={this.handleInputChange} placeholder="(123) 456-7890" required />
                             <input id="mail-message" className="inputfield" type="text" value={this.state.message} onChange={this.handleInputChange} name="message" placeholder="Request a service" required />
                             <input type="hidden" name="gclid" value={this.state.gclid} />
                             <input type="hidden" name="vsref" value={this.state.vsref} />
