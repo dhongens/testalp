@@ -257,7 +257,16 @@ if(typeof window !== 'undefined'){
               <script>{`var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(${data.sanityCompanyInfo.clicky});`}</script>
               <script async src="//static.getclicky.com/js"></script>
               <script src="https://kit.fontawesome.com/4ab4233178.js" crossorigin="anonymous"></script>
+   <script type='text/javascript'>{`var script = document.createElement('script');
+   script.async = true; script.type = 'text/javascript';
+   var target = 'https://www.clickcease.com/monitor/stat.js';
+   script.src = target;var elem = document.head;elem.appendChild(script);`}
+   </script>
+   
     </Helmet>
+    <noscript>
+   <a href='https://www.clickcease.com' rel='nofollow'><img src='https://monitor.clickcease.com/stats/stats.aspx' alt='ClickCease'/></a>
+   </noscript>
     <div className="pagewrapper">
     <header>
               <div className="header-inner">
