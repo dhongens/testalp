@@ -170,7 +170,7 @@ export default class ContactForm extends React.Component {
                         <div className="column1" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex }}>
                         <Image location=""
                             fluid={data.sanityCompanyInfo.logoWhite.asset.fluid}
-                            style={{ height: "150px", width: "300px",  }}
+                            style={{ height: "170px", width: "300px",  }}
                             className="align-center"
                             alt="Logo" className="formLogo"
                           />

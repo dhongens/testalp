@@ -109,7 +109,7 @@
                     h2 {
                         text-transform: uppercase;
                         font-size: 1.2em;
-                        max-width: 300px;
+                        max-width: 260px;
                         line-height: 1.5em;
                         margin-top: -1.2em;
 
@@ -204,7 +204,7 @@
                 // margin-right: 20px;
 
                 a {
-                    color: #353535;
+                    color: #fff;
                     padding: 20px 30px;
                     margin-top: 20px;
                     font-size: 1em !important;
@@ -223,7 +223,7 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            color: #353535;
+            color: #fff;
             // margin-right: 30px;
 
             .date {}
@@ -284,7 +284,7 @@
             margin: 2em auto 0;
 
             h2 {
-                color: #353535;
+                color: #fff;
                 text-align: center;
             }
 
@@ -329,7 +329,7 @@
                     text-align: right;
                 }
                 button {
-                    color: #353535;
+                    color: #fff;
                     display: block;
                     width: 220px;
                     margin: 0 auto;
@@ -378,7 +378,7 @@
             justify-content: space-evenly;
             align-items:center;
             .date{
-                color:#353535;
+                color:#fff;
                 margin-bottom: 1em;
             }
             .coupon{
@@ -387,14 +387,14 @@
                 font-size: 2em;
                 line-height: 150%;
                 text-align: center;
-                color: #353535;
+                color: #fff;
             }
             .couponType{
                 font-size: 1.5em;
                 font-weight: 700;
                 line-height: 150%;
                 text-align: center;
-                color: #353535;
+                color: #fff;
                 margin-bottom: 1em;
             }
             .bottomwrapper{
@@ -404,14 +404,14 @@
                 align-items: center;
                 text-align: center;
                 .restrictions{
-                    color: #353535;
+                    color: #fff;
                     font-size: 1em;
                     text-align: center;
                 }
                 .printCoupon{
                     padding: 0.6em 1em;
                     svg{
-                        fill:#353535;
+                        fill:#fff;
                     }
                     .mobileCouponText{
                         display:none;
