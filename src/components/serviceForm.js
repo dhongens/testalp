@@ -175,7 +175,7 @@ render={data => (
                             <input type="hidden" name="gclid" value={this.state.gclid} />
                             <input type="hidden" name="vsref" value={this.state.vsref} />
                             <div className="ajax-button">
-                                <button id="mail-submit" type="submit" name="mail-submit" style={{backgroundColor: data.sanityCompanyInfo.secondarycolor.hex}} >Send Request</button> 
+                                <button id="mail-submit" type="submit" name="mail-submit" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex}} >Send Request</button> 
                             </div>
                             <p className="form-message"><FaEnvelope /> </p>
                             <FormMessage submitted={this.state.submitted} />

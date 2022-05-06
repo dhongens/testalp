@@ -142,7 +142,7 @@ export default ({ data }) => (
                 <div className="serviceRightSide" style={{ backgroundColor:  data.sanityCompanyInfo.accentcolor.hex }}>
                     <div className="innerWrapper" style={{ backgroundColor:  data.sanityCompanyInfo.accentcolor.hex }}>
                     <div className="companyPhone">
-                        <a style={{backgroundColor: data.sanityCompanyInfo.secondarycolor.hex }}href={ "tel:" + data.sanityCompanyInfo.phone }><FaPhone /> <span id="number_rewrite">{data.sanityCompanyInfo.phone}</span> </a>
+                        <a style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex }}href={ "tel:" + data.sanityCompanyInfo.phone }><FaPhone /> <span id="number_rewrite">{data.sanityCompanyInfo.phone}</span> </a>
                     </div>
                     <div className="serviceCoupon">
                         <span className="date">Schedule This <b>{today}</b> for </span>

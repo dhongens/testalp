@@ -170,9 +170,9 @@ export default class ContactForm extends React.Component {
                         <div className="column1" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex }}>
                         <Image location=""
                             fluid={data.sanityCompanyInfo.logoWhite.asset.fluid}
-                            style={{ height: "170px", width: "300px",  }}
-                            className="align-center"
-                            alt="Logo" className="formLogo"
+                            style={{ height: "75px", width: "300px",  }}
+                            className="align-center formLogo"
+                            alt="Logo"
                           />
                           <p className="tagline">{data.sanityCompanyInfo.companyTagline}</p>
                           <a href={"tel:" + data.sanityCompanyInfo.phone} className="formPhone"><FaPhone /> {data.sanityCompanyInfo.phone}</a>
