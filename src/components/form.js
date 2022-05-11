@@ -49,7 +49,7 @@ export default class ContactForm extends React.Component {
       vsref: vsref,
       gclid: gclid,
       submitted: false,
-      formAction: 'https://metrics.vitalstorm.com/email_form_submission/d6fae9ff-1aeb-4196-8de4-0cac77476f9a/'
+      formAction: 'https://metrics.vitalstorm.com/email_form_submission//'
     };
   }
   handleInputChange(event){
@@ -98,8 +98,8 @@ export default class ContactForm extends React.Component {
         name: this.state.name,
         honeypot: this.state.honeypot,
         message: this.state.message,
-        tel: this.state.tel,
-        city: this.state.city,
+        // tel: this.state.tel,
+        // city: this.state.city,
         zipcode: this.state.zipcode,
         vsref: this.state.vsref,
         gclid: this.state.gclid,
@@ -113,8 +113,8 @@ export default class ContactForm extends React.Component {
                 name: "",
                 honeypot: "",
                 tel: "",
-                city: "",
-                zipcode: "",
+                // city: "",
+                // zipcode: "",
                 message: "",
                 vsref: "",
                 gclid: "",
@@ -170,7 +170,7 @@ export default class ContactForm extends React.Component {
                         <div className="column1" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex }}>
                         <Image location=""
                             fluid={data.sanityCompanyInfo.logoWhite.asset.fluid}
-                            style={{ height: "75px", width: "300px",  }}
+                            style={{ height: "110px", width: "160px",  }}
                             className="align-center formLogo"
                             alt="Logo"
                           />
