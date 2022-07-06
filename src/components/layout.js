@@ -9,6 +9,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
+import Footer from "./footer"
 import Helmet from 'react-helmet'
 import Image from "gatsby-image"
 import "./layout.css"
@@ -16,7 +17,10 @@ import { FaCalendarAlt, FaPhone } from 'react-icons/fa'
 import $ from "jquery"
 import ConversionLoggingInit from '../util/conversionLogging.js';
 
+
+
 ConversionLoggingInit.init({env: 'prod'});
+
 
 
 const Layout = ({ children }) => {
@@ -59,7 +63,6 @@ const Layout = ({ children }) => {
       }
         analytics
         marchex
-        clicky
         remarketing
       }
       allSanityBadges{
@@ -111,54 +114,17 @@ const Layout = ({ children }) => {
     $('body').toggleClass('formExpanded');
   }  
 
-/* REPLACE COMPANYNAME IN COPY */
-function getUrlVars(){
-  var vars = [], hash;
-  if(typeof window !== 'undefined'){
-      var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-      for(var i = 0; i < hashes.length; i++)
-      {
-          hash = hashes[i].split('=');
-          vars.push(hash[0]);
-          vars[hash[0]] = hash[1];
-      }
-  }
-  return vars;
-}
-if(typeof window !== 'undefined'){
-    $(window).on('load', function(){
-      $('div.pageContent a').attr('href', function(i, href){
-        city= getUrlVars()['city'];
-    });
-    var city = getUrlVars()["city"];
-    if(city !== 'undefined'){
-      $("p").each(function(){
-          var text = $(this).text();
-          text = text.replace("[city]", city);
-          $(this).html(text); 
-        });
-    }  else {
-      $("p").each(function(){
-        var text = $(this).text();
-        text = text.replace("[city]", "");
-        $(this).html(text); 
-        });
-    }
-});
-
-}
-
-
-
   return (
     <>
     
     <Helmet>
+
           <link rel="icon"
           type="image/png"
-          href={data.sanityCompanyInfo.favicon.asset.fluid.src} defer="false" />
+          src={data.sanityCompanyInfo.favicon.asset.fluid.src}
+          defer="false" />
          <script
-    src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossOrigin="anonymous" />
+        src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossOrigin="anonymous" />
         <meta name="robots" content="noindex, nofollow" />
         <meta name="twitter:card" content="summary" />
 
@@ -205,39 +171,6 @@ if(typeof window !== 'undefined'){
               `}
               </script>
           ) : null}
-
-
-          <script>
-            {`
-              /***** ADD CITY TO URLS IN PAGE *****/
-              function addCity(){
-                if(typeof window !== 'undefined'){
-                    $('div.pageContent a').attr('href', function(i, href){
-                        city= getUrlVars()['city'];
-                        return href + "?city=" +  city; 
-                    });
-                }  
-              }
-            `}
-          </script>
-
-          <script>{`
-            /* SINGLE COUPON PRINT */
-            $(".couponsRow .coupon").each(function(){
-              $(this).click(function(){
-                  if(typeof window !== 'undefined'){
-                      var printContents = $(this).wrap('<p/>').parent().html();
-                      var originalContents = document.body.innerHTML;
-                      document.body.innerHTML = "${data.sanityCompanyInfo.logo.asset.fluid.src}";
-                      document.body.innerHTML = printContents;
-            
-                      window.print();
-                      document.body.innerHTML = originalContents;
-                  }
-
-              });
-            });
-          `}</script>
           <meta name="theme-color" content={data.sanityCompanyInfo.secondarycolor.hex} />
           <script type="text/javascript">
                 {`var SETUP_VS_LP = function(){
@@ -254,39 +187,19 @@ if(typeof window !== 'undefined'){
               `}</script>
               <script type="text/javascript" src="https://rw1.calls.net/euinc/number-changer.js"></script>
 
-              <script>{`var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(${data.sanityCompanyInfo.clicky});`}</script>
-              <script async src="//static.getclicky.com/js"></script>
               <script src="https://kit.fontawesome.com/4ab4233178.js" crossorigin="anonymous"></script>
-   <script type='text/javascript'>{`var script = document.createElement('script');
-   script.async = true; script.type = 'text/javascript';
-   var target = 'https://www.clickcease.com/monitor/stat.js';
-   script.src = target;var elem = document.head;elem.appendChild(script);`}
-   </script>
+              <script type='text/javascript'>{`var script = document.createElement('script');
+              script.async = true; script.type = 'text/javascript';
+              var target = 'https://www.clickcease.com/monitor/stat.js';
+              script.src = target;var elem = document.head;elem.appendChild(script);`}
+              </script>
    
     </Helmet>
     <noscript>
    <a href='https://www.clickcease.com' rel='nofollow'><img src='https://monitor.clickcease.com/stats/stats.aspx' alt='ClickCease'/></a>
    </noscript>
     <div className="pagewrapper">
-    <header>
-              <div className="header-inner">
-              <Image location=""
-                  fluid={data.sanityCompanyInfo.logo.asset.fluid}
-                  style={{ height: "auto", width: "120px" }}
-                  className="align-center"
-                  alt="Logo"
-                />
-                <div className="headerBtns">
-                  <span className="companyTagline" style={{color: data.sanityCompanyInfo.secondarycolor.hex}}>{data.sanityCompanyInfo.companyTagline}</span>
-                  <div className="btns-wrap">
-                    <span className="headerbtn schedule" onClick={changeActive} 
-                    style={{ backgroundColor: data.sanityCompanyInfo.secondarycolor.hex, borderColor: data.sanityCompanyInfo.secondarycolor.hex }}
-                    > <FaCalendarAlt /> Schedule</span>
-                    <a className="headerbtn phone phonenumber" style={{ backgroundColor: data.sanityCompanyInfo.accentcolor.hex, borderColor: data.sanityCompanyInfo.accentcolor.hex}} href={"tel:" + data.sanityCompanyInfo.phone}><FaPhone /> <span id="number_rewrite">{data.sanityCompanyInfo.phone}</span></a>
-                  </div>
-                </div>
-              </div>
-          </header>
+   <Header />
           <div>
             <main>{children}</main>
             <div className="scheduleMobile" >
@@ -297,30 +210,7 @@ if(typeof window !== 'undefined'){
                   <FaPhone /> <span>Call now</span>
                 </a>
               </div>
-            <footer className="footer">
-              <div className="badgeBanner">
-                  <div className="columns">
-                  
-                    <div className="badges">
-
-                    {data.allSanityBadges.edges.map(({ node: badge }) => (
-                              <Image fluid={badge.badge_img.asset.fluid} key={badge.badge_name}/>
-                          ))}
-                        
-                    </div>
-                    
-                  
-                  </div>
-                </div>
-              <div className="container">
-              <div className="licenses">
-                  {data.sanityCompanyInfo.licenses.map(( license  => 
-                    <div>{license}</div>
-                  ))}
-              </div>
-                <p>&copy; {data.sanityCompanyInfo.companyname} | Marketing by <a href="http://vitalstorm.com/" target="_blank" rel="noopener noreferrer">VitalStorm</a></p> 
-              </div>
-          </footer>
+            <Footer />
           </div>
         </div>
     </>

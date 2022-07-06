@@ -1,0 +1,434 @@
+/**** MEDIA QUERIES ****/
+@mixin phone-only {
+    @media (max-width: 599px) { @content; }
+  }
+  @mixin tablet-portrait {
+    @media (max-width: 768px) { @content; }
+  }
+  @mixin tablet-landscape {
+    @media (max-width: 900px) { @content; }
+  }
+  @mixin desktop {
+    @media (max-width: 1200px) { @content; }
+  }
+  @mixin big-desktop {
+    @media (max-width: 1800px) { @content; }
+  }
+  $transition: 0.1s ease all;
+  
+  .serviceForm{
+      .form{
+          visibility: visible;
+          opacity: 1;
+          .two_columns{
+              .column1{
+                  display:none;
+              }
+              .column2{
+                  width: 100%;
+                  padding: 3em;
+                  p{
+                      display:none;
+                  }
+                  .closeForm{
+                      display:none;
+                  }
+              }
+          }
+      }
+    }
+
+  .popupForm{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    display:none;
+    @include desktop{
+        width: 100%; 
+        height: auto;
+        z-index: 1001;
+    }
+    @include tablet-portrait() {
+        width: 90%;
+        margin: 0 auto;
+        left: 50%;
+        top: 50%;
+        height: auto;
+        transform: translate(-50%, -50%);
+        z-index: 1001;
+    }
+      .form{
+        width: 1400px;
+        height:700px;
+        transition: all ease 0.3s;
+        z-index: 1001;
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+        background-color: #fff;
+        border-radius: 20px;
+        opacity:0;
+        visibility: hidden;
+        @include desktop{
+            width: 100%; 
+            height: auto;
+    
+        }
+        
+        @include phone-only(){
+            z-index: 1001;
+            height: 90vh;
+        }
+        @supports (-webkit-overflow-scrolling: touch) {
+            /* CSS specific to iOS devices */ 
+            height: 90vh;
+            margin-bottom: 5em;
+          }
+      }
+      
+  }
+
+  .mobileForm{
+      .form{
+        opacity:0;
+        visibility: hidden;
+        display:none;
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        z-index: 1000;
+        background-color: #fff;
+        border-radius: 20px;
+        width: 90%; 
+        @include tablet-portrait() {
+            width: 90%;
+            margin: 0 auto;
+            left: 50% !important;
+            top: 50%;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 1001;
+        }
+
+
+        &.expanded{
+            display: block;
+            opacity: 1;
+            visibility: visible;
+
+        }
+      }
+  }
+
+
+  .form {  
+      .closeForm {
+          position: absolute;
+          left: 20px;
+          top: 20px;
+          transform: scale(1.4);
+          cursor: pointer;
+          color: #fff;
+  
+          svg {
+              @include tablet-landscape(){
+                  fill: #fff;
+              }
+              fill: #fff;
+              transition: $transition;
+          }
+          &:hover{
+              svg{
+                  opacity: 0.4;
+                  transition: $transition;
+              }
+          }
+      }
+      .two_columns{
+          display:flex;
+          flex-direction: row;
+          height: 100%;
+          border-radius: 20px 0 0 20px;
+
+  
+          @include tablet-landscape(){
+              flex-direction: column;
+          }
+          
+  
+          .column1{
+              width: 60%;
+            //   background-image: url("../images/form-image.png");
+              background-size: cover;
+              background-position: center;
+              height: 100%;
+              border-radius: 20px 0 0 20px;
+              display:flex;
+              justify-content: center;
+              flex-direction: column;
+              align-items: center;
+              position: relative;
+              @include desktop(){
+                  height: auto;
+              }
+              @include tablet-landscape(){
+                  width: 100%;
+                  border-radius: 20px 20px 0 0;
+              }
+              @include phone-only(){
+                  padding: 10em 0;
+                  height: 250px;
+                  .formLogo{
+                    width: 150px!important;
+                    height: 320px !important;
+                    overflow: visible !important;
+                    margin-top: 10px;
+                  }
+              }
+              .closeForm{
+                  svg{
+                      fill: #fff;
+
+                  }
+              }
+
+              @supports (-webkit-overflow-scrolling: touch) {
+                  /* CSS specific to iOS devices */ 
+                  height: 300px;
+                }
+              .column-inner{
+                  padding: 50px;
+                  height: 100%;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  border-radius: 20px 0 0 20px;
+                  width: 100%;
+
+                  
+                  .coupon{
+                      display: flex;
+                      flex-direction: column;
+                      color: #fff;
+                      text-align: center;
+                      border: 2px dashed;
+                      border-radius: 40px;
+                      padding: 50px;
+                      width: 80%;
+                      margin: 0 auto;
+                      height: 400px;
+                      align-items: center;
+                      justify-content: center;
+                      .coupon-title{
+                          font-size: 2em;
+                          font-weight: 600;
+                          line-height: 60px;
+                      }
+                      .coupon-type{
+                          font-size: 2em;
+                          font-weight: 600;
+                          line-height: 60px;
+
+                      }
+                      .coupon-text{}
+                  }
+              }
+  
+          }
+          .column2{
+              width: 40%;
+              padding: 2em;
+              padding-top: 4em;
+  
+              @include desktop{
+                  padding: 2em;
+              }
+              @include tablet-landscape(){
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  align-items: center;
+                  width: 100%;
+                  
+                  form{
+                      width: 80%;
+                      margin: 0 auto;
+                    }
+                }
+                @include phone-only(){
+                    // padding-top: 12em;
+                    overflow: scroll;
+                    .innerColumn{
+                        padding-top: 3em;
+                  }
+                  form{
+                      width: 100%;
+                  }
+                  &:after{
+                      content: "";
+                      display: block;
+                      width: 100%;
+                  }
+              }
+          }
+      }
+  
+      h2 {
+          color: #353535;
+          font-weight: 500;
+          margin-bottom: 0.5em;
+      }
+  
+      form {
+          display: flex;
+          flex-direction: column;
+          padding-top: 2em;
+          gap: 10px;
+  
+          input[type="text"],
+          input[type="email"],
+          input[type="tel"],
+          textarea {
+              margin-bottom: 5px;
+              font-size: 0.8em;
+              padding-left: 10px;
+              padding-top: 10px;
+              padding-bottom: 10px;
+              background-color: #F0F5F8;
+              border: 0;
+              font-weight: 500;
+              // border-bottom: 2px solid #fff;
+              outline: none;
+              -webkit-appearance: none;
+              transition: all ease 0.2s;
+              border-radius: 10px;
+  
+              &:focus {
+                  border-color: rgb(56, 172, 207);
+                  transition: all ease 0.2s;
+              }
+          }
+          #mail-honey{
+              display:none;
+          }
+          .error-border{
+              border-color: #c52626 !important;
+              background-color: rgba(228, 67, 67, 0.3);
+          }
+  
+          button{
+              color: #fff;
+              display: block;
+              width: 220px;
+              margin: 0 auto;
+              border: 0;
+              text-transform: uppercase;
+              font-size: 0.9em;
+              padding: 15px 30px;
+              font-weight: 600;
+              cursor: pointer;
+              transition: $transition;
+              font-family: "Inter";
+              border-radius: 20px;
+              width: 100%;
+  
+              &:hover{
+                  color: #fff;
+                  transition: $transition;
+              }
+  
+              @include tablet-portrait() {
+                  position: initial;
+                  text-align: center;
+              }
+          }
+      }
+  
+      &.expanded {
+          transition: all ease 0.3s;
+          visibility: visible;
+          opacity: 1;
+  
+          @include tablet-portrait() {
+              left: 0;
+          }
+      }
+      .form-message{
+          display:none;
+          background-color: #4fb14f;
+          padding: 15px;
+          text-transform: uppercase;
+          font-size: 0.7em !important;
+          font-weight: 700;
+          color: #fff;
+      }
+  }
+  body.formExpanded{
+      height: 100vh;
+      overflow: hidden;
+      .pagewrapper{
+        //   height: 100vh;
+      }
+      &:before{
+          content: '';
+          position: fixed;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          display: block;
+          z-index: 1000;
+          background-color: rgba(255, 255, 255, 0.6);
+          transition: $transition;
+          opacity: 1;
+          visibility: visible;
+          backdrop-filter: blur(3px);
+      }
+      .popupForm{
+        display:block;
+    }
+  }
+  body{
+      &:before{
+          opacity: 0;
+          visibility: hidden;
+          transition: $transition;
+      }
+  }
+
+  .coupon-form-section{
+      form{
+          button{
+            color: #fff;
+            display: block;
+            width: 220px;
+            margin: 0 auto;
+            border: 0;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            padding: 15px 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: $transition;
+            font-family: "Inter";
+            border-radius: 20px;
+            width: 100%;
+
+            &:hover{
+                color: #fff;
+                transition: $transition;
+            }
+
+            @include tablet-portrait() {
+                position: initial;
+                text-align: center;
+            }
+          }
+      }
+      #mail-honey{
+          display: none;
+      }
+      .form-message{
+          display: none;
+      }
+  }

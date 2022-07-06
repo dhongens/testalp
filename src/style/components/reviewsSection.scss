@@ -1,0 +1,61 @@
+.reviewsSection{
+    padding: 50px 0;
+    .inner{
+        width: 80%;
+        margin: 0 auto;
+        @include phone-only{
+            width: 100%;
+        }
+        h2{
+            text-align: center;
+            text-transform: capitalize;
+            margin-bottom: 50px;
+        }
+        .columns{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            row-gap: 50px;
+            column-gap: 50px;
+        }
+        .column{
+            background-color: #EAF1F6;
+            border-radius: 30px 0 30px 0;
+            position: relative;
+            .quote-icon{
+                width: 140px;
+                height: 100px;
+                background-size: cover;
+                display: block;
+                position: absolute;
+                background-repeat: no-repeat;
+                left: 0px;
+                top: 30px;
+            }
+            .column-inner{
+                padding: 50px 100px;
+                @include tiny-desktop{
+                    padding: 50px 30px
+                }
+                .review{
+                    position: relative;
+                    p{
+
+                    }
+                    .author{
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+        .reviews-btn{
+            text-align: center;
+            margin: 50px 0;
+            a{
+                padding: 20px 100px;
+                &:hover{
+                    
+                }
+            }
+        }
+    }
+}

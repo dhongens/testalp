@@ -1,0 +1,140 @@
+.coupon-form-section{
+    padding: 150px 0;
+    @include phone-only{
+        padding-bottom: 0;
+    }
+    .inner{
+        width: 90%;
+        margin: 0 auto;
+        @include tablet-portrait{
+            width: 100%;
+        }
+        .columns{
+            display: grid;
+            gap: 100px;
+            justify-content: center;
+            padding: 0 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            @include tablet-portrait{
+                gap: 30px;
+            }
+            @include phone-only{
+                padding: 0;
+            }
+            .column{
+                // width: 45%;
+            }
+            .column1{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .column-inner{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    .coupon{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
+                        padding: 40px 20px;
+                        border: 2px dashed white;
+                        border-radius: 20px;
+                        width: 450px;
+                        text-align: center;
+                        @include tablet-portrait{
+                            width: 300px;
+                        }
+                        @include phone-only{
+                            width: auto;
+                        }
+                        .scheduleText{
+                            font-weight: 600;
+                            font-size: 1.4em;
+                        }
+                        .couponOffer{
+                            color:#fff;
+                            font-size: 2em;
+                            margin-bottom: 10px;
+                            margin-top: 20px;
+                            font-weight: 700;
+
+                        }
+                        .couponType{
+                            color:#fff;
+                            font-size: 2em;
+                            font-weight: 700;
+                            @include tablet-portrait{
+                                line-height: 50px;
+                            }
+
+                        }
+                        .couponInfo{
+                            font-size: 1.4em;
+                            color: #fff;
+                            font-weight: 600;
+                        }
+                        .disclaimer{
+                            margin: 0;
+                            color: #fff;
+                            font-size: 0.7em !important;
+                        }
+                    }
+                }
+            }
+            .column2{
+                .inner{
+                    display: flex;
+                    // width: 500px;
+                    flex-direction: column;
+                    padding: 50px;
+                    background-color: #fff;
+                    border-radius: 30px;
+                    @include phone-only{
+                        border-radius: 0;
+                    }
+                    h3{
+                        margin: 0;
+                    }
+                    p{
+                        margin: 5px 0 40px;
+                        line-height: 30px !important;
+                    }
+                    form{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                        input[type=text], input[type=email], input[type=tel]{
+                            background-color: rgba(122, 160, 189, 0.10);
+                            border: none;
+                            color: #7A9FBC;
+                            border-radius: 10px;
+                            font-family: Inter;
+                            padding: 10px 15px;
+                            font-size: 0.8em;
+                            &::placeholder{
+                                color: #7A9FBC;
+                            }
+                        }
+                        input[type=submit]{
+                            background: linear-gradient(to right, #E49B74, #CC562E);
+                            padding: 10px;
+                            border-radius: 20px;
+                            color: #fff;
+                            transition: all ease .2s;
+                            border: 0;
+                            font-family: Inter;
+                            margin-top: 30px;
+
+
+                            &:hover{
+                                background: linear-gradient(to right, #CC562E, #E49B74);
+                                transition: all ease .2s;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -36,17 +36,17 @@ export default class ContactForm extends React.Component {
       var gclid = urlParams.get('gclid')
     }
 
-    if(typeof document !== 'undefined'){
-      var phone = document.getElementById("number_rewrite").innerHTML;
-      var vsref = phone.replace(/-/g, "");
-    }
+    // if(typeof document !== 'undefined'){
+    //   var phone = document.getElementById("number_rewrite").innerHTML;
+    //   var vsref = phone.replace(/-/g, "");
+    // }
     
     this.state = {
       name: "",
       honeypot: "",
       tel: "",
       message: "",
-      vsref: vsref,
+      // vsref: vsref,
       gclid: gclid,
       submitted: false,
       formAction: 'https://metrics.vitalstorm.com/email_form_submission/165aad2a-190c-42ae-982e-0077dc442dfb/'
@@ -64,7 +64,6 @@ export default class ContactForm extends React.Component {
   changeActive(event){
     $(".form").toggleClass("expanded");
     $("body").toggleClass("formExpanded");
-
   }
   handleSubmit(event){
     event.preventDefault();
@@ -136,7 +135,7 @@ export default class ContactForm extends React.Component {
       <>
       <StaticQuery
           query={graphql`
-              query formquery {
+              query formquery($slug: String) {
                 sanityCompanyInfo {
                   companyname
                   phone
@@ -158,49 +157,37 @@ export default class ContactForm extends React.Component {
                   accentcolor{
                       hex
                   }
+                  gradientcolor1{hex}
+                  gradientcolor2{hex}
                   formhash
-              }
+                }
+                sanityPages(slug: {current: {eq:$slug}}){
+                  slug{
+                    current
+                  }
+                  coupon {
+                    title
+                    type
+                    coupontext
+                  }
+                }
               }
             `}
                  render={data => (
                    <>
-                   <div className="popupForm">
-                   <div className="form">
-                      <div className="two_columns">
-                        <div className="column1" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex }}>
-                        <Image location=""
-                            fluid={data.sanityCompanyInfo.logoWhite.asset.fluid}
-                            style={{ height: "110px", width: "160px",  }}
-                            className="align-center formLogo"
-                            alt="Logo"
-                          />
-                          <p className="tagline">{data.sanityCompanyInfo.companyTagline}</p>
-                          <a href={"tel:" + data.sanityCompanyInfo.phone} className="formPhone"><FaPhone /> {data.sanityCompanyInfo.phone}</a>
+                      <form ref={this.formRef} id="form-metrics" onSubmit={this.handleSubmit} action={"https://metrics.vitalstorm.com/email_form_submission/" + data.sanityCompanyInfo.formhash} method="POST">
+                        <input id="mail-name" className="inputfield" type="text" name="name" value={this.state.name} onChange={this.handleInputChange} placeholder="Enter your full name" required />
+                        <input id="mail-email" className="inputfield" type="text" name="honeypot" value={this.state.honeypot} onChange={this.handleInputChange} placeholder="Email address" minLength="3" maxLength="64" required />
+                        <input id="mail-honey" className="inputfield" type="text" name="email" />
+                        <input id="mail-tel" className="inputfield" name="tel" value={this.state.tel} pattern="^\d{10}$" type="tel" onChange={this.handleInputChange} placeholder="Phone Number (Format: 1234567890)" required />
+                        <input id="mail-message" className="inputfield" type="text" value={this.state.message} onChange={this.handleInputChange} name="message" placeholder="Request a service" required />
+                        <input type="hidden" name="gclid" value={this.state.gclid} />
+                        <input type="hidden" name="vsref" value={this.state.vsref} />
+                        <div className="ajax-button">
+                            <button id="mail-submit" type="submit" name="mail-submit" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Request Service</button>
                         </div>
-                        <div className="column2">
-                          <div className="innerColumn">
-                            <h2>Schedule Service</h2>  
-                            <p>Fill out the form below and we'll reach out to schedule your service appointment. </p>
-                            <span className="closeForm" onClick={this.changeActive} style={{fill: "#fff"}}><FaTimesCircle /></span>
-                            {/* <form ref={this.formRef} id="form-metrics" onSubmit={this.handleSubmit} action={this.state.formAction} method="POST"> */}
-                            <form ref={this.formRef} id="form-metrics" onSubmit={this.handleSubmit} action={"https://metrics.vitalstorm.com/email_form_submission/" + data.sanityCompanyInfo.formhash} method="POST">
-                              <input id="mail-name" className="inputfield" type="text" name="name" value={this.state.name} onChange={this.handleInputChange} placeholder="Enter your full name" required />
-                              <input id="mail-email" className="inputfield" type="text" name="honeypot" value={this.state.honeypot} onChange={this.handleInputChange} placeholder="Email address" minLength="3" maxLength="64" required />
-                              <input id="mail-honey" className="inputfield" type="text" name="email" />
-                              <input id="mail-tel" className="inputfield" name="tel" value={this.state.tel} pattern="^\d{10}$" type="tel" onChange={this.handleInputChange} placeholder="Phone Number (Format: 1234567890)" required />
-                              <input id="mail-message" className="inputfield" type="text" value={this.state.message} onChange={this.handleInputChange} name="message" placeholder="Request a service" required />
-                              <input type="hidden" name="gclid" value={this.state.gclid} />
-                              <input type="hidden" name="vsref" value={this.state.vsref} />
-                              <div className="ajax-button">
-                                  <button id="mail-submit" type="submit" name="mail-submit" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex}}>Send Request</button>
-                              </div>
-                              <FormMessage submitted={this.state.submitted} />
-                            </form>
-                            </div>
-                        </div>
-                      </div>
-                    </div>
-                    </div>
+                        <FormMessage submitted={this.state.submitted} />
+                      </form>
                     </>
                   )}  
               />

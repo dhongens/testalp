@@ -1,0 +1,68 @@
+.socialProofSection{
+    width: 80%;
+    margin: 0 auto;
+    padding: 100px 0;
+    margin-bottom: 50px;
+    .inner{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 5fr 1fr));
+
+        position: relative;
+        .left-items{
+                width: 80%;
+                padding: 100px 300px 100px 100px;
+                border-radius: 200px 0 0 200px;
+                display: flex;
+                @include tiny-desktop{
+                    padding-right: 350px;
+                }
+                @include tablet-portrait{
+                    flex-direction: column;
+                    gap: 60px;
+                    border-radius: 200px;
+                    justify-content: center;
+                    padding: 100px;
+                    padding-top: 200px;
+                    margin-top: -250px;
+                    width: 50%;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+                @include phone-only{
+                    width: 80%;
+                    padding: 200px 20px 100px;
+
+                    margin-top: -150px;
+
+                }
+                .item{
+                    color: #fff;
+                    text-align: center;
+                    flex: 1;
+                    @include tablet-portrait{
+                        
+                    }
+                    .number{
+                        font-size: 2.5em;
+                        font-weight: 700;
+                    }
+                }
+        }
+        .van-img{
+            width: 70%;
+            position: absolute;
+            right: -200px;
+            top: -180px;
+            @include tiny-desktop{
+                width: 90%;
+                top: -100px;
+
+            }
+            @include tablet-portrait{
+                position: initial;
+                grid-row: 1;
+                width: 100%;
+            }
+        }
+    }
+}

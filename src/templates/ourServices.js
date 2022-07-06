@@ -1,60 +1,34 @@
-/*** IMPORTS  ****/
-import  React from 'react'
-import { graphql } from 'gatsby'
+import React from 'react';
+import { graphql } from 'gatsby';
 import Layout from "../components/layout"
-import Helmet from 'react-helmet'
-import { Link } from "gatsby"
-import BlockContent from '../components/block-content'
-import BackgroundImage from 'gatsby-background-image'
-import UspSection from "../components/uspSection"
-import { FaPrint, FaStar, FaUserShield, FaRegClock, FaShieldAlt, FaPhone } from "react-icons/fa"
 import Form from "../components/form"
+import Helmet from 'react-helmet'
+import BackgroundImage from 'gatsby-background-image';
+import SocialProof from '../components/socialProof';
+import Fade from 'react-reveal/Fade';
 import PortableText from '@sanity/block-content-to-react'
-import Image from "gatsby-image"
-import $ from 'jquery'
+import { FaArrowRight, FaMapMarkerAlt } from "react-icons/fa"
+import Image from 'gatsby-image'
+import QuoteIcon from "../images/quote-left-solid.png"
+import couponBackground from "../images/couponBackground.png"
 
-/**** GRAPHQL QUERY *****/
 export const query = graphql`
-    query ourservicespageQuery {
+    query ourServicesQuery{
         sanityPages(slug: {current: {eq: "our-services"}}) {
             pagetitle
+            pagetype{
+                pagetype
+            }
             slug {
                 current
             }
-            usp1{
-                uspTitle
-                uspText
-                icon
-            }
-            usp2{
-                uspTitle
-                uspText
-                icon
-            }
-            usp3{
-                uspTitle
-                uspText
-                icon
-            }
-            _rawFirstcopy(resolveReferences: { maxDepth: 10 })
-            firstcopy {
-            sanityChildren {
-                marks
-                text
-                _type
-                _key
-            }
-            list
-            _type
-            _key
-            style
-            }
-            
-            _rawServices
-            _rawSecondcopy
+            _rawFirstcopy
+            _rawPageIntro
+
             coupon {
                 title
                 type
+                coupontext
             }
             headerimage {
                 asset {
@@ -70,17 +44,9 @@ export const query = graphql`
                     }
                 }
             }
-        }
+    }
         sanityCompanyInfo {
             companyname
-            logoWhite{
-                asset {
-                    fluid{
-                      ...GatsbySanityImageFluid
-                      src
-                    }
-                  }
-            }
             primarycolor{
                 hex
             }
@@ -90,180 +56,150 @@ export const query = graphql`
             accentcolor{
                 hex
             }
+            gradientcolor1{hex}
+            gradientcolor2{hex}
         }
+        allSanityOurservices {
+            edges {
+              node {
+                servicelist {
+                  servicelink
+                  servicename
+                }
+                servicemaintitle
+                icon {
+                  asset {
+                    fluid {
+                      src
+                    }
+                  }
+                }
+              }
+            }
+          }
     }
 `
 
-/***** GET CURRENT DAY *****/
-const now = new Date();
-const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-const today = days[now.getDay()];
-
-
-/***** FUNCTION TO PRINT OUT COUPONS *****/
-function printCoupon() {
-    if(typeof window !== 'undefined'){
-        window.print();
-    }
-}
-/***** FUNCTION TO GET THE CITY PARAMETER FROM URL *****/
-function getUrlVars(){
-    var vars = [], hash;
-    if(typeof window !== 'undefined'){
-        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-        for(var i = 0; i < hashes.length; i++)
-        {
-            hash = hashes[i].split('=');
-            vars.push(hash[0]);
-            vars[hash[0]] = hash[1];
-        }
-    }
-    return vars;
-  }
-var city = getUrlVars()["city"];
-
-if(city === null) {
-    city = "";
-} else if(city === ""){
-    city = "";
-} else if(city !== undefined){
-    city = " in " + city;
-} 
-
-var city = getUrlVars()["city"];
-  const reviews = "/reviews?city=" + city;
-  
-    if (city === undefined) {
-        city = "";
-        if (typeof window !== 'undefined') {
-          $(".reviews").attr('href', "/reviews/");
-      }
-    } else if (city === "") {
-        city = "";
-        if (typeof window !== 'undefined') {
-          $(".reviews").attr('href', "/reviews/");
-      }
-    } else if (city !== undefined) {
-        city = " in " + city;
-        if (typeof window !== 'undefined') {
-            $(".reviews").attr('href', reviews);
-        }
-    }
- 
-
-
-/***** ADD CITY TO URLS IN PAGE *****/
-// function addCity(){
-//     if(typeof window !== 'undefined' && city !== undefined){
-//         $('div.pageContent a').attr('href', function(i, href){
-//             city= getUrlVars()['city'];
-//             return href + "?city=" +  city; 
-//         });
-//     }  
-// }
-
-
-/***** FUNCTION FOR BLOCK CONTENT LINKS *****/
-const serializers = {
-    marks: {
-        internalLink: ({mark, children}) => {
-            const {slug = {}} = mark
-            const href = `/{slug.current}`
-            return <Link to={href}>{children}</Link>
-          }
-      }
-  }
-
-  function changeActive(){
-    $(".form").toggleClass("expanded");
-    $('body').toggleClass('formExpanded');
-  }
-
-
 export default ({ data }) => (
-    
     <Layout>
-        <Helmet>
-            <title>{data.sanityCompanyInfo.companyname} | {data.sanityPages.pagetitle}</title>
-
-        </Helmet>
+    <Helmet>
+    <title>{data.sanityCompanyInfo.companyname} | {data.sanityPages.pagetitle}</title>   
+      
+    </Helmet>
         <div className="popupForm"><Form /></div>
-        <BackgroundImage
+        <Fade bottom>
+    <div className="pageHeader">
+      <div className="columns">
+        <div className="column1 column">
+          <BackgroundImage
             style={{
-                height: "100%",
-                backgroundPosition: "center"
+              height: "100%",
+              width: "100%",
+              backgroundPosition: "center",
+              backgroundSize: 'cover',
+              borderRadius: '50px 0 50px 0'
             }}
-            fluid={data.sanityPages.headerimage.asset.fluid}>
+            fluid={data.sanityPages.headerimage.asset.fluid} className="leftImage">
+          <div className="column-inner">
 
-            <div className="pageHeader">
-                <div className="innerLeft" >
-                    <div className="pgHeaderBackground" style={{
-                        backgroundColor: data.sanityCompanyInfo.primarycolor.hex,
-                        opacity: "0.9"
-                    }}></div>
+          </div>
+          </BackgroundImage>
+        </div>
+        <div className="column2 column">
+          <div className="column-inner">
+              <div className="location" style={{color: data.sanityCompanyInfo.accentcolor.hex}}><FaMapMarkerAlt /> Providing Same Day Service in Rockwall</div>
+              <h1 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>Trustworthy Service when you need it</h1>
+              <p style={{color: data.sanityCompanyInfo.primarycolor.hex}}>
+                <PortableText blocks={data.sanityPages._rawPageIntro} />
 
-                    <p className="date">Schedule This <b>{today}</b> for </p>
-                    <p className="coupon">{data.sanityPages.coupon.title}</p>
-                    <p className="couponType">{data.sanityPages.coupon.type}</p>
-                    <div className="schedulebtn-container">
-                        <span className="schedulebtn" 
-                            style={{
-                                backgroundColor: data.sanityCompanyInfo.accentcolor.hex,
-                            }}
-                        onClick={changeActive}>Schedule</span>
+              </p>
+              <div className="schedule-btn">
+                <a href="#" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityPages.coupon.title + " " +data.sanityPages.coupon.type} <FaArrowRight /></a>
+
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </Fade>
+        <div className="servicesSection">
+            <div className="inner">
+                <h2>Our Trusted Services</h2>
+                <div className="columns">
+                {data.allSanityOurservices.edges.map(({ node: services }) => (
+                    <div className="column1 column">
+                        <div className="column-inner">
+                            <div className="service-icon" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex}}>
+                                <img src={services.icon.asset.fluid.src} alt="" />
+                            </div>
+                            <h3>{services.servicemaintitle} Services</h3>
+                            <ul>
+                                {services.servicelist.map(item => (
+                                    <li><a href={item.servicelink}>{item.servicename}</a></li>
+                                 ))}
+                            </ul>
+                        </div>
                     </div>
-                    <p className="restrictions">*Restrictions may apply</p>
+                    ))}
 
                 </div>
+            </div>   
+        </div>
+        <SocialProof />
+        <div className="contentSection">
+            <div className="inner">
+            <Fade bottom cascade>
+                <div className="columns">
+                    <div className="column1 column">
+                        <div className="column-inner">
+                        <PortableText blocks={data.sanityPages._rawFirstcopy} />
 
-            </div>
-        </BackgroundImage>
-
-        <div className="ourServicesPage">
-        <div className="usp_section" style={{backgroundColor: '#ededed'}}>
-            <div className="three-columns">
-                <div className="column column1">
-                    <i className={"fa fa-" + data.sanityPages.usp1.icon} style={{ fontSize: '2em', color: data.sanityCompanyInfo.primarycolor.hex }}/>
-                    <h2>{data.sanityPages.usp1.uspTitle}</h2>
-                    <p>{data.sanityPages.usp1.uspText}</p>
+                        </div>
+                    </div>
+                    <div className="column2 column">
+                        <div className="column-inner">
+                        <Image 
+                            style={{height: "100%"}}
+                            fluid={data.sanityPages.serviceimage.asset.fluid}>
+                        </Image>
+                        <div className="schedule-btn"><a href="#" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule today for $20 off plumbing repairs <FaArrowRight /></a></div>
+                        </div>
+                    </div>
                 </div>
-                <div className="column column2">
-                    <i className={"fa fa-" + data.sanityPages.usp2.icon} style={{ fontSize: '2em', color: data.sanityCompanyInfo.primarycolor.hex }}/>
-                    <h2>{data.sanityPages.usp2.uspTitle}</h2>
-                    <p>{data.sanityPages.usp2.uspText}</p>
-                </div>
-                <div className="column column3">
-                    <i className={"fa fa-" + data.sanityPages.usp3.icon} style={{ fontSize: '2em', color: data.sanityCompanyInfo.primarycolor.hex }}/>
-                    <h2>{data.sanityPages.usp3.uspTitle}</h2>
-                    <p>{data.sanityPages.usp3.uspText}</p>
-                </div>
+                </Fade>
             </div>
         </div>
-            <div className="container pageContent" >
-                <div className="row firstCopy">
-
-                        <PortableText blocks={data.sanityPages._rawFirstcopy} serializers={serializers} />
+        <div className="coupon-form-section" style={{height: "100%", backgroundImage: "url(" + couponBackground + ")"}} >
+        <Fade bottom>
+            <div className="inner">
+                <div className="columns">
+                <div className="column1 column">
+                    <div className="column-inner">
+                    <div className="coupon">
+                        <div className="scheduleText" style={{color: data.sanityCompanyInfo.accentcolor.hex}}>Schedule Today For</div>
+                        <div className="couponOffer">{data.sanityPages.coupon.title}</div>
+                        <div className="couponType">{data.sanityPages.coupon.type}</div>
+                        <p className="couponInfo">{data.sanityPages.coupon.coupontext}</p>
+                        <p className="disclaimer">*Restrictions may apply. Call office for details.</p>
+                    </div>
+                    </div>
+                </div>
+                <div className="column2 column">
+                    <div className="inner">
+                    <h3>Don’t Wait All Day for Service!</h3>
+                    <p>Fill out the form below and we’ll reach out to schedule your appointment.</p>
+                    <form action="">
+                        <input type="text" placeholder="Name" name="" id="" />
+                        <input type="email" placeholder="Email" name="" id="" />
+                        <input type="tel" placeholder="Phone Number" name="" id="" />
+                        <input type="text" placeholder="Service Requested" name="" id="" />
+                        <input type="submit" value="Request Service" />
+                    </form>
+                    </div>
+                </div>
                 </div>
             </div>
-            <div className="row servicesRow">
-                <div className="leftSection">
-                    <BackgroundImage
-                        style={{ height: "100%" }}
-                        fluid={data.sanityPages.serviceimage.asset.fluid}>
-                    </BackgroundImage>
-                </div>
-                <div className="rightSection" style={{ backgroundColor: data.sanityCompanyInfo.primarycolor.hex }}>
-                <span className="rightSectionTitle"><h2>Customer Reviews</h2></span>
-                    <hr style={{ backgroundColor: data.sanityCompanyInfo.accentcolor.hex }} />
-                    <BlockContent blocks={data.sanityPages._rawServices} />
-                    <a className="reviews" href="/reviews" style={{ backgroundColor: data.sanityCompanyInfo.accentcolor.hex }}>See Our Reviews</a>
-                </div>
-            </div>
-            <div className="container pageContent">
-                <div className="row">
-                    <BlockContent blocks={data.sanityPages._rawSecondcopy} />
-                </div>
-            </div>
-        </div>
-    </Layout>
+        </Fade>
+    </div>
+  </Layout>
 )

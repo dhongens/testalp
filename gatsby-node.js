@@ -32,7 +32,7 @@ exports.createPages = async ({ actions, graphql }) => {
         if(project.slug.current == "our-services"){
             actions.createPage({
                 path: project.slug.current,
-                component: path.resolve('./src/templates/ourServices.js'),
+                component: require.resolve('./src/templates/ourServices.js'),
                 context: {
                     slug: project.slug.current
                 }
@@ -40,7 +40,7 @@ exports.createPages = async ({ actions, graphql }) => {
         } else if (project.slug.current == "coupons"){
                  actions.createPage({
                     path: project.slug.current,
-                    component: path.resolve('./src/templates/coupons.js'),
+                    component: require.resolve('./src/templates/coupons.js'),
                     context: {
                         slug: project.slug.current
                     }
@@ -48,7 +48,7 @@ exports.createPages = async ({ actions, graphql }) => {
         } else if (project.slug.current == "special-offers"){
             actions.createPage({
                path: project.slug.current,
-               component: path.resolve('./src/templates/coupons.js'),
+               component: require.resolve('./src/templates/coupons.js'),
                context: {
                    slug: project.slug.current
                }
@@ -56,7 +56,7 @@ exports.createPages = async ({ actions, graphql }) => {
         } else if (project.slug.current == "reviews") {
             actions.createPage({
                 path: project.slug.current,
-                component: path.resolve('./src/templates/reviews.js'),
+                component: require.resolve('./src/templates/reviews.js'),
                 context: {
                     slug: project.slug.current
                 }
@@ -64,15 +64,24 @@ exports.createPages = async ({ actions, graphql }) => {
         } else if (project.pagetype.pagetype == "Service Page") {
             actions.createPage({
                 path: project.slug.current,
-                component: path.resolve('./src/templates/servicepage.js'),
+                component: require.resolve('./src/templates/servicepage.js'),
                 context: {
                     slug: project.slug.current
                 }
             })
-        } else {
+        } else if (project.slug.current == "about-us") {
             actions.createPage({
                 path: project.slug.current,
-                component: path.resolve('./src/templates/page.js'),
+                component: require.resolve('./src/templates/aboutUs.js'),
+                context: {
+                    slug: project.slug.current
+                }
+            })
+        } 
+        else {
+            actions.createPage({
+                path: project.slug.current,
+                component: require.resolve('./src/templates/page.js'),
                 context: {
                     slug: project.slug.current
                 }

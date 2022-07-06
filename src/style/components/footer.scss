@@ -80,7 +80,7 @@
 footer{
     padding: 0 0 2em;
     
-    background-color: #dbdbdb;
+    background-color: #EBF1F5;
     @include phone-only{
         padding: 2em 0 5em;
     }
@@ -99,9 +99,11 @@ footer{
             }
             @include tablet-portrait(){
                 margin: 2em 8em;
+                flex-wrap: wrap;
             }
             @include phone-only(){
                 margin: 1em 4em;
+                padding-top: 50px;
             }
             @include small-phone(){
                 margin: 1em 2em;
@@ -114,6 +116,9 @@ footer{
                 width: 150px;
                 min-height: 200px;
                 margin: 0.4em;
+                @include phone-only{
+                    min-height: auto;
+                }
                 img{
                     height: auto !important;
                     width: 100px !important;

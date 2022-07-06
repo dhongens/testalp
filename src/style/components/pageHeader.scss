@@ -1,219 +1,122 @@
 .pageHeader{
-    height:420px;
-    margin-top: 88px;
-    // @include small-phone{
-    //     margin-top: 190px;
-    // }
-    
-    .innerLeft{
-        width:50%;
-        height: 100%;
-        padding: 4em;
-        position: relative;
-        display:flex;
-        flex-direction: column;
-        justify-content: center;
-        
-        @include tablet-portrait{
-            width:100%;
-            padding: 2em;
+    // margin-top: 200px;
+    padding: 50px 100px 100px;
+    width: 80%;
+    margin: 0 auto;
+    @include tiny-desktop{
+        padding: 50px 20px;
+    }
+    @include tablet-portrait{
+        width: 100%;
+    }
+    .columns{
+        display: grid;
+        // grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 50px;
+        @include phone-only{
+            // grid-template-columns: initial;
         }
-        .schedulebtn-container{
-            display: block;
-            margin-top: 1em;
-            margin-bottom: 2em;
-            position: relative;
-            text-align: center;
-            @include phone-only{
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
+        .column{
+            // width: 50%;
+        }
+        .column1{
+            border-radius: 50px 0 50px 0;
+            .column-inner{
+                // padding-right: 100px;
+                height: 600px;
+                width: 100%;
+                border-radius: 50px 0 50px 0;
+                @include phone-only{
+                    height: auto;
+                }
+
             }
-            .schedulebtn{
-                color: #fff;
-                text-transform: uppercase;
-                padding: 0.5em 2em;
-                cursor: pointer;
-                transition: 0.2s ease all;
-                font-weight: 600;
-                font-size: 0.9em;
-                // display:inline-block;
-                height: 100%;
+            .leftImage{
+                border-radius: 50px 0 50px 0 !important;
+                @include phone-only{
+                    height: 300px !important;
+                }
+
+                &:before, &:after{
+                border-radius: 50px 0 50px 0 !important;
+
+                }
+            }
+            
+        }
+        .column2{
+            // padding-right: 100px;
+            .location{
+                font-weight: 500;
+            }
+            h2{
+
+            }
+            p{
+
+            }
+            .schedule-btn{
+                margin-top: 50px;
+                a, span{
+                    // background: linear-gradient(to right, #E49B74, #CC562E);
+                    padding: 20px;
+                    border-radius: 20px;
+                    color: #fff;
+                    transition: all ease .2s;
+                    cursor: pointer;
+                    font-size: 0.9em;
+
+                    @include tablet-portrait{
+                        font-size: 0.6em !important;
+                    }
+                    @include phone-only{
+                        font-size: 0.8em !important;
+                    }
+
+                    &:hover{
+                        // background: linear-gradient(to right, #CC562E, #E49B74);
+                        transition: all ease .2s;
+                    }
+                }
+            }
+        }
+    }
+    .servicesSelection{
+        margin-top: 50px;
+        .servicesIcons{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            .service{
+                width: 30%;
+                @include tablet-portrait{
+                    width: 45%
+                }
                 @include phone-only{
                     width: 100%;
+                    margin-left: 20px;
                 }
-                &:before{
-                    content:'\f073';
-                    font-family: "Font Awesome 5 Pro";
-                    margin-right: 10px;
-                    margin-top: -4px;
-                }
-                &:hover{
-                    background-color: rgb(194, 194, 194) !important;
-                    color: #000;
-                    transition: 0.2s ease all;
-                }
-            }
-            .printCoupon{
-                padding: 7.9px 25px;
-                // position: absolute;
-                // right:0;
-                // bottom:0;
-                margin-left: 1em;
-                cursor:pointer;
-                transition: background-color ease 0.3s;
-                // display:inline-block;
-                height: 100%;
-
-                @include tablet-portrait(){
-                    left:0;
-                    text-align: center;
-                }
-                @include phone-only{
-                    // width: 100%;
-                    margin-left: 1em;
-                    // margin-top: 1em;
-                }
-                svg{
-                    fill: #fff;
-                    transition: fill ease 0.3s;
-                }
-                &:hover{
-                    background-color: #fff !important;
-                    transition: background-color ease 0.3s;
-                    svg{
-                        fill: #353535;
-                        transition: fill ease 0.3s;
-                    }               
-                }
-                .mobileCouponText{
-                    display:none;
-                    color: #fff;
-                    text-transform: uppercase;
-                    font-weight: 500;
+                .service-inner{
+                    a{
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        .icon{
+                            display: flex;
+                            align-items: center;
+                            img{
+                                margin-bottom: 0;
+                            }
+                            .serviceName{
+                                @include tablet-portrait{
+                                    font-size: 0.6em !important;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
-        .pgHeaderBackground{
-            position: absolute;
-            top:0;
-            left:0;
-            right:0;
-            bottom:0;
-            display:block;
-        }
-        h1{
-            color: #fff;
-            font-size: 1.5em;
-            font-weight: 600;
-            display:inline-block;
-            padding-bottom: 5px;
-            position: relative;
-            border-bottom: 2px solid;
-        }
-        p{
-            text-align: center;
-            color: #fff;
-            font-size: 0.9em;
-            margin-bottom: 20px;
-            position: relative;
-        }
-        p.day{
-            font-size: 0.9em !important;
-        }
-        b{
-            position: relative;
-        }
-        .coupon{
-            font-size: 2em !important;
-            font-style: italic;
-            font-weight: 600;
-            line-height: 115%;
-            margin-bottom: 0;
-            position: relative;
-            @include desktop(){
-                font-size: 2.5em !important;
-                line-height:115%;
-            }
-            @include tablet-landscape(){
-                font-size: 2.4em !important;
-                line-height: 115%;
-            }
-        }
-        .couponType{
-            font-size: 1.2em !important;
-            font-weight: 600;
-            position: relative;
-            @include tablet-landscape(){
-                font-size: 2.4em !important;
-                line-height: 115%;
-            }
-        }
-        .restrictions{
-            position: absolute;
-            bottom: 10px;
-            font-size: 0.8em;
-            left:50%;
-            transform: translateX(-50%);
-            @include tablet-portrait(){
-                position: relative;
-            }
-        }
-        
-    }
-}
-
-@media print{
-    @page 
-    {
-        size:  auto;   /* auto is the initial value */
-        margin: 0mm;  /* this affects the margin in the printer settings */
-    }
-    .headerBtns, .day{
-        display:none !important;
-    }
-    .headerInner{
-        justify-content: center !important;
-    }
-    .pageHeader{
-        display:block !important;
-        .innerLeft{
-            padding:1em;
-            .coupon{
-                background: none !important;
-                color: #353535 !important;
-            }
-            .date{
-                display:none !important;
-            }
-        }
-    }
-    .pageHeader h1{
-            display:none !important;
-    }
-    .pageContent, .servicesRow, footer, .printCoupon, .form, .scheduleMobile{
-        display:none !important;
-    }
-    .schedulebtn{
-        display:none;
-    }
-    .serviceCoupon{
-        display:block !important;
-    }
-    .servicePage *{
-        color: #333333 !important;
-
-    }
-    .usp_section{
-        display:none !important;
-    }
-    .reviewRow{
-        display:none !important;
-    }
-    .servicePage .flexWrapper{
-        padding-top: 4em !important;
-    }
-    .serviceForm{
-        display:none !important;
     }
 }
