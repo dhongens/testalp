@@ -65,18 +65,6 @@ export const query = graphql`
             }
             gradientcolor1{hex}
             gradientcolor2{hex}
-            threeservices{
-                icon{
-                    asset{
-                        fluid{
-                            ...GatsbySanityImageFluid
-                        }
-                    }
-                }
-                servicetitle
-                servicetext
-                servicelink
-            }
             couponbackground{
                 asset{
                     fluid{
@@ -90,6 +78,22 @@ export const query = graphql`
               node {
                 review
                 author
+              }
+            }
+          }
+          allSanityThreeservices {
+            edges {
+              node {
+                servicelink
+                servicetext
+                servicetitle
+                icon {
+                  asset {
+                    fluid {
+                      src
+                    }
+                  }
+                }
               }
             }
           }
@@ -168,16 +172,17 @@ export default ({ data }) => (
                 <h2 className="uspTitle">Count on Plumbit for all of your home service needs!</h2>
                 <Fade bottom cascade>
                 <div className="uspColumns">
-                {data.sanityCompanyInfo.threeservices.map(( service  => 
+                {data.allSanityThreeservices.edges.map(( {node: service})  => 
+
                         <div className="column1 column">
                         <div className="column-inner">
-                            <div className="icon" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex}}><Image style={{width: '20px'}} fluid={service.icon.asset.fluid}/></div>
+                            <div className="icon" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex}}><img style={{width: '20px'}} src={service.icon.asset.fluid.src}/></div>
                             <h3 className="serviceTitle">{service.servicetitle} Services</h3>
                             <p>{service.servicetext}</p>
                             <a href={service.servicelink} className="serviceLink" style={{color: data.sanityCompanyInfo.secondarycolor.hex}}>Go to {service.servicetitle} Page <FaAngleRight /></a>
                         </div>
                     </div>
-                    ))}
+                    )}
                 </div>
                     </Fade>
             </div>

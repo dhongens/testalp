@@ -49,17 +49,7 @@ export const query = graphql`
             }
             _rawFirstcopy
             _rawPageIntro
-            services{
-                servicetitle
-                servicelink
-                icon {
-                    asset {
-                      fluid {
-                        src
-                      }
-                    }
-                  }
-            }
+            
             coupon {
                 title
                 type
@@ -81,6 +71,21 @@ export const query = graphql`
             }
             
     }
+    allSanityPageheaderservices {
+        edges {
+          node {
+            servicelink
+            servicetitle
+            icon {
+              asset {
+                fluid {
+                  src
+                }
+              }
+            }
+          }
+        }
+      }
         sanityCompanyInfo {
             companyname
             primarycolor{
@@ -102,6 +107,7 @@ export const query = graphql`
                 }
             }
         }
+        
     }
 `
 
@@ -164,7 +170,7 @@ export default ({ data }) => (
                     <div className="servicesSelection">
                         <h3 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>Count on Plumbit for all of your plumbing needs!</h3>
                         <div className="servicesIcons">
-                        {data.sanityPages.services.map(( service  => 
+                        {data.allSanityPageheaderservices.edges.node.map(( service  => 
                         <div className="service">
                             <div className="service-inner">
                             <a href={service.servicelink}>
