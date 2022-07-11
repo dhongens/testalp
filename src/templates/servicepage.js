@@ -170,7 +170,7 @@ export default ({ data }) => (
                     <div className="servicesSelection">
                         <h3 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>Count on Plumbit for all of your plumbing needs!</h3>
                         <div className="servicesIcons">
-                        {data.allSanityPageheaderservices.edges.node.map(( service  => 
+                        {data.allSanityPageheaderservices.edges.map(( {node: service})  => 
                         <div className="service">
                             <div className="service-inner">
                             <a href={service.servicelink}>
@@ -182,7 +182,7 @@ export default ({ data }) => (
                             </a>
                             </div>
                         </div>
-                        ))}
+                        )}
                         </div>
                     </div>
                 </div>
