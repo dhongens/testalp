@@ -24,6 +24,15 @@ exports.createPages = async ({ actions, graphql }) => {
                     }
                 }
             }
+            allSanityServicepages{
+                edges {
+                    node {
+                        slug {
+                        current
+                        }   
+                    }
+                }
+            }
         }
     `);
 
@@ -61,14 +70,14 @@ exports.createPages = async ({ actions, graphql }) => {
                     slug: project.slug.current
                 }
             })
-        } else if (project.pagetype.pagetype == "Service Page") {
-            actions.createPage({
-                path: project.slug.current,
-                component: require.resolve('./src/templates/servicepage.js'),
-                context: {
-                    slug: project.slug.current
-                }
-            })
+        // } else if (project.pagetype.pagetype == "Service Page") {
+        //     actions.createPage({
+        //         path: project.slug.current,
+        //         component: require.resolve('./src/templates/servicepage.js'),
+        //         context: {
+        //             slug: project.slug.current
+        //         }
+        //     })
         } else if (project.slug.current == "about-us") {
             actions.createPage({
                 path: project.slug.current,
@@ -88,6 +97,19 @@ exports.createPages = async ({ actions, graphql }) => {
             })
         }
     })
+    const servicePages = result.data.allSanityServicepages.edges.map(({ node }) => node );
+        servicePages.forEach(servicePage => {
+            actions.createPage({
+                path: servicePage.slug.current,
+                component: require.resolve('./src/templates/servicepage.js'),
+                context: {
+                    slug: servicePage.slug.current
+                }
+            })
+        })
 }
+
+
+
 
 

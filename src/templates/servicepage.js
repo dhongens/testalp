@@ -39,11 +39,8 @@ function changeActive(){
 
 export const query = graphql`
     query servicePageQuery($slug: String){
-        sanityPages(slug: {current: {eq: $slug}}) {
+        sanityServicepages(slug: {current: {eq: $slug}}) {
             pagetitle
-            pagetype{
-                pagetype
-            }
             slug {
                 current
             }
@@ -114,7 +111,7 @@ export const query = graphql`
 export default ({ data }) => (
     <Layout>
     <Helmet>
-    <title>{data.sanityCompanyInfo.companyname} | {data.sanityPages.pagetitle}</title>   
+    <title>{data.sanityCompanyInfo.companyname} | {data.sanityServicepages.pagetitle}</title>   
       
     </Helmet>
     <div className="popupForm">
@@ -124,9 +121,9 @@ export default ({ data }) => (
                       <div className="column1" style={{backgroundImage: 'url('+ data.sanityCompanyInfo.couponbackground.asset.fluid.src + ')'}}>
                           <div className="column-inner" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex+"e3" }}>
                             <div className="coupon">
-                              <span className="coupon-title">{data.sanityPages.coupon.title}</span>
-                              <span className="coupon-type">{data.sanityPages.coupon.type}</span>
-                              <span className="coupon-text">{data.sanityPages.coupon.coupontext}</span>
+                              <span className="coupon-title">{data.sanityServicepages.coupon.title}</span>
+                              <span className="coupon-type">{data.sanityServicepages.coupon.type}</span>
+                              <span className="coupon-text">{data.sanityServicepages.coupon.coupontext}</span>
                             </div>
                           </div>
 
@@ -153,7 +150,7 @@ export default ({ data }) => (
                     height: "100%",
                     backgroundPosition: "center"
                     }}
-                    fluid={data.sanityPages.headerimage.asset.fluid} className="leftImage">
+                    fluid={data.sanityServicepages.headerimage.asset.fluid} className="leftImage">
 
                 </Image>
                 </div>
@@ -161,11 +158,11 @@ export default ({ data }) => (
                 <div className="column2 column">
                 <div className="column-inner">
                     <div className="location" style={{color: data.sanityCompanyInfo.accentcolor.hex}}><FaMapMarkerAlt /> Providing Same Day Service {cityplace}</div>
-                    <h1 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>{citytitle} Best {data.sanityPages.pagetitle} Technicians</h1>
-                    <PortableText style={{color: data.sanityCompanyInfo.primarycolor.hex}} blocks={data.sanityPages._rawPageIntro} />
+                    <h1 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>{citytitle} Best {data.sanityServicepages.pagetitle} Technicians</h1>
+                    <PortableText style={{color: data.sanityCompanyInfo.primarycolor.hex}} blocks={data.sanityServicepages._rawPageIntro} />
 
                     <div className="schedule-btn">
-                        <a onClick={changeActive} style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}} >Schedule Today for {data.sanityPages.coupon.title + " " +data.sanityPages.coupon.type} <FaArrowRight /></a>
+                        <a onClick={changeActive} style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}} >Schedule Today for {data.sanityServicepages.coupon.title + " " +data.sanityServicepages.coupon.type} <FaArrowRight /></a>
                     </div>
                     <div className="servicesSelection">
                         <h3 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>Count on Plumbit for all of your plumbing needs!</h3>
@@ -198,9 +195,9 @@ export default ({ data }) => (
                     <div className="column-inner">
                     <div className="coupon">
                         <div className="scheduleText" style={{color: data.sanityCompanyInfo.accentcolor.hex}}>Schedule Today For</div>
-                        <div className="couponOffer">{data.sanityPages.coupon.title}</div>
-                        <div className="couponType">{data.sanityPages.coupon.type}</div>
-                        <p className="couponInfo">{data.sanityPages.coupon.coupontext}</p>
+                        <div className="couponOffer">{data.sanityServicepages.coupon.title}</div>
+                        <div className="couponType">{data.sanityServicepages.coupon.type}</div>
+                        <p className="couponInfo">{data.sanityServicepages.coupon.coupontext}</p>
                         <p className="disclaimer">*Restrictions may apply. Call office for details.</p>
                     </div>
                     </div>
@@ -223,7 +220,7 @@ export default ({ data }) => (
                 <div className="columns">
                     <div className="column1 column">
                         <div className="column-inner">
-                        <PortableText blocks={data.sanityPages._rawFirstcopy} />
+                        <PortableText blocks={data.sanityServicepages._rawFirstcopy} />
 
                         </div>
                     </div>
@@ -231,7 +228,7 @@ export default ({ data }) => (
                         <div className="column-inner">
                         <Image 
                             style={{height: "100%"}}
-                            fluid={data.sanityPages.serviceimage.asset.fluid}>
+                            fluid={data.sanityServicepages.serviceimage.asset.fluid}>
                         </Image>
                         <div className="schedule-btn"><a role="button" tabIndex={0} onClick={changeActive} style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule today for $20 off plumbing repairs <FaArrowRight /></a></div>
                         </div>

@@ -34,7 +34,6 @@ export const query = graphql`
 const NotFoundPage = ({data}) => (
   <Layout>
     <SEO title="404: Not found" />
-    <Form />
     <BackgroundImage
       style={{
         height: "100%",
