@@ -126,7 +126,12 @@ export default ({ data }) => (
     <Layout>
     <Helmet>
     <title>{data.sanityCompanyInfo.companyname} | {data.sanityPages.pagetitle}</title>   
-      
+    <script
+        data-api-key="ckgb6628g00ld06moclq6whc8"
+        data-defer="true"
+        id="se-widget-embed"
+        src="https://embed.scheduleengine.net/schedule-engine-v3.js"
+        ></script>
     </Helmet>
     <div className="popupForm">
             <div className="popupForm">
@@ -181,7 +186,8 @@ export default ({ data }) => (
 
               </p>
               <div className="schedule-btn">
-                <a onClick={changeActive} style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityPages.coupon.title + " " +data.sanityPages.coupon.type} <FaArrowRight /></a>
+                {/* <a onClick={changeActive} style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityPages.coupon.title + " " +data.sanityPages.coupon.type} <FaArrowRight /></a> */}
+                <button className="se-widget-button" type="button" onclick="ScheduleEngine.show()"style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityPages.coupon.title + " " +data.sanityPages.coupon.type} <FaArrowRight /></button>
 
               </div>
           </div>
