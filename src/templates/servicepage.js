@@ -87,6 +87,12 @@ export const query = graphql`
             companyname
             primarycolor{
                 hex
+                rgb{
+                    a
+                    r
+                    g
+                    b
+                }
             }
             secondarycolor{
                 hex
@@ -120,17 +126,21 @@ export default ({ data }) => (
                       <div className="two_columns">
                       <div className="column1" style={{backgroundImage: 'url('+ data.sanityCompanyInfo.couponbackground.asset.fluid.src + ')'}}>
                           <div className="column-inner" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex+"e3" }}>
-                            <div className="coupon">
+                            <div className="coupon" style={{backgroundColor: "rgba(" + data.sanityCompanyInfo.primarycolor.rgb.r +","+ data.sanityCompanyInfo.primarycolor.rgb.g +","+ data.sanityCompanyInfo.primarycolor.rgb.b +","+ "0.7" +")"}}>
+                        <div className="scheduleText" style={{color: data.sanityCompanyInfo.accentcolor.hex}}>Schedule Today For</div>
+
                               <span className="coupon-title">{data.sanityServicepages.coupon.title}</span>
                               <span className="coupon-type">{data.sanityServicepages.coupon.type}</span>
                               <span className="coupon-text">{data.sanityServicepages.coupon.coupontext}</span>
+                        <p className="disclaimer">*Restrictions may apply. Call office for details.</p>
+
                             </div>
                           </div>
 
                         </div>
                         <div className="column2">
                           <div className="innerColumn">
-                            <h2>Schedule Service</h2>  
+                          <h2 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>Don’t Wait All Day for Service!</h2>  
                             <p>Fill out the form below and we'll reach out to schedule your service appointment. </p>
                             <span  className="closeForm" onClick={changeActive} onKeyDown={changeActive} style={{fill: "#fff", color: '#fff'}}><FaTimes /></span>
                             <Form />

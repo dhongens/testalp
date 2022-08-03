@@ -64,7 +64,7 @@
         height:700px;
         transition: all ease 0.3s;
         z-index: 1001;
-        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.2);
         background-color: #fff;
         border-radius: 20px;
         opacity:0;
@@ -219,18 +219,25 @@
                       height: 400px;
                       align-items: center;
                       justify-content: center;
+                      .scheduleText{
+                        font-weight: 600;
+                        font-size: 1.1em;
+                    }
                       .coupon-title{
                           font-size: 2em;
                           font-weight: 600;
                           line-height: 60px;
                       }
                       .coupon-type{
-                          font-size: 2em;
+                          font-size: 1.5em;
                           font-weight: 600;
-                          line-height: 60px;
+                          line-height: 50px;
 
                       }
                       .coupon-text{}
+                      .disclaimer{
+                        color: #fff;
+                      }
                   }
               }
   
@@ -275,7 +282,7 @@
   
       h2 {
           color: #353535;
-          font-weight: 500;
+          font-weight: 800;
           margin-bottom: 0.5em;
       }
   
@@ -285,29 +292,18 @@
           padding-top: 2em;
           gap: 10px;
   
-          input[type="text"],
-          input[type="email"],
-          input[type="tel"],
-          textarea {
-              margin-bottom: 5px;
-              font-size: 0.8em;
-              padding-left: 10px;
-              padding-top: 10px;
-              padding-bottom: 10px;
-              background-color: #F0F5F8;
-              border: 0;
-              font-weight: 500;
-              // border-bottom: 2px solid #fff;
-              outline: none;
-              -webkit-appearance: none;
-              transition: all ease 0.2s;
-              border-radius: 10px;
-  
-              &:focus {
-                  border-color: rgb(56, 172, 207);
-                  transition: all ease 0.2s;
-              }
-          }
+          input[type=text], input[type=email], input[type=tel]{
+            background-color: rgba(122, 160, 189, 0.10);
+            border: none;
+            color: #7A9FBC;
+            border-radius: 10px;
+            font-family: Inter;
+            padding: 10px 15px;
+            font-size: 0.8em;
+            &::placeholder{
+                color: #7A9FBC;
+            }
+        }
           #mail-honey{
               display:none;
           }

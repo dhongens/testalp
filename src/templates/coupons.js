@@ -164,7 +164,7 @@ export default ({ data }) => (
                         <br />
                         {coupon.hidecoupon === true && <span key={coupon.type} className="couponType">{coupon.type}</span>}
                         <br />
-                        {coupon.hidecoupon === true && <span key={coupon.slug} className="restrictions">{coupon.coupontext}</span>}
+                        {coupon.hidecoupon === true && <p key={coupon.slug} className="restrictions">{coupon.coupontext}</p>}
                     </li>}
                     </>
                     ))}
@@ -178,13 +178,7 @@ export default ({ data }) => (
                 <div className="columns">
                 <div className="column1 column">
                     <div className="column-inner">
-                    <div className="coupon">
-                        <div className="scheduleText" style={{color: data.sanityCompanyInfo.accentcolor.hex}}>Schedule Today For</div>
-                        <div className="couponOffer">{data.sanityPages.coupon.title}</div>
-                        <div className="couponType">{data.sanityPages.coupon.type}</div>
-                        <p className="couponInfo">{data.sanityPages.coupon.coupontext}</p>
-                        <p className="disclaimer">*Restrictions may apply. Call office for details.</p>
-                    </div>
+                    <h2 className="couponUSP">Family Owned & Operated since 1998</h2>
                     </div>
                 </div>
                 <div className="column2 column">
@@ -196,7 +190,8 @@ export default ({ data }) => (
                         <input type="email" placeholder="Email" name="" id="" />
                         <input type="tel" placeholder="Phone Number" name="" id="" />
                         <input type="text" placeholder="Service Requested" name="" id="" />
-                        <input type="submit" value="Request Service" />
+                        <input type="submit" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}} value="Request Service" />
+
                     </form>
                     </div>
                 </div>

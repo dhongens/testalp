@@ -12,6 +12,8 @@ import BackgroundImage from 'gatsby-background-image'
 import QuoteIcon from "../images/quote-left-solid.png"
 import couponBackground from "../images/couponBackground.png"
 import $ from 'jquery';
+import { Player, Controls } from '@lottiefiles/react-lottie-player';
+
 
 
 
@@ -78,6 +80,12 @@ export const query = graphql`
             companyname
             primarycolor{
                 hex
+                rgb{
+                    a
+                    r
+                    g
+                    b
+                }
             }
             secondarycolor{
                 hex
@@ -139,17 +147,23 @@ export default ({ data }) => (
                       <div className="two_columns">
                       <div className="column1" style={{backgroundImage: 'url('+ data.sanityCompanyInfo.couponbackground.asset.fluid.src + ')'}}>
                           <div className="column-inner" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex+"e3" }}>
-                            <div className="coupon">
+                            <div className="coupon" style={{backgroundColor: "rgba(" + data.sanityCompanyInfo.primarycolor.rgb.r +","+ data.sanityCompanyInfo.primarycolor.rgb.g +","+ data.sanityCompanyInfo.primarycolor.rgb.b +","+ "0.7" +")"}}>
+
+
+                            <div className="scheduleText" style={{color: data.sanityCompanyInfo.accentcolor.hex}}>Schedule Today For</div>
+
                               <span className="coupon-title">{data.sanityPages.coupon.title}</span>
                               <span className="coupon-type">{data.sanityPages.coupon.type}</span>
                               <span className="coupon-text">{data.sanityPages.coupon.coupontext}</span>
+                                <p className="disclaimer">*Restrictions may apply. Call office for details.</p>
+
                             </div>
                           </div>
 
                         </div>
                         <div className="column2">
                           <div className="innerColumn">
-                            <h2>Schedule Service</h2>  
+                            <h2 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>Don’t Wait All Day for Service!</h2>  
                             <p>Fill out the form below and we'll reach out to schedule your service appointment. </p>
                             <a className="closeForm" onClick={changeActive} style={{fill: "#fff", color: '#fff'}}><FaTimes /></a>
                             <Form />
@@ -186,7 +200,7 @@ export default ({ data }) => (
 
               </p>
               <div className="schedule-btn">
-                <a onClick={changeActive} style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityPages.coupon.title + " " +data.sanityPages.coupon.type} <FaArrowRight /></a>
+                <a onClick={changeActive} style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityPages.coupon.title} <FaArrowRight /></a>
 
               </div>
           </div>
@@ -201,8 +215,9 @@ export default ({ data }) => (
                 <div className="uspColumns">
                 {data.allSanityThreeservices.edges.map(( {node: service})  => 
 
-                        <div className="column1 column">
-                        <div className="column-inner">
+
+                        <div className="column1 column" >
+                        <div className="column-inner" style={{boxShadow: "0px 3px 50px rgba(" + data.sanityCompanyInfo.primarycolor.rgb.r +","+ data.sanityCompanyInfo.primarycolor.rgb.g +","+data.sanityCompanyInfo.primarycolor.rgb.b + ", 0.3)"}}>
                             <div className="icon" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex}}><img style={{width: '20px'}} src={service.icon.asset.fluid.src}/></div>
                             <h3 className="serviceTitle">{service.servicetitle} Services</h3>
                             <p>{service.servicetext}</p>
@@ -232,7 +247,7 @@ export default ({ data }) => (
                             fluid={data.sanityPages.serviceimage.asset.fluid}>
                         </Image>
                         <div className="schedule-btn">
-                            <a onClick={changeActive} style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityPages.coupon.title + " " +data.sanityPages.coupon.type} <FaArrowRight /></a>
+                            <a onClick={changeActive} style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityPages.coupon.title} <FaArrowRight /></a>
 
                         </div>
                         
@@ -275,7 +290,7 @@ export default ({ data }) => (
                 <div className="columns">
                 <div className="column1 column">
                     <div className="column-inner">
-                    <div className="coupon">
+                    <div className="coupon" style={{backgroundColor: "rgba(" + data.sanityCompanyInfo.primarycolor.rgb.r +","+ data.sanityCompanyInfo.primarycolor.rgb.g +","+ data.sanityCompanyInfo.primarycolor.rgb.b +","+ "0.8" +")"}}>
                         <div className="scheduleText" style={{color: data.sanityCompanyInfo.accentcolor.hex}}>Schedule Today For</div>
                         <div className="couponOffer">{data.sanityPages.coupon.title}</div>
                         <div className="couponType">{data.sanityPages.coupon.type}</div>
@@ -293,7 +308,7 @@ export default ({ data }) => (
                         <input type="email" placeholder="Email" name="" id="" />
                         <input type="tel" placeholder="Phone Number" name="" id="" />
                         <input type="text" placeholder="Service Requested" name="" id="" />
-                        <input type="submit" value="Request Service" />
+                        <input type="submit" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}} value="Request Service" />
                     </form>
                     </div>
                 </div>

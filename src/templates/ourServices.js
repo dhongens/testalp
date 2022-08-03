@@ -7,10 +7,17 @@ import BackgroundImage from 'gatsby-background-image';
 import SocialProof from '../components/socialProof';
 import Fade from 'react-reveal/Fade';
 import PortableText from '@sanity/block-content-to-react'
-import { FaArrowRight, FaMapMarkerAlt } from "react-icons/fa"
+import { FaArrowRight, FaMapMarkerAlt, FaTimes } from "react-icons/fa"
 import Image from 'gatsby-image'
-import QuoteIcon from "../images/quote-left-solid.png"
 import couponBackground from "../images/couponBackground.png"
+import $ from 'jquery';
+
+
+function changeActive(e){
+    e.preventDefault();
+    $(".form").toggleClass("expanded");
+    $('body').toggleClass('formExpanded');
+  }
 
 export const query = graphql`
     query ourServicesQuery{
@@ -49,6 +56,12 @@ export const query = graphql`
             companyname
             primarycolor{
                 hex
+                rgb{
+                    a
+                    r
+                    g
+                    b
+                }
             }
             secondarycolor{
                 hex
@@ -58,6 +71,13 @@ export const query = graphql`
             }
             gradientcolor1{hex}
             gradientcolor2{hex}
+            couponbackground{
+                asset{
+                    fluid{
+                        src
+                    }
+                }
+            }
         }
         allSanityOurservices {
             edges {
@@ -86,7 +106,36 @@ export default ({ data }) => (
     <title>{data.sanityCompanyInfo.companyname} | {data.sanityPages.pagetitle}</title>   
       
     </Helmet>
-        <div className="popupForm"><Form /></div>
+    <div className="popupForm">
+            <div className="popupForm">
+                   <div className="form">
+                      <div className="two_columns">
+                      <div className="column1" style={{backgroundImage: 'url('+ data.sanityCompanyInfo.couponbackground.asset.fluid.src + ')'}}>
+                          <div className="column-inner" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex+"e3" }}>
+                            <div className="coupon" style={{backgroundColor: "rgba(" + data.sanityCompanyInfo.primarycolor.rgb.r +","+ data.sanityCompanyInfo.primarycolor.rgb.g +","+ data.sanityCompanyInfo.primarycolor.rgb.b +","+ "0.7" +")"}}>
+                             <div className="scheduleText" style={{color: data.sanityCompanyInfo.accentcolor.hex}}>Schedule Today For</div>
+
+                              <span className="coupon-title">{data.sanityPages.coupon.title}</span>
+                              <span className="coupon-type">{data.sanityPages.coupon.type}</span>
+                              <span className="coupon-text">{data.sanityPages.coupon.coupontext}</span>
+                        <p className="disclaimer">*Restrictions may apply. Call office for details.</p>
+
+                            </div>
+                          </div>
+
+                        </div>
+                        <div className="column2">
+                          <div className="innerColumn">
+                            <h2 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>Don’t Wait All Day for Service!</h2>  
+                            <p>Fill out the form below and we'll reach out to schedule your service appointment. </p>
+                            <a className="closeForm" onClick={changeActive} style={{fill: "#fff", color: '#fff'}}><FaTimes /></a>
+                            <Form />
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
         <Fade bottom>
     <div className="pageHeader">
       <div className="columns">
@@ -114,7 +163,7 @@ export default ({ data }) => (
 
               </p>
               <div className="schedule-btn">
-                <a href="#" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityPages.coupon.title + " " +data.sanityPages.coupon.type} <FaArrowRight /></a>
+                <a href="#" onClick={changeActive} style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityPages.coupon.title} <FaArrowRight /></a>
 
               </div>
           </div>
@@ -162,7 +211,7 @@ export default ({ data }) => (
                             style={{height: "100%"}}
                             fluid={data.sanityPages.serviceimage.asset.fluid}>
                         </Image>
-                        <div className="schedule-btn"><a href="#" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule today for $20 off plumbing repairs <FaArrowRight /></a></div>
+                        <div className="schedule-btn"><a href="#" onClick={changeActive} style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityPages.coupon.title} <FaArrowRight /></a></div>
                         </div>
                     </div>
                 </div>
@@ -193,7 +242,8 @@ export default ({ data }) => (
                         <input type="email" placeholder="Email" name="" id="" />
                         <input type="tel" placeholder="Phone Number" name="" id="" />
                         <input type="text" placeholder="Service Requested" name="" id="" />
-                        <input type="submit" value="Request Service" />
+                        <input type="submit" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}} value="Request Service" />
+
                     </form>
                     </div>
                 </div>

@@ -60,7 +60,7 @@ export default () => (
                   className="align-center logo"
                   alt="Logo"
                 />
-          <p>&copy; {data.sanityCompanyInfo.companyname} | Marketing by <a href="http://vitalstorm.com/" target="_blank" rel="noopener noreferrer">VitalStorm Marketing Inc.</a></p> 
+          <p>&copy; {data.sanityCompanyInfo.companyname} | Marketing by <a href="http://vitalstorm.com/" target="_blank" rel="noopener noreferrer">VitalStorm</a></p> 
           
         </div>
         <script type="text/javascript">

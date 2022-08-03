@@ -15,14 +15,35 @@ import $ from 'jquery';
 
 
 
-function changeActive(){
+function changeActive(e){
+    e.preventDefault();
     $(".form").toggleClass("expanded");
     $('body').toggleClass('formExpanded');
   }
 
+  function getUrlVars(){
+    var vars = [], hash;
+    if(typeof window !== 'undefined'){
+        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        for(var i = 0; i < hashes.length; i++)
+        {
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
+        }
+    }
+    return vars;
+  }
+  var city = getUrlVars()["city"];
+
+  if (city !== undefined){
+      var cityplace = "in " + city;
+      var citytitle = city+"'s";
+  }
+
 export const query = graphql`
     query aboutQuery{
-        sanityPages(slug: {current: {eq: "about-us"}}) {
+        sanityPages(slug: {current: {eq: "home"}}) {
             pagetitle
             pagetype{
                 pagetype
@@ -51,11 +72,18 @@ export const query = graphql`
                     }
                 }
             }
+            
     }
         sanityCompanyInfo {
             companyname
             primarycolor{
                 hex
+                rgb{
+                    a
+                    r
+                    g
+                    b
+                }
             }
             secondarycolor{
                 hex
@@ -104,28 +132,38 @@ export default ({ data }) => (
     <Layout>
     <Helmet>
     <title>{data.sanityCompanyInfo.companyname} | {data.sanityPages.pagetitle}</title>   
-      
+    <script
+        data-api-key="ckgb6628g00ld06moclq6whc8"
+        data-defer="true"
+        id="se-widget-embed"
+        src="https://embed.scheduleengine.net/schedule-engine-v3.js"
+        ></script>
     </Helmet>
     <div className="popupForm">
             <div className="popupForm">
                    <div className="form">
                       <div className="two_columns">
-                        <div className="column1" style={{backgroundImage: 'url('+ data.sanityCompanyInfo.couponbackground.asset.fluid.src + ')'}}>
+                      <div className="column1" style={{backgroundImage: 'url('+ data.sanityCompanyInfo.couponbackground.asset.fluid.src + ')'}}>
                           <div className="column-inner" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex+"e3" }}>
-                            <span className="closeForm" onClick={changeActive}><FaTimes /></span>
+                            <div className="coupon" style={{backgroundColor: "rgba(" + data.sanityCompanyInfo.primarycolor.rgb.r +","+ data.sanityCompanyInfo.primarycolor.rgb.g +","+ data.sanityCompanyInfo.primarycolor.rgb.b +","+ "0.7" +")"}}>
 
-                            <div className="coupon" style={{borderColor: data.sanityCompanyInfo.accentcolor.hex}}>
+
+                            <div className="scheduleText" style={{color: data.sanityCompanyInfo.accentcolor.hex}}>Schedule Today For</div>
+
                               <span className="coupon-title">{data.sanityPages.coupon.title}</span>
                               <span className="coupon-type">{data.sanityPages.coupon.type}</span>
                               <span className="coupon-text">{data.sanityPages.coupon.coupontext}</span>
+                        <p className="disclaimer">*Restrictions may apply. Call office for details.</p>
+
                             </div>
                           </div>
 
                         </div>
                         <div className="column2">
                           <div className="innerColumn">
-                            <h2>Schedule Service</h2>  
+                            <h2 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>Don’t Wait All Day for Service!</h2>  
                             <p>Fill out the form below and we'll reach out to schedule your service appointment. </p>
+                            <a className="closeForm" onClick={changeActive} style={{fill: "#fff", color: '#fff'}}><FaTimes /></a>
                             <Form />
                             </div>
                         </div>
@@ -153,14 +191,15 @@ export default ({ data }) => (
         </div>
         <div className="column2 column">
           <div className="column-inner">
-              <div className="location" style={{color: data.sanityCompanyInfo.accentcolor.hex}}><FaMapMarkerAlt /> Providing Same Day Service in Rockwall</div>
-              <h1 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>Rockwall's Best Plumbing Technicians</h1>
+              <div className="location" style={{color: data.sanityCompanyInfo.accentcolor.hex}}><FaMapMarkerAlt /> Providing Same Day Service {cityplace}</div>
+              <h1 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>{citytitle} Best Plumbing Technicians</h1>
               <p style={{color: data.sanityCompanyInfo.primarycolor.hex}}>
                 <PortableText blocks={data.sanityPages._rawPageIntro} />
 
               </p>
               <div className="schedule-btn">
-                <a href="#" onClick={changeActive} style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for $20 Off Toilet Repair <FaArrowRight /></a>
+                <a onClick={changeActive} style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityPages.coupon.title} <FaArrowRight /></a>
+
               </div>
           </div>
         </div>
@@ -174,8 +213,9 @@ export default ({ data }) => (
                 <div className="uspColumns">
                 {data.allSanityThreeservices.edges.map(( {node: service})  => 
 
-                        <div className="column1 column">
-                        <div className="column-inner">
+
+                        <div className="column1 column" >
+                        <div className="column-inner" style={{boxShadow: "0px 3px 50px rgba(" + data.sanityCompanyInfo.primarycolor.rgb.r +","+ data.sanityCompanyInfo.primarycolor.rgb.g +","+data.sanityCompanyInfo.primarycolor.rgb.b + ", 0.3)"}}>
                             <div className="icon" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex}}><img style={{width: '20px'}} src={service.icon.asset.fluid.src}/></div>
                             <h3 className="serviceTitle">{service.servicetitle} Services</h3>
                             <p>{service.servicetext}</p>
@@ -184,7 +224,7 @@ export default ({ data }) => (
                     </div>
                     )}
                 </div>
-                    </Fade>
+                </Fade>
             </div>
         </div>
         <SocialProof />
@@ -204,7 +244,11 @@ export default ({ data }) => (
                             style={{height: "100%"}}
                             fluid={data.sanityPages.serviceimage.asset.fluid}>
                         </Image>
-                        <div className="schedule-btn"><a onClick={changeActive} style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule today for $20 off plumbing repairs <FaArrowRight /></a></div>
+                        <div className="schedule-btn">
+                            <a onClick={changeActive} style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityPages.coupon.title} <FaArrowRight /></a>
+
+                        </div>
+                        
                         </div>
                     </div>
                 </div>
@@ -213,7 +257,6 @@ export default ({ data }) => (
         </div>
         <div className="reviewsSection">
         <Fade bottom cascade>
-
             <div className="inner">
                 <h2>What our customers say</h2>
                 <div className="columns">
@@ -234,7 +277,7 @@ export default ({ data }) => (
                     ))}
                 </div>
                 <div className="reviews-btn">
-                    <a href="/reviews/" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}} class="buttonstyle">See More Reviews</a>
+                    <a href="/reviews/" class="buttonstyle" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>See More Reviews</a>
                 </div>
             </div>
             </Fade>
@@ -245,7 +288,7 @@ export default ({ data }) => (
                 <div className="columns">
                 <div className="column1 column">
                     <div className="column-inner">
-                    <div className="coupon">
+                    <div className="coupon" style={{backgroundColor: "rgba(" + data.sanityCompanyInfo.primarycolor.rgb.r +","+ data.sanityCompanyInfo.primarycolor.rgb.g +","+ data.sanityCompanyInfo.primarycolor.rgb.b +","+ "0.8" +")"}}>
                         <div className="scheduleText" style={{color: data.sanityCompanyInfo.accentcolor.hex}}>Schedule Today For</div>
                         <div className="couponOffer">{data.sanityPages.coupon.title}</div>
                         <div className="couponType">{data.sanityPages.coupon.type}</div>
@@ -263,7 +306,7 @@ export default ({ data }) => (
                         <input type="email" placeholder="Email" name="" id="" />
                         <input type="tel" placeholder="Phone Number" name="" id="" />
                         <input type="text" placeholder="Service Requested" name="" id="" />
-                        <input type="submit" value="Request Service" />
+                        <input type="submit" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}} value="Request Service" />
                     </form>
                     </div>
                 </div>
