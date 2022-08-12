@@ -6,8 +6,8 @@ import $ from "jquery"
 import { HiMenu, HiX } from "react-icons/hi"
 
 
-if(typeof document !== 'undefined'){
-$(document).ready(function(){
+
+
   $(".mobile-hamburger").on("click", function(e) {
     e.preventDefault();
     $(".mobile-menu").addClass("active");
@@ -20,10 +20,10 @@ $(".close-menu").on("click", function(e) {
   $(".mobile-menu").removeClass("active");
   $("body").removeClass("overflow-hidden");
 });
-});
-}
 
-    if(typeof windo !== 'undefined'){
+
+
+    if(typeof window !== 'undefined'){
 
 
 var lastScrollTop = 0;
