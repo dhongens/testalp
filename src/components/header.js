@@ -6,6 +6,7 @@ import $ from "jquery"
 import { HiMenu, HiX } from "react-icons/hi"
 
 
+if(typeof document !== 'undefined'){
 $(document).ready(function(){
   $(".mobile-hamburger").on("click", function(e) {
     e.preventDefault();
@@ -20,6 +21,10 @@ $(".close-menu").on("click", function(e) {
   $("body").removeClass("overflow-hidden");
 });
 });
+}
+
+    if(typeof windo !== 'undefined'){
+
 
 var lastScrollTop = 0;
 $(window).scroll(function(event){
@@ -32,6 +37,7 @@ $(window).scroll(function(event){
    }
    lastScrollTop = st;
 });
+    }
 
 export default () => (
   <StaticQuery query={ graphql`
