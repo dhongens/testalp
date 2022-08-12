@@ -6,8 +6,7 @@ import $ from "jquery"
 import { HiMenu, HiX } from "react-icons/hi"
 
 
-
-
+$(function(){
   $(".mobile-hamburger").on("click", function(e) {
     e.preventDefault();
     $(".mobile-menu").addClass("active");
@@ -21,23 +20,21 @@ $(".close-menu").on("click", function(e) {
   $("body").removeClass("overflow-hidden");
 });
 
-
-
-    if(typeof window !== 'undefined'){
-
-
-var lastScrollTop = 0;
-$(window).scroll(function(event){
-   var st = $(this).scrollTop();
-   if (st > lastScrollTop){
-       $("body").addClass("scroll-down");
-   } else {
-      // upscroll code
-      $("body").removeClass("scroll-down");
-   }
-   lastScrollTop = st;
+if(typeof window !== 'undefined'){
+  var lastScrollTop = 0;
+  $(window).on('scroll', function(event){
+     var st = $(this).scrollTop();
+     if (st > lastScrollTop){
+         $("body").addClass("scroll-down");
+     } else {
+        $("body").removeClass("scroll-down");
+     }
+     lastScrollTop = st;
+  });
+  }
 });
-    }
+
+    
 
 export default () => (
   <StaticQuery query={ graphql`
