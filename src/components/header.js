@@ -19,6 +19,7 @@ $(".close-menu").on("click", function(e) {
   $(".mobile-menu").removeClass("active");
   $("body").removeClass("overflow-hidden");
 });
+});
 
 
   var lastScrollTop = 0;
@@ -31,7 +32,6 @@ $(".close-menu").on("click", function(e) {
      }
      lastScrollTop = st;
   });
-});
 }
 
     
