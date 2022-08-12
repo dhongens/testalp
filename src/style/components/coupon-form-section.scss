@@ -1,7 +1,19 @@
+.our-services{
+    .coupon-form-section{
+        @include phone-only{
+            padding-bottom: 0;
+        }
+    }
+}
 .coupon-form-section{
     padding: 150px 0;
+    background-position: center;
+    background-size: cover;
     @include phone-only{
-        padding-bottom: 0;
+        padding-bottom: 100px;
+        background-position: center 0;
+        background-size: 330% auto;
+        background-repeat: no-repeat;
     }
     .inner{
         width: 90%;
@@ -28,6 +40,9 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                @include phone-only{
+                    padding-bottom: 100px;
+                }
                 .column-inner{
                     display: flex;
                     justify-content: center;
@@ -52,7 +67,8 @@
                             width: 300px;
                         }
                         @include phone-only{
-                            width: auto;
+                            width: 95%;
+                            
                         }
                         .scheduleText{
                             font-weight: 600;
@@ -132,7 +148,8 @@
                             border: 0;
                             font-family: Inter;
                             margin-top: 30px;
-                            font-size: 0.9em;
+                            font-size: 0.7em;
+                            font-weight: 500;
                             text-transform: uppercase;
 
 

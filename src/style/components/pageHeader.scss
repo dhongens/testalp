@@ -1,6 +1,6 @@
 .pageHeader{
     // margin-top: 200px;
-    padding: 50px 100px 100px;
+    padding: 50px 0px 100px;
     width: 80%;
     margin: 0 auto;
     @include tiny-desktop{
@@ -24,7 +24,7 @@
             border-radius: 50px 0 50px 0;
             .column-inner{
                 // padding-right: 100px;
-                height: 400px;
+                height: 600px;
                 width: 100%;
                 border-radius: 50px 0 50px 0;
                 @include phone-only{
@@ -62,36 +62,31 @@
                 margin-top: 50px;
                 a, span{
                     // background: linear-gradient(to right, #E49B74, #CC562E);
-                    padding: 20px;
+                    padding: 20px 30px 20px;
                     border-radius: 20px;
                     color: #fff;
                     transition: all ease .2s;
                     cursor: pointer;
                     font-size: 0.9em;
+                    display: block;
+                    width: 440px;
+                    @include desktop-small{
+                        width: 320px;
+                    }
 
                     @include tablet-portrait{
                         font-size: 0.6em !important;
                     }
                     @include phone-only{
-                        font-size: 0.8em !important;
+                        font-size: 1em !important;
                     }
 
                     &:hover{
                         // background: linear-gradient(to right, #CC562E, #E49B74);
                         transition: all ease .2s;
                     }
-                    svg{
-                        animation: bounce .8s infinite alternate ease-in-out;
-                    }
-                    @keyframes bounce {
-                        0% {
-                          transform: translateX(0);
-                        }
-
-                        100% {
-                          transform: translateX(10px);
-                        }
-                      }
+                    
+                    
                 }
             }
         }
@@ -103,9 +98,10 @@
             flex-wrap: wrap;
             gap: 20px;
             .service{
-                width: 30%;
+                // width: 30%;
+                width: 200px;
                 @include tablet-portrait{
-                    width: 45%
+                    width: 200px
                 }
                 @include phone-only{
                     width: 100%;
@@ -115,12 +111,16 @@
                     a{
                         display: flex;
                         align-items: center;
-                        gap: 10px;
+                        // gap: 10px;
                         .icon{
                             display: flex;
                             align-items: center;
+                            width: 50px;
+                            margin-right: 10px;
                             img{
                                 margin-bottom: 0;
+                                width: 50px;
+                                height: 50px;
                             }
                             .serviceName{
                                 @include tablet-portrait{

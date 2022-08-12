@@ -24,4 +24,8 @@ import $ from 'jquery';
       return vars;
     }
     var city = getUrlVars()["city"];
+
+
+      
+
   

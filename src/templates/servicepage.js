@@ -172,7 +172,7 @@ export default ({ data }) => (
                     <PortableText style={{color: data.sanityCompanyInfo.primarycolor.hex}} blocks={data.sanityServicepages._rawPageIntro} />
 
                     <div className="schedule-btn">
-                        <a onClick={changeActive} style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}} >Schedule Today for {data.sanityServicepages.coupon.title + " " +data.sanityServicepages.coupon.type} <FaArrowRight /></a>
+                        <a onClick={changeActive} style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}} >Schedule Today for {data.sanityServicepages.coupon.title} <FaArrowRight /></a>
                     </div>
                     <div className="servicesSelection">
                         <h3 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>Count on Plumbit for all of your plumbing needs!</h3>
@@ -203,7 +203,8 @@ export default ({ data }) => (
                 <div className="columns">
                 <div className="column1 column">
                     <div className="column-inner">
-                    <div className="coupon">
+                    <div className="coupon" style={{backgroundColor: "rgba(" + data.sanityCompanyInfo.primarycolor.rgb.r +","+ data.sanityCompanyInfo.primarycolor.rgb.g +","+ data.sanityCompanyInfo.primarycolor.rgb.b +","+ "0.8" +")"}}>
+
                         <div className="scheduleText" style={{color: data.sanityCompanyInfo.accentcolor.hex}}>Schedule Today For</div>
                         <div className="couponOffer">{data.sanityServicepages.coupon.title}</div>
                         <div className="couponType">{data.sanityServicepages.coupon.type}</div>

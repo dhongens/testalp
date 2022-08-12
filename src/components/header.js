@@ -3,7 +3,35 @@ import Image from "gatsby-image"
 import React from "react"
 import Fade from "react-reveal"
 import $ from "jquery"
-import { HiMenu } from "react-icons/hi"
+import { HiMenu, HiX } from "react-icons/hi"
+
+
+$(document).ready(function(){
+  $(".mobile-hamburger").on("click", function(e) {
+    e.preventDefault();
+    $(".mobile-menu").addClass("active");
+    $("body").addClass("overflow-hidden");
+    console.log("clicked");
+});
+
+$(".close-menu").on("click", function(e) {
+    e.preventDefault();
+  $(".mobile-menu").removeClass("active");
+  $("body").removeClass("overflow-hidden");
+});
+});
+
+var lastScrollTop = 0;
+$(window).scroll(function(event){
+   var st = $(this).scrollTop();
+   if (st > lastScrollTop){
+       $("body").addClass("scroll-down");
+   } else {
+      // upscroll code
+      $("body").removeClass("scroll-down");
+   }
+   lastScrollTop = st;
+});
 
 export default () => (
   <StaticQuery query={ graphql`
@@ -12,6 +40,12 @@ export default () => (
               phone
               companyTagline
               primarycolor{
+                rgb{
+                  a
+                  r
+                  g
+                  b
+              }
                 hex
             }
             secondarycolor{
@@ -63,6 +97,17 @@ export default () => (
                     </div>
                   </div>
                 </div>
+              </div>
+              <div className="mobile-menu" style={{backgroundColor: "rgba(" + data.sanityCompanyInfo.primarycolor.rgb.r +","+ data.sanityCompanyInfo.primarycolor.rgb.g +","+ data.sanityCompanyInfo.primarycolor.rgb.b +","+ "0.9" +")"}}>
+                <div className="close-menu">
+                  <HiX style={{fontSize: '2em', color: data.sanityCompanyInfo.primarycolor.hex}} />
+                </div>
+                  <ul>
+                    <li><a href="/about-us/">About Us</a></li>
+                    <li><a href="/our-services/">Our Services</a></li>
+                    <li><a href="/coupons/">Specials</a></li>
+                    <li><a href="/reviews/">Reviews</a></li>
+                  </ul>
               </div>
           </header>
           </Fade>

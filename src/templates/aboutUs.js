@@ -258,7 +258,7 @@ export default ({ data }) => (
         <div className="reviewsSection">
         <Fade bottom cascade>
             <div className="inner">
-                <h2>What our customers say</h2>
+                <h2>What our <br />customers say</h2>
                 <div className="columns">
                 {data.allSanityReviews.edges.map(({ node: reviews }) => (
                     <>

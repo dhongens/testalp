@@ -224,7 +224,8 @@ export default ({ data }) => (
                 <div className="columns">
                 <div className="column1 column">
                     <div className="column-inner">
-                    <div className="coupon">
+                    <div className="coupon" style={{backgroundColor: "rgba(" + data.sanityCompanyInfo.primarycolor.rgb.r +","+ data.sanityCompanyInfo.primarycolor.rgb.g +","+ data.sanityCompanyInfo.primarycolor.rgb.b +","+ "0.8" +")"}}>
+
                         <div className="scheduleText" style={{color: data.sanityCompanyInfo.accentcolor.hex}}>Schedule Today For</div>
                         <div className="couponOffer">{data.sanityPages.coupon.title}</div>
                         <div className="couponType">{data.sanityPages.coupon.type}</div>

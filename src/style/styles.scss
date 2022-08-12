@@ -12,7 +12,15 @@ $transition: 0.2s ease all;
 @import './variables/media_queries.scss';
 
 
+@keyframes bounce {
+    0% {
+      transform: translateX(0);
+    }
 
+    100% {
+      transform: translateX(10px);
+    }
+  }
 
 
 /**** MEDIA QUERIES ****/
@@ -23,7 +31,7 @@ $transition: 0.2s ease all;
     @media (max-width: 599px) { @content; }
 }
 @mixin tablet-portrait {
-    @media (max-width: 768px) { @content; }
+    @media (max-width: 830px) { @content; }
 }
 @mixin tablet-landscape {
     @media (max-width: 900px) { @content; }
@@ -138,6 +146,10 @@ body{
                 background: linear-gradient(to right, #CC562E, #E49B74);
                 transition: all ease .2s;
                 color: #fff;
+            }
+
+            svg{
+                animation: bounce .8s infinite alternate ease-in-out;
             }
     }
 .pageHeaderbg{

@@ -2,12 +2,15 @@
     width: 80%;
     margin: 0 auto;
     padding: 100px 0;
+    @include phone-only{
+        padding-bottom: 0;
+    }
     .inner{
         ul{
             list-style: none;
             margin: 0;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             column-gap: 50px;
             row-gap: 50px;
             li{

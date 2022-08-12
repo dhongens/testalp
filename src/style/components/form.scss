@@ -77,7 +77,7 @@
         
         @include phone-only(){
             z-index: 1001;
-            height: 90vh;
+            height: 600px;
         }
         @supports (-webkit-overflow-scrolling: touch) {
             /* CSS specific to iOS devices */ 
@@ -176,7 +176,7 @@
                   border-radius: 20px 20px 0 0;
               }
               @include phone-only(){
-                  padding: 10em 0;
+                  padding: 0;
                   height: 250px;
                   .formLogo{
                     width: 150px!important;
@@ -204,6 +204,10 @@
                   align-items: center;
                   border-radius: 20px 0 0 20px;
                   width: 100%;
+                  @include tablet-portrait(){
+                    padding: 0 ;
+                    border-radius: 20px 20px 0 0;
+                  }
 
                   
                   .coupon{
@@ -219,19 +223,36 @@
                       height: 400px;
                       align-items: center;
                       justify-content: center;
+                      @include tablet-portrait(){
+                        height: auto;
+                        padding: 20px;
+                        width: 100%;
+                      }
                       .scheduleText{
                         font-weight: 600;
                         font-size: 1.1em;
+                        @include tablet-portrait(){
+                            font-size: 0.8em;
+                        }
                     }
                       .coupon-title{
                           font-size: 2em;
                           font-weight: 600;
                           line-height: 60px;
+                          @include tablet-portrait(){
+                              font-size: 1.3em;
+                              line-height: 30px;
+
+                          }
                       }
                       .coupon-type{
                           font-size: 1.5em;
                           font-weight: 600;
                           line-height: 50px;
+                          @include tablet-portrait(){
+                              font-size: 1em;
+                              line-height: 30px;
+                          }
 
                       }
                       .coupon-text{}
@@ -262,11 +283,11 @@
                       margin: 0 auto;
                     }
                 }
-                @include phone-only(){
+                @include tablet-portrait(){
                     // padding-top: 12em;
                     overflow: scroll;
                     .innerColumn{
-                        padding-top: 3em;
+                        padding-top: 10em;
                   }
                   form{
                       width: 100%;

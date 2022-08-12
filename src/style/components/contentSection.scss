@@ -5,6 +5,9 @@
     @include tablet-portrait{
         padding-bottom: 50px;
     }
+    @include phone-only{
+        padding-top: 0;
+    }
     .inner{
         .columns{
             display: grid;
@@ -26,7 +29,7 @@
                 position: relative;
                 .schedule-btn{
                     position: absolute;
-                    top: 500px;
+                    top: 450px;
                     left: 50%;
                     transform: translateX(-50%);
                     width: 430px;
@@ -51,6 +54,11 @@
                         cursor: pointer;
                         @include tablet-portrait{
                             font-size: 0.7em !important;
+                            display: block;
+                        }
+                        @include phone-only{
+                            font-size: 1em !important;
+                            text-align: left;
                         }
                         &:hover{
                             // background: linear-gradient(to right, #CC562E, #E49B74);

@@ -198,18 +198,10 @@ const Layout = ({ children }) => {
     <noscript>
    <a href='https://www.clickcease.com' rel='nofollow'><img src='https://monitor.clickcease.com/stats/stats.aspx' alt='ClickCease'/></a>
    </noscript>
-    <div className="pagewrapper">
+    <div className={data.sanityPages.slug.current + " pagewrapper"} >
    <Header />
           <div>
             <main>{children}</main>
-            <div className="scheduleMobile" >
-                <div className="innerSchedule" onClick={changeActive} style={{backgroundColor: data.sanityCompanyInfo.secondarycolor.hex}}>
-                  <FaCalendarAlt /> <span>Schedule</span>
-                </div>
-                <a href={'tel:' + data.sanityCompanyInfo.phone } className="innerPhone" style={{backgroundColor: data.sanityCompanyInfo.accentcolor.hex}}>
-                  <FaPhone /> <span>Call now</span>
-                </a>
-              </div>
             <Footer />
           </div>
         </div>

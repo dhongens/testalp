@@ -1,18 +1,39 @@
+.scroll-down{
+    @include phone-only{
+        header{
+            padding: 10px 0;
+            transition: $transition;
+    
+            div.logo{
+                    width: 0px !important;
+                    transition: $transition;
+                    margin-top: 0px !important;
+            }
+        }
+    }
+}
 header{
     padding: 1em 0;
-    // position: fixed;
     left: 0;
     right: 0;
-    z-index: 998;
+    z-index: 99;
     background-color: #fff;
-    // box-shadow: 0 0 5px 5px rgba(0,0,0,0.1);
+    transition: $transition;
+    @include phone-only{
+        position: fixed;
+        box-shadow: 0 0 5px 5px rgba(0,0,0,0.1);
+
+    }
+
     .mobile-hamburger{
         display: none;
         @include phone-only{
-            display: block;
-            position: absolute;
-            top: 20px;
-            left: 20px;
+            position: relative;
+            display: inline-block;
+            // position: fixed;
+            top: 15px;
+            left: 25px;
+            z-index: 100;
         }
     }
     .header-inner{
@@ -24,6 +45,10 @@ header{
             grid-template-columns: auto;
             margin-left: 80px;
             padding-top: 10px;
+            justify-content: center;
+            // position: fixed;
+            margin-top: -2em;
+
         }
         @include small-phone{
             margin-left: 30px;
@@ -48,9 +73,12 @@ header{
     }
     .logo{
         justify-self: flex-start;
+        transition: $transition;
+
         @include phone-only{
             margin-top: 20px;
             margin-left: 10px;
+            justify-self: center;
         }
     }
     .items{
@@ -73,6 +101,8 @@ header{
             grid-column: 1;
             grid-row: 1;
             margin-bottom: 20px;
+            // position: fixed;
+
         }
         .headerBtns{
             @include phone-only{
@@ -133,7 +163,7 @@ header{
         }
     }
     .gatsby-image-wrapper{
-        transition: opacity .3s ease;
+        // transition: opacity .3s ease;
         &:hover{
             opacity: 0.7;
             transition: opacity .3s ease;
@@ -166,5 +196,65 @@ header{
         @include phone-only{
             // display:none;
         }
+    }
+    .mobile-menu{
+        display: none;
+        left: -300px;
+        position: fixed;
+        z-index: 999;
+        width: 0;
+        transition: 1.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+        top:0;
+        right: 0;
+        bottom: 0;
+        padding: 100px;
+        height: 100vh;
+
+        ul{
+            position: relative;
+            margin-left: 0;
+            width: 130px;
+            li{
+                list-style: none;
+                font-size: 1.3em !important;
+                a{
+                    color: #fff;
+                }
+            }
+        }
+
+        &.active{
+            transition: .7s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+            width: 100%;
+            left: 0;
+            // bottom: 0;
+            .close-menu{
+                position: absolute;
+                left: 30px;
+                top: 30px;
+                svg{
+                    fill: #fff;
+
+                }
+            }
+            
+        }
+        @include phone-only{
+            display: block;
+        }
+    }
+}
+.overflow-hidden{
+    height: 100vh;
+    overflow: hidden;
+    main, .header-inner{
+        filter: blur(4px);
+    }
+}
+main{
+    @include phone-only{
+
+        margin-top: 170px;
     }
 }
