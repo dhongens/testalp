@@ -5,23 +5,14 @@ import Fade from "react-reveal"
 import $ from "jquery"
 import { HiMenu, HiX } from "react-icons/hi"
 
-if(typeof window !== 'undefined' && typeof document !== 'undefined'){
-$(function(){
-  $(".mobile-hamburger").on("click", function(e) {
-    e.preventDefault();
-    $(".mobile-menu").addClass("active");
-    $("body").addClass("overflow-hidden");
-    console.log("clicked");
-});
 
-$(".close-menu").on("click", function(e) {
-    e.preventDefault();
-  $(".mobile-menu").removeClass("active");
-  $("body").removeClass("overflow-hidden");
-});
-});
+function changeActive(){
+    $(".mobile-menu").toggleClass("active");
+    $("body").toggleClass("overflow-hidden");
+}
 
-
+  
+if(typeof window !== 'undefined'){
   var lastScrollTop = 0;
   $(window).on('scroll', function(event){
      var st = $(this).scrollTop();
@@ -72,7 +63,7 @@ export default () => (
         render={data => (
           <Fade bottom cascade>
           <header>
-            <div className="mobile-hamburger">
+            <div className="mobile-hamburger" onClick={changeActive}>
               <HiMenu style={{fontSize: '2em', color: data.sanityCompanyInfo.primarycolor.hex}} />
             </div>
               <div className="header-inner">
@@ -102,7 +93,7 @@ export default () => (
                 </div>
               </div>
               <div className="mobile-menu" style={{backgroundColor: "rgba(" + data.sanityCompanyInfo.primarycolor.rgb.r +","+ data.sanityCompanyInfo.primarycolor.rgb.g +","+ data.sanityCompanyInfo.primarycolor.rgb.b +","+ "0.9" +")"}}>
-                <div className="close-menu">
+                <div className="close-menu" onClick={changeActive}>
                   <HiX style={{fontSize: '2em', color: data.sanityCompanyInfo.primarycolor.hex}} />
                 </div>
                   <ul>
