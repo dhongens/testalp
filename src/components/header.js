@@ -5,7 +5,7 @@ import Fade from "react-reveal"
 import $ from "jquery"
 import { HiMenu, HiX } from "react-icons/hi"
 
-
+if(typeof window !== 'undefined' && typeof document !== 'undefined'){
 $(function(){
   $(".mobile-hamburger").on("click", function(e) {
     e.preventDefault();
@@ -20,7 +20,7 @@ $(".close-menu").on("click", function(e) {
   $("body").removeClass("overflow-hidden");
 });
 
-if(typeof window !== 'undefined'){
+
   var lastScrollTop = 0;
   $(window).on('scroll', function(event){
      var st = $(this).scrollTop();
@@ -31,8 +31,8 @@ if(typeof window !== 'undefined'){
      }
      lastScrollTop = st;
   });
-  }
 });
+}
 
     
 
