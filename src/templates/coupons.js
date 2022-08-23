@@ -104,9 +104,12 @@ export default ({ data }) => (
                       <div className="column1" style={{backgroundImage: 'url('+ data.sanityCompanyInfo.couponbackground.asset.fluid.src + ')'}}>
                           <div className="column-inner" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex+"e3" }}>
                             <div className="coupon">
-                              <span className="coupon-title">{data.sanityPages.coupon.title}</span>
-                              <span className="coupon-type">{data.sanityPages.coupon.type}</span>
-                              <span className="coupon-text">{data.sanityPages.coupon.coupontext}</span>
+                            <div className="scheduleText" style={{color: data.sanityCompanyInfo.accentcolor.hex}}>Schedule Today For</div>
+
+                            <span className="coupon-title">{data.sanityPages.coupon.title}</span>
+                            <span className="coupon-type">{data.sanityPages.coupon.type}</span>
+                            <span className="coupon-text">{data.sanityPages.coupon.coupontext}</span>
+                            <p className="disclaimer">*Restrictions may apply. Call office for details.</p>
                             </div>
                           </div>
 
