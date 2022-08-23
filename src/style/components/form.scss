@@ -181,7 +181,7 @@
               }
               @include phone-only(){
                   padding: 0;
-                  height: 450px;
+                  height: 500px;
                   .formLogo{
                     width: 150px!important;
                     height: 320px !important;
@@ -198,7 +198,7 @@
 
               @supports (-webkit-overflow-scrolling: touch) {
                   /* CSS specific to iOS devices */ 
-                  height: 300px;
+                  height: 450px;
                 }
               .column-inner{
                   padding: 50px;
