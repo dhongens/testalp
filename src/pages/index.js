@@ -141,6 +141,7 @@ export default ({ data }) => (
         src="https://embed.scheduleengine.net/schedule-engine-v3.js"
         ></script>
     </Helmet>
+    <div className="about-us">
     <div className="popupForm">
             <div className="popupForm">
                    <div className="form">
@@ -173,7 +174,7 @@ export default ({ data }) => (
                     </div>
                 </div>
             </div>
-        <Fade bottom>
+        {/* <Fade bottom> */}
 <div className="pageHeader">
       <div className="columns">
         <div className="column1 column">
@@ -207,11 +208,11 @@ export default ({ data }) => (
         </div>
       </div>
     </div>
-    </Fade>
+    {/* </Fade> */}
         <div className="uspSection">
             <div className="inner">
                 <h2 className="uspTitle">Count on Plumbit for all of your home service needs!</h2>
-                <Fade bottom cascade>
+                {/* <Fade bottom cascade> */}
                 <div className="uspColumns">
                 {data.allSanityThreeservices.edges.map(( {node: service})  => 
 
@@ -226,13 +227,13 @@ export default ({ data }) => (
                     </div>
                     )}
                 </div>
-                </Fade>
+                {/* </Fade> */}
             </div>
         </div>
         <SocialProof />
         <div className="contentSection">
             <div className="inner">
-            <Fade bottom cascade>
+            {/* <Fade bottom cascade> */}
                 <div className="columns">
                     <div className="column1 column">
                         <div className="column-inner">
@@ -254,11 +255,11 @@ export default ({ data }) => (
                         </div>
                     </div>
                 </div>
-                </Fade>
+                {/* </Fade> */}
             </div>
         </div>
         <div className="reviewsSection">
-        <Fade bottom cascade>
+        {/* <Fade bottom cascade> */}
             <div className="inner">
                 <h2>What our <br /> customers say</h2>
                 <div className="columns">
@@ -282,10 +283,10 @@ export default ({ data }) => (
                     <a href="/reviews/" class="buttonstyle" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>See More Reviews</a>
                 </div>
             </div>
-            </Fade>
+            {/* </Fade> */}
         </div>
         <div className="coupon-form-section" style={{height: "100%", backgroundImage: "url(" + couponBackground + ")"}} >
-        <Fade bottom>
+        {/* <Fade bottom> */}
             <div className="inner">
                 <div className="columns">
                 <div className="column1 column">
@@ -314,8 +315,10 @@ export default ({ data }) => (
                 </div>
                 </div>
             </div>
-        </Fade>
+        {/* </Fade> */}
     </div>
+    </div>
+    
 
     
   </Layout>

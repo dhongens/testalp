@@ -198,7 +198,7 @@ const Layout = ({ children }) => {
     <noscript>
    <a href='https://www.clickcease.com' rel='nofollow'><img src='https://monitor.clickcease.com/stats/stats.aspx' alt='ClickCease'/></a>
    </noscript>
-    <div className={data.sanityPages.slug.current + " pagewrapper"} >
+    <div className="pagewrapper" >
    <Header />
           <div>
             <main>{children}</main>

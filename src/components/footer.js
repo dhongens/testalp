@@ -40,13 +40,13 @@ export default () => (
     <footer className="footer">
        <div className="badgeBanner">
           <div className="columns">
-            <Fade bottom cascade>
+            {/* <Fade bottom cascade> */}
               <div className="badges">
                 {data.allSanityBadges.edges.map(({ node: badge }) => (
                     <Image fluid={badge.badge_img.asset.fluid} key={badge.badge_name}/>
                   ))}
               </div>     
-              </Fade>
+              {/* </Fade> */}
                   </div>
                 </div>
               <div className="licenses">

@@ -63,7 +63,7 @@ export default () => (
     render={ data => (
         <div className="socialProofSection">
             <div className="inner">
-                <Fade bottom cascade>
+                {/* <Fade bottom cascade> */}
                 <div className="left-items" style={{background: "linear-gradient( to top,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>
                     {data.sanityCompanyInfo.socialproof.map(( socialproof  => 
                         <div className="item">
@@ -75,7 +75,7 @@ export default () => (
                     <div className="van-img">
                         <img src={Van} alt="" />
                     </div>
-                </Fade>
+                {/* </Fade> */}
             </div>
         </div>
     )}

@@ -47,8 +47,9 @@
                         img{
                             margin-bottom: 0;
                         }
-
+                        
                     }
+                    
                     .serviceTitle{
                         text-align: center;
                     }
@@ -63,6 +64,11 @@
                         display: flex;
                         justify-content: center;
                     }
+                }
+            }
+            .column:nth-child(2){
+                img{
+                    transform: scale(1.2);
                 }
             }
         }

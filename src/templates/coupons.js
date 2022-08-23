@@ -96,6 +96,7 @@ export default ({ data }) => (
     <title>{data.sanityCompanyInfo.companyname} | {data.sanityPages.pagetitle}</title>   
       
     </Helmet>
+    <div className="coupons">
     <div className="popupForm">
             <div className="popupForm">
                    <div className="form">
@@ -122,7 +123,7 @@ export default ({ data }) => (
                     </div>
                 </div>
             </div>
-        <Fade bottom>
+        {/* <Fade bottom> */}
         <div className="pageHeader">
          <div className="columns">
         <div className="column1 column">
@@ -153,7 +154,7 @@ export default ({ data }) => (
         </div>
       </div>
     </div>
-    </Fade>
+    {/* </Fade> */}
         <div className="row couponsRow">
             <div className="inner">
                 <ul>
@@ -173,7 +174,7 @@ export default ({ data }) => (
         </div>
         <SocialProof />
         <div className="coupon-form-section" style={{height: "100%", backgroundImage: "url(" + couponBackground + ")"}} >
-        <Fade bottom>
+        {/* <Fade bottom> */}
             <div className="inner">
                 <div className="columns">
                 <div className="column1 column">
@@ -197,8 +198,10 @@ export default ({ data }) => (
                 </div>
                 </div>
             </div>
-        </Fade>
+        {/* </Fade> */}
     </div>
+    </div>
+    
   </Layout>
 )
 

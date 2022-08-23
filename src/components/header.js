@@ -61,7 +61,7 @@ export default () => (
 
         
         render={data => (
-          <Fade bottom cascade>
+          // <Fade bottom cascade>
           <header>
             <div className="mobile-hamburger" onClick={changeActive}>
               <HiMenu style={{fontSize: '2em', color: data.sanityCompanyInfo.primarycolor.hex}} />
@@ -104,7 +104,7 @@ export default () => (
                   </ul>
               </div>
           </header>
-          </Fade>
+          {/* </Fade> */}
         )}
   />
 )

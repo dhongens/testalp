@@ -51,11 +51,11 @@
         z-index: 1001;
     }
     @include tablet-portrait() {
-        width: 90%;
+        width: 100%;
         margin: 0 auto;
         left: 50%;
         top: 50%;
-        height: auto;
+        height: 100%;
         transform: translate(-50%, -50%);
         z-index: 1001;
     }
@@ -77,7 +77,8 @@
         
         @include phone-only(){
             z-index: 1001;
-            height: 600px;
+            height: 100%;
+            border-radius: 0;
         }
         @supports (-webkit-overflow-scrolling: touch) {
             /* CSS specific to iOS devices */ 
@@ -173,11 +174,11 @@
               }
               @include tablet-landscape(){
                   width: 100%;
-                  border-radius: 20px 20px 0 0;
+                  border-radius: 0;
               }
               @include phone-only(){
                   padding: 0;
-                  height: 250px;
+                  height: 300px;
                   .formLogo{
                     width: 150px!important;
                     height: 320px !important;
@@ -205,8 +206,10 @@
                   border-radius: 20px 0 0 20px;
                   width: 100%;
                   @include tablet-portrait(){
-                    padding: 0 ;
-                    border-radius: 20px 20px 0 0;
+                    padding: 50px  30px;
+                    border-radius: 0;
+
+                    
                   }
 
                   
@@ -277,6 +280,7 @@
                   justify-content: center;
                   align-items: center;
                   width: 100%;
+                  padding-top: 0;
                   
                   form{
                       width: 80%;
@@ -287,7 +291,7 @@
                     // padding-top: 12em;
                     overflow: scroll;
                     .innerColumn{
-                        padding-top: 10em;
+                        padding-top: 2em;
                   }
                   form{
                       width: 100%;
