@@ -287,6 +287,13 @@
                       margin: 0 auto;
                     }
                 }
+                @supports (-webkit-touch-callout: none) {
+                    /* CSS specific to iOS devices */ 
+                    .innerColumn{
+                        overflow: scroll;
+
+                  }
+                  }
                 @include tablet-portrait(){
                     // padding-top: 12em;
                     overflow: scroll;
