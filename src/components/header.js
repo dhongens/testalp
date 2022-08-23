@@ -12,18 +12,18 @@ function changeActive(){
 }
 
   
-if(typeof window !== 'undefined'){
-  var lastScrollTop = 0;
-  $(window).on('scroll', function(event){
-     var st = $(this).scrollTop();
-     if (st > lastScrollTop){
-         $("body").addClass("scroll-down");
-     } else {
-        $("body").removeClass("scroll-down");
-     }
-     lastScrollTop = st;
-  });
-}
+// if(typeof window !== 'undefined'){
+//   var lastScrollTop = 0;
+//   $(window).on('scroll', function(event){
+//      var st = $(this).scrollTop();
+//      if (st > lastScrollTop){
+//          $("body").addClass("scroll-down");
+//      } else {
+//         $("body").removeClass("scroll-down");
+//      }
+//      lastScrollTop = st;
+//   });
+// }
 
     
 

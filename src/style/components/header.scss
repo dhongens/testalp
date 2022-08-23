@@ -20,7 +20,7 @@ header{
     background-color: #fff;
     transition: $transition;
     @include phone-only{
-        position: fixed;
+        // position: fixed;
         box-shadow: 0 0 5px 5px rgba(0,0,0,0.1);
 
     }
@@ -255,6 +255,6 @@ header{
 main{
     @include phone-only{
 
-        margin-top: 170px;
+        // margin-top: 170px;
     }
 }

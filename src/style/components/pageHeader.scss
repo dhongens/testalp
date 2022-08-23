@@ -2,6 +2,9 @@
     .column1{
         div.column-inner{
             height: 450px;
+            @include tablet-portrait(){
+                height: 300px;
+            }
         }
     }
 }

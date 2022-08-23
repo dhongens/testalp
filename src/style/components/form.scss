@@ -154,6 +154,9 @@
   
           @include tablet-landscape(){
               flex-direction: column;
+
+              overflow: scroll;
+              border-radius: 0;
           }
           
   
@@ -178,7 +181,7 @@
               }
               @include phone-only(){
                   padding: 0;
-                  height: 300px;
+                  height: 450px;
                   .formLogo{
                     width: 150px!important;
                     height: 320px !important;
@@ -290,13 +293,13 @@
                 @supports (-webkit-touch-callout: none) {
                     /* CSS specific to iOS devices */ 
                     .innerColumn{
-                        overflow: scroll;
+                        // overflow: scroll;
 
                   }
                   }
                 @include tablet-portrait(){
                     // padding-top: 12em;
-                    overflow: scroll;
+                    // overflow: scroll;
                     .innerColumn{
                         padding-top: 2em;
                   }
