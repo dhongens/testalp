@@ -272,6 +272,7 @@ header{
     }
 }
 main{
+    margin-top: 100px;
     @include phone-only{
 
         margin-top: 50px;
