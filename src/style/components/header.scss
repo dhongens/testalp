@@ -21,19 +21,29 @@ header{
     transition: $transition;
     @include phone-only{
         // position: fixed;
-        box-shadow: 0 0 5px 5px rgba(0,0,0,0.1);
+        // box-shadow: 0 0 5px 5px rgba(0,0,0,0.1);
 
     }
-
+    .mobileWrap{
+        @include phone-only{
+            background-color: #fff;
+            position: fixed;
+            width: 100%;
+            left: 0;
+            z-index: 99999;
+            padding-bottom: 30px;
+        }
+        
+    
+    }
     .mobile-hamburger{
         display: none;
         @include phone-only{
             position: relative;
             display: inline-block;
-            // position: fixed;
-            top: 15px;
-            left: 25px;
             z-index: 100;
+            left: 20px;
+            top: 50px;
         }
     }
     .header-inner{
@@ -41,17 +51,19 @@ header{
         grid-template-columns: 1fr 3fr;
         padding: 0 2em;
         align-items: center;
+        background-color: #fff;
         @include phone-only(){
             grid-template-columns: auto;
-            margin-left: 80px;
+            // margin-left: 80px;
             padding-top: 10px;
             justify-content: center;
             // position: fixed;
             margin-top: -2em;
+            position: relative;
 
         }
         @include small-phone{
-            margin-left: 30px;
+            // margin-left: 30px;
         }
         .gatsby-image-wrapper{
             width: 100px;
@@ -79,6 +91,9 @@ header{
             margin-top: 20px;
             margin-left: 10px;
             justify-self: center;
+
+            position: relative;
+            top: 80px;
         }
     }
     .items{
@@ -101,7 +116,10 @@ header{
             grid-column: 1;
             grid-row: 1;
             margin-bottom: 20px;
-            // position: fixed;
+            // margin-top: 30px;
+            position: relative;
+            // left: 100px;
+            top: 20px;
 
         }
         .headerBtns{
@@ -255,6 +273,6 @@ header{
 main{
     @include phone-only{
 
-        // margin-top: 170px;
+        margin-top: 50px;
     }
 }

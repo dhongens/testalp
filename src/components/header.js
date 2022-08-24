@@ -63,10 +63,9 @@ export default () => (
         render={data => (
           // <Fade bottom cascade>
           <header>
-            <div className="mobile-hamburger" onClick={changeActive}>
-              <HiMenu style={{fontSize: '2em', color: data.sanityCompanyInfo.primarycolor.hex}} />
-            </div>
+            
               <div className="header-inner">
+              
               <a href="/">
               <Image location="/"
                   fluid={data.sanityCompanyInfo.logo.asset.fluid}
@@ -75,23 +74,28 @@ export default () => (
                   alt="Logo"
                 />
               </a>
-              
-                <div className="items">
-                  <div className="menu">
-                    <ul>
-                      <li><a href="/about-us/">About Us</a></li>
-                      <li><a href="/our-services/">Our Services</a></li>
-                      <li><a href="/coupons/">Specials</a></li>
-                      <li><a href="/reviews/">Reviews</a></li>
-                    </ul>
-                  </div>
-                  <div className="headerBtns">
-                    <div className="btns-wrap">
-                      <a className="headerbtn phone" style={{ backgroundColor: data.sanityCompanyInfo.secondarycolor.hex, borderColor: data.sanityCompanyInfo.secondarycolor.hex}} href={"tel:" + data.sanityCompanyInfo.phone}><span style={{color: data.sanityCompanyInfo.primarycolor.hex}}>Call 24/7</span> {data.sanityCompanyInfo.phone}</a>
+              <div className="mobileWrap">
+                <div className="mobile-hamburger" onClick={changeActive}>
+                  <HiMenu style={{fontSize: '2em', color: data.sanityCompanyInfo.primarycolor.hex}} />
+                </div>
+                  <div className="items">
+                    <div className="menu">
+                      <ul>
+                        <li><a href="/about-us/">About Us</a></li>
+                        <li><a href="/our-services/">Our Services</a></li>
+                        <li><a href="/coupons/">Specials</a></li>
+                        <li><a href="/reviews/">Reviews</a></li>
+                      </ul>
+                    </div>
+                    <div className="headerBtns">
+                      <div className="btns-wrap">
+                        <a className="headerbtn phone" style={{ backgroundColor: data.sanityCompanyInfo.secondarycolor.hex, borderColor: data.sanityCompanyInfo.secondarycolor.hex}} href={"tel:" + data.sanityCompanyInfo.phone}><span style={{color: data.sanityCompanyInfo.primarycolor.hex}}>Call 24/7</span> {data.sanityCompanyInfo.phone}</a>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+              
               <div className="mobile-menu" style={{backgroundColor: "rgba(" + data.sanityCompanyInfo.primarycolor.rgb.r +","+ data.sanityCompanyInfo.primarycolor.rgb.g +","+ data.sanityCompanyInfo.primarycolor.rgb.b +","+ "0.9" +")"}}>
                 <div className="close-menu" onClick={changeActive}>
                   <HiX style={{fontSize: '2em', color: data.sanityCompanyInfo.primarycolor.hex}} />
