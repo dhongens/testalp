@@ -66,23 +66,18 @@ export const query = graphql`
                     }
                 }
             }
-            
-    }
-    allSanityPageheaderservices {
-        edges {
-          node {
-            servicelink
-            servicetitle
-            icon {
-              asset {
-                fluid {
-                  src
+            services{
+                servicelink
+                servicetitle
+                serviceicon {
+                    asset {
+                        fixed {
+                            src
+                        }
+                    }
                 }
-              }
             }
-          }
-        }
-      }
+    }
         sanityCompanyInfo {
             companyname
             primarycolor{
@@ -177,15 +172,14 @@ export default ({ data }) => (
                     <div className="servicesSelection">
                         <h3 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>Count on Plumbit for all of your plumbing needs!</h3>
                         <div className="servicesIcons">
-                        {data.allSanityPageheaderservices.edges.map(( {node: service})  => 
+                        {data.sanityServicepages.services.map(service => 
                         <div className="service">
                             <div className="service-inner">
                             <a href={service.servicelink}>
                                 <div className="icon">
-                                <img src={service.icon.asset.fluid.src} alt="" />
+                                <img src={service.serviceicon.asset.fixed.src} alt="" />
                                 </div>
                                 <div className="serviceName" style={{color: data.sanityCompanyInfo.secondarycolor.hex}}>{service.servicetitle}</div>
-
                             </a>
                             </div>
                         </div>
