@@ -137,19 +137,21 @@ body{
         }
     }
     .buttonstyle{
-        background: linear-gradient(to right, #E49B74, #CC562E);
+        // background: linear-gradient(to right, #E49B74, #CC562E);
         padding: 20px;
         border-radius: 20px;
         color: #fff;
         transition: all ease .2s;
             &:hover{
-                background: linear-gradient(to right, #CC562E, #E49B74);
+                // background: linear-gradient(to right, #CC562E, #E49B74);
                 transition: all ease .2s;
                 color: #fff;
             }
 
             svg{
                 animation: bounce .8s infinite alternate ease-in-out;
+                position: relative;
+                top: 3px;
             }
     }
 .pageHeaderbg{

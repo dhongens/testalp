@@ -27,6 +27,9 @@
             }
             .column2{
                 position: relative;
+                .gatsby-image-wrapper{
+                    border-radius: 50px 0 50px 0;
+                }
                 .schedule-btn{
                     position: absolute;
                     top: 450px;

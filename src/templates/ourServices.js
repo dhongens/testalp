@@ -164,7 +164,7 @@ export default ({ data }) => (
 
               </p>
               <div className="schedule-btn">
-                <a href="#" onClick={changeActive} style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityPages.coupon.title} <FaArrowRight /></a>
+                <a href="#" onClick={changeActive} className="buttonstyle" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityPages.coupon.title} <FaArrowRight /></a>
 
               </div>
           </div>
@@ -212,7 +212,7 @@ export default ({ data }) => (
                             style={{height: "100%"}}
                             fluid={data.sanityPages.serviceimage.asset.fluid}>
                         </Image>
-                        <div className="schedule-btn"><a href="#" onClick={changeActive} style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityPages.coupon.title} <FaArrowRight /></a></div>
+                        <div className="schedule-btn"><a href="#" onClick={changeActive} className="buttonstyle" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityPages.coupon.title} <FaArrowRight /></a></div>
                         </div>
                     </div>
                 </div>

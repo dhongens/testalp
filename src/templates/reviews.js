@@ -145,7 +145,7 @@ export default ({ data }) => (
               <PortableText style={{color: data.sanityCompanyInfo.primarycolor.hex}} blocks={data.sanityPages._rawPageIntro} />
 
               <div className="schedule-btn">
-                <a href="#" onClick={changeActive} style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for $20 Off Toilet Repair <FaArrowRight /></a>
+                <a href="#" onClick={changeActive} className="buttonstyle" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for $20 Off Toilet Repair <FaArrowRight /></a>
               </div>
           </div>
         </div>

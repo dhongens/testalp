@@ -193,7 +193,12 @@ const Layout = ({ children }) => {
               var target = 'https://www.clickcease.com/monitor/stat.js';
               script.src = target;var elem = document.head;elem.appendChild(script);`}
               </script>
-   
+              <style>{`
+                    .pageHeader h1, h1, h2, h3, h4, h5, h6{
+                      color:  ${data.sanityCompanyInfo.primarycolor.hex } !important; 
+                    }
+                    `}
+                  </style>
     </Helmet>
     <noscript>
    <a href='https://www.clickcease.com' rel='nofollow'><img src='https://monitor.clickcease.com/stats/stats.aspx' alt='ClickCease'/></a>

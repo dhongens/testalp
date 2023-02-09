@@ -39,8 +39,12 @@ function changeActive(e){
   var city = getUrlVars()["city"];
 
   if (city !== undefined){
-      var cityplace = "in " + city;
-      var citytitle = city+"'s";
+    let cityDash = city;
+    cityDash = cityDash.replace(/-/g, ' ');
+
+      var cityplace = " in " + cityDash;
+      var citytitle = cityDash+"'s";
+
   }
 
 export const query = graphql`
