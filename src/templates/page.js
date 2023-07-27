@@ -20,6 +20,30 @@ function changeActive(){
     $('body').toggleClass('formExpanded');
   }
 
+  function getUrlVars(){
+    var vars = [], hash;
+    if(typeof window !== 'undefined'){
+        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        for(var i = 0; i < hashes.length; i++)
+        {
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
+        }
+    }
+    return vars;
+  }
+  var city = getUrlVars()["city"];
+
+  if (city !== undefined){
+    let cityDash = city;
+    cityDash = cityDash.replace(/-/g, ' ');
+
+      var cityplace = " in " + cityDash;
+      var citytitle = cityDash+"'s";
+
+  }
+
 export const query = graphql`
     query pageQuery{
         sanityPages(slug: {current: {eq: "about-us"}}) {
@@ -30,6 +54,7 @@ export const query = graphql`
             slug {
                 current
             }
+            pageIntroTitle
             _rawPageIntro
             _rawFirstcopy
             coupon {
@@ -165,14 +190,15 @@ export default ({ data }) => (
         </div>
         <div className="column2 column">
           <div className="column-inner">
-              <div className="location" style={{color: data.sanityCompanyInfo.accentcolor.hex}}><FaMapMarkerAlt /> Providing Same Day Service in Rockwall</div>
-              <h1 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>Rockwall's Best Plumbing Technicians</h1>
+              <div className="location" style={{color: data.sanityCompanyInfo.accentcolor.hex}}><FaMapMarkerAlt /> Providing Same Day Service {cityplace}</div>
+              <h1 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>{citytitle} {data.sanityPages.pageIntroTitle}</h1>
               <p style={{color: data.sanityCompanyInfo.primarycolor.hex}}>
                 <PortableText blocks={data.sanityPages._rawPageIntro} />
 
               </p>
               <div className="schedule-btn">
-                <a href="#" onClick={changeActive} className="buttonstyle" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for $20 Off Toilet Repair <FaArrowRight /></a>
+              <a onClick={changeActive} className="buttonstyle" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityPages.coupon.title} <FaArrowRight /></a>
+
               </div>
           </div>
         </div>
@@ -181,7 +207,7 @@ export default ({ data }) => (
     {/* </Fade> */}
         <div className="uspSection">
             <div className="inner">
-                <h2 className="uspTitle">Count on Plumbit for all of your home service needs!</h2>
+                <h2 className="uspTitle">Count on {data.sanityCompanyInfo.companyname} for all of your home service needs!</h2>
                 {/* <Fade bottom cascade> */}
                 <div className="uspColumns">
                 {data.allSanityThreeservices.edges.map(( {node: service})  => 
@@ -216,7 +242,7 @@ export default ({ data }) => (
                             style={{height: "100%"}}
                             fluid={data.sanityPages.serviceimage.asset.fluid}>
                         </Image>
-                        <div className="schedule-btn"><a onClick={changeActive} className="buttonstyle" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule today for $20 off plumbing repairs <FaArrowRight /></a></div>
+                        <div className="schedule-btn"><a onClick={changeActive} className="buttonstyle" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule today for {data.sanityPages.coupon.title} <FaArrowRight /></a></div>
                         </div>
                     </div>
                 </div>
@@ -251,8 +277,9 @@ export default ({ data }) => (
             </div>
             {/* </Fade> */}
         </div>
-        <div className="coupon-form-section" style={{height: "100%", backgroundImage: "url(" + couponBackground + ")"}} >
+        <div className="coupon-form-section" style={{height: "100%", backgroundImage: "url(" + data.sanityCompanyInfo.couponbackground.asset.fluid.src + ")"}} >
         {/* <Fade bottom> */}
+        <div className="background-overlay" style={{backgroundColor: "rgba(" + data.sanityCompanyInfo.primarycolor.rgb.r +","+ data.sanityCompanyInfo.primarycolor.rgb.g +","+ data.sanityCompanyInfo.primarycolor.rgb.b +","+ "0.7" +")"}}>
             <div className="inner">
                 <div className="columns">
                 <div className="column1 column">
@@ -280,6 +307,7 @@ export default ({ data }) => (
                     </div>
                 </div>
                 </div>
+            </div>
             </div>
         {/* </Fade> */}
     </div>

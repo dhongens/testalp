@@ -17,6 +17,29 @@ function changeActive(){
     $('body').toggleClass('formExpanded');
   }
 
+  function getUrlVars(){
+    var vars = [], hash;
+    if(typeof window !== 'undefined'){
+        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        for(var i = 0; i < hashes.length; i++)
+        {
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
+        }
+    }
+    return vars;
+  }
+  var city = getUrlVars()["city"];
+
+  if (city !== undefined){
+    let cityDash = city;
+    cityDash = cityDash.replace(/-/g, ' ');
+
+      var cityplace = " in " + cityDash;
+      var citytitle = cityDash+"'s";
+
+  }
 export const query = graphql`
     query reviewsQuery {
         sanityPages(slug: {current: {eq: "reviews"}}) {
@@ -24,6 +47,7 @@ export const query = graphql`
             slug {
                 current
             }
+            pageIntroTitle
             _rawFirstcopy
             _rawPageIntro
             coupon {
@@ -140,12 +164,14 @@ export default ({ data }) => (
         </div>
         <div className="column2 column">
           <div className="column-inner">
-              <div className="location" style={{color: data.sanityCompanyInfo.accentcolor.hex}}><FaMapMarkerAlt /> Providing Same Day Service in Rockwall</div>
-              <h1 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>What Our Customers Are Saying</h1>
+              <div className="location" style={{color: data.sanityCompanyInfo.accentcolor.hex}}><FaMapMarkerAlt /> Providing Same Day Service {cityplace}</div>
+              <h1 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>{data.sanityPages.pageIntroTitle}</h1>
+
               <PortableText style={{color: data.sanityCompanyInfo.primarycolor.hex}} blocks={data.sanityPages._rawPageIntro} />
 
               <div className="schedule-btn">
-                <a href="#" onClick={changeActive} className="buttonstyle" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for $20 Off Toilet Repair <FaArrowRight /></a>
+              <a onClick={changeActive} className="buttonstyle" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityPages.coupon.title} <FaArrowRight /></a>
+
               </div>
           </div>
         </div>

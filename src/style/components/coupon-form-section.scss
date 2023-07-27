@@ -6,14 +6,21 @@
     }
 }
 .coupon-form-section{
-    padding: 150px 0;
+    // padding: 150px 0;
     background-position: center;
     background-size: cover;
     @include phone-only{
-        padding-bottom: 100px;
+        // padding-bottom: 100px;
         background-position: center 0;
         background-size: 330% auto;
         background-repeat: no-repeat;
+    }
+    .background-overlay{
+        padding: 150px 0;
+        @include phone-only{
+            padding-bottom: 100px;
+        }
+
     }
     .inner{
         width: 90%;
@@ -48,7 +55,7 @@
                     justify-content: center;
                     align-items: center;
                     .couponUSP{
-                        color: #fff;
+                        color: #fff !important;
                         width: 400px;
                         text-align: center;
                         font-size: 2em;
@@ -85,8 +92,9 @@
                         }
                         .couponType{
                             color:#fff;
-                            font-size: 2em;
+                            font-size: 1.6em;
                             font-weight: 700;
+                            line-height: 35px;
                             @include tablet-portrait{
                                 line-height: 50px;
                             }

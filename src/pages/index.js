@@ -57,6 +57,7 @@ export const query = graphql`
             slug {
                 current
             }
+            pageIntroTitle
             _rawPageIntro
             _rawFirstcopy
             coupon {
@@ -199,7 +200,7 @@ export default ({ data }) => (
         <div className="column2 column">
           <div className="column-inner">
               <div className="location" style={{color: data.sanityCompanyInfo.accentcolor.hex}}><FaMapMarkerAlt /> Providing Same Day Service {cityplace}</div>
-              <h1 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>{citytitle} Best Plumbing Technicians</h1>
+              <h1 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>{citytitle} {data.sanityPages.pageIntroTitle}</h1>
               <p style={{color: data.sanityCompanyInfo.primarycolor.hex}}>
                 <PortableText blocks={data.sanityPages._rawPageIntro} />
 
@@ -215,7 +216,7 @@ export default ({ data }) => (
     {/* </Fade> */}
         <div className="uspSection">
             <div className="inner">
-                <h2 className="uspTitle">Count on Plumbit for all of your home service needs!</h2>
+                <h2 className="uspTitle">Count on {data.sanityCompanyInfo.companyname} for all of your home service needs!</h2>
                 {/* <Fade bottom cascade> */}
                 <div className="uspColumns">
                 {data.allSanityThreeservices.edges.map(( {node: service})  => 
@@ -289,8 +290,9 @@ export default ({ data }) => (
             </div>
             {/* </Fade> */}
         </div>
-        <div className="coupon-form-section" style={{height: "100%", backgroundImage: "url(" + couponBackground + ")"}} >
+        <div className="coupon-form-section" style={{height: "100%", backgroundImage: "url(" + data.sanityCompanyInfo.couponbackground.asset.fluid.src + ")"}} >
         {/* <Fade bottom> */}
+        <div className="background-overlay" style={{backgroundColor: "rgba(" + data.sanityCompanyInfo.primarycolor.rgb.r +","+ data.sanityCompanyInfo.primarycolor.rgb.g +","+ data.sanityCompanyInfo.primarycolor.rgb.b +","+ "0.7" +")"}}>
             <div className="inner">
                 <div className="columns">
                 <div className="column1 column">
@@ -319,6 +321,7 @@ export default ({ data }) => (
                 </div>
                 </div>
             </div>
+        </div>
         {/* </Fade> */}
     </div>
     </div>
