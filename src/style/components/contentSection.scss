@@ -31,11 +31,15 @@
                     border-radius: 50px 0 50px 0;
                 }
                 .schedule-btn{
-                    position: absolute;
-                    top: 450px;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    width: 430px;
+                    // position: absolute;
+                    // top: 450px;
+                    // left: 50%;
+                    // transform: translateX(-50%);
+                    width: auto;
+                    margin: 0 auto;
+                    margin-top: 50px;
+                    display: block;
+                    text-align: center;
                     @include tablet-portrait{
                         left: initial;
                         transform: initial;
@@ -57,7 +61,8 @@
                         cursor: pointer;
                         @include tablet-portrait{
                             font-size: 0.7em !important;
-                            display: block;
+                            display: none;
+                            
                         }
                         @include phone-only{
                             font-size: 1em !important;

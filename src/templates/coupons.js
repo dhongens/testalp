@@ -163,7 +163,6 @@ export default ({ data }) => (
                             <span className="coupon-title">{data.sanityPages.coupon.title}</span>
                             <span className="coupon-type">{data.sanityPages.coupon.type}</span>
                             <span className="coupon-text">{data.sanityPages.coupon.coupontext}</span>
-                            <p className="disclaimer">*Restrictions may apply. Call office for details.</p>
                             </div>
                           </div>
 
@@ -253,7 +252,9 @@ export default ({ data }) => (
         </div>
     </div>
     </div>
-    
+    <div className="sticky-mobile">
+              <a onClick={changeActive} className="schedule-btn" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityPages.coupon.title} <FaArrowRight /></a>
+            </div>
   </Layout>
 )
 

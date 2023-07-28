@@ -39,7 +39,10 @@ function changeActive(){
       var cityplace = " in " + cityDash;
       var citytitle = cityDash+"'s";
 
-  }
+      var citylink = "?city=" + city;
+    } else{
+      var citylink ="";
+    }
 
 export const query = graphql`
     query servicePageQuery($slug: String){
@@ -132,7 +135,6 @@ export default ({ data }) => (
                               <span className="coupon-title">{data.sanityServicepages.coupon.title}</span>
                               <span className="coupon-type">{data.sanityServicepages.coupon.type}</span>
                               <span className="coupon-text">{data.sanityServicepages.coupon.coupontext}</span>
-                        <p className="disclaimer">*Restrictions may apply. Call office for details.</p>
 
                             </div>
                           </div>
@@ -168,7 +170,7 @@ export default ({ data }) => (
                 <div className="column2 column">
                 <div className="column-inner">
                     <div className="location" style={{color: data.sanityCompanyInfo.accentcolor.hex}}><FaMapMarkerAlt /> Providing Same Day Service {cityplace}</div>
-                    <h1 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>{citytitle} {data.sanityServicepages.pageIntroTitle}</h1>
+                    <h1 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>{data.sanityServicepages.pageIntroTitle} {cityplace}</h1>
 
                     <PortableText style={{color: data.sanityCompanyInfo.primarycolor.hex}} blocks={data.sanityServicepages._rawPageIntro} />
 
@@ -181,7 +183,7 @@ export default ({ data }) => (
                         {data.sanityServicepages.services.map(service => 
                          <div className="service">
                          <div className="service-inner">
-                         <a href={"/" + service.slug.current}>
+                         <a href={"/" + service.slug.current + citylink}>
                              <div className="icon">
                              <img src={data.sanityCompanyInfo.favicon.asset.fluid.src} alt="" />
                              </div>
@@ -210,7 +212,6 @@ export default ({ data }) => (
                         <div className="couponOffer">{data.sanityServicepages.coupon.title}</div>
                         <div className="couponType">{data.sanityServicepages.coupon.type}</div>
                         <p className="couponInfo">{data.sanityServicepages.coupon.coupontext}</p>
-                        <p className="disclaimer">*Restrictions may apply. Call office for details.</p>
                     </div>
                     </div>
                 </div>
@@ -250,5 +251,8 @@ export default ({ data }) => (
                 {/* </Fade> */}
             </div>
         </div>
+        <div className="sticky-mobile">
+              <a onClick={changeActive} className="schedule-btn" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityServicepages.coupon.title} <FaArrowRight /></a>
+            </div>
   </Layout>
 )

@@ -12,18 +12,33 @@ function changeActive(){
 }
 
   
-// if(typeof window !== 'undefined'){
-//   var lastScrollTop = 0;
-//   $(window).on('scroll', function(event){
-//      var st = $(this).scrollTop();
-//      if (st > lastScrollTop){
-//          $("body").addClass("scroll-down");
-//      } else {
-//         $("body").removeClass("scroll-down");
-//      }
-//      lastScrollTop = st;
-//   });
-// }
+
+function getUrlVars(){
+  var vars = [], hash;
+  if(typeof window !== 'undefined'){
+      var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+      for(var i = 0; i < hashes.length; i++)
+      {
+          hash = hashes[i].split('=');
+          vars.push(hash[0]);
+          vars[hash[0]] = hash[1];
+      }
+  }
+  return vars;
+}
+var city = getUrlVars()["city"];
+
+if (city !== undefined){
+  let cityDash = city;
+  cityDash = cityDash.replace(/-/g, ' ');
+
+    var cityplace = " in " + cityDash;
+    var citytitle = cityDash+"'s";
+      
+    var citylink = "?city=" + city;
+} else{
+  var citylink ="";
+}
 
     
 
@@ -66,8 +81,8 @@ export default () => (
             
               <div className="header-inner">
               
-              <a href="/">
-              <Image location="/"
+              <a href={"/" + citylink}>
+              <Image location={citylink}
                   fluid={data.sanityCompanyInfo.logo.asset.fluid}
                   style={{ height: "auto", width: "200px" }}
                   className="align-center logo"
@@ -81,15 +96,15 @@ export default () => (
                   <div className="items">
                     <div className="menu">
                       <ul>
-                        <li><a href="/about-us/">About Us</a></li>
-                        <li><a href="/our-services/">Our Services</a></li>
-                        <li><a href="/coupons/">Specials</a></li>
-                        <li><a href="/reviews/">Reviews</a></li>
+                        <li><a href={"/about-us" + citylink}>About Us</a></li>
+                        <li><a href={"/our-services"  + citylink}>Our Services</a></li>
+                        <li><a href={"/coupons"  + citylink}>Specials</a></li>
+                        <li><a href={"/reviews"  + citylink}>Reviews</a></li>
                       </ul>
                     </div>
                     <div className="headerBtns">
                       <div className="btns-wrap">
-                        <a className="headerbtn phone" style={{ backgroundColor: data.sanityCompanyInfo.secondarycolor.hex, borderColor: data.sanityCompanyInfo.secondarycolor.hex}} href={"tel:" + data.sanityCompanyInfo.phone}><span style={{color: data.sanityCompanyInfo.primarycolor.hex}}>Call 24/7</span> {data.sanityCompanyInfo.phone}</a>
+                        <a className="headerbtn phone" style={{ backgroundColor: data.sanityCompanyInfo.secondarycolor.hex, borderColor: data.sanityCompanyInfo.secondarycolor.hex}} href={"tel:" + data.sanityCompanyInfo.phone}><span className="calltext" style={{color: data.sanityCompanyInfo.primarycolor.hex}}>Call 24/7</span> {data.sanityCompanyInfo.phone}</a>
                       </div>
                     </div>
                   </div>
@@ -101,10 +116,10 @@ export default () => (
                   <HiX style={{fontSize: '2em', color: data.sanityCompanyInfo.primarycolor.hex}} />
                 </div>
                   <ul>
-                    <li><a href="/about-us/">About Us</a></li>
-                    <li><a href="/our-services/">Our Services</a></li>
-                    <li><a href="/coupons/">Specials</a></li>
-                    <li><a href="/reviews/">Reviews</a></li>
+                    <li><a href={"/about-us" + citylink}>About Us</a></li>
+                    <li><a href={"/our-services"  + citylink}>Our Services</a></li>
+                    <li><a href={"/coupons"  + citylink}>Specials</a></li>
+                    <li><a href={"/reviews"  + citylink}>Reviews</a></li>
                   </ul>
               </div>
           </header>

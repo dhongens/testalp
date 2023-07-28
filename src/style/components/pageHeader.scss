@@ -86,6 +86,7 @@
 
                     @include tablet-portrait{
                         font-size: 0.6em !important;
+                        display: none;
                     }
                     @include phone-only{
                         font-size: 1em !important;

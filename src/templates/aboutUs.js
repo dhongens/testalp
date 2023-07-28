@@ -37,9 +37,16 @@ function changeActive(e){
   var city = getUrlVars()["city"];
 
   if (city !== undefined){
-      var cityplace = "in " + city;
+    let cityDash = city;
+    cityDash = cityDash.replace(/-/g, ' ');
+
+      var cityplace = "in " + cityDash;
+
       var citytitle = city+"'s";
-  }
+      var citylink = "?city=" + city;
+    } else{
+      var citylink ="";
+    }
 
 export const query = graphql`
     query aboutQuery{
@@ -155,7 +162,6 @@ export default ({ data }) => (
                               <span className="coupon-title">{data.sanityPages.coupon.title}</span>
                               <span className="coupon-type">{data.sanityPages.coupon.type}</span>
                               <span className="coupon-text">{data.sanityPages.coupon.coupontext}</span>
-                        <p className="disclaimer">*Restrictions may apply. Call office for details.</p>
 
                             </div>
                           </div>
@@ -194,7 +200,7 @@ export default ({ data }) => (
         <div className="column2 column">
           <div className="column-inner">
               <div className="location" style={{color: data.sanityCompanyInfo.accentcolor.hex}}><FaMapMarkerAlt /> Providing Same Day Service {cityplace}</div>
-              <h1 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>{citytitle} {data.sanityPages.pageIntroTitle}</h1>
+              <h1 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>{data.sanityPages.pageIntroTitle} {cityplace}</h1>
               <p style={{color: data.sanityCompanyInfo.primarycolor.hex}}>
                 <PortableText blocks={data.sanityPages._rawPageIntro} />
 
@@ -221,7 +227,8 @@ export default ({ data }) => (
                             <div className="icon" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex}}><img style={{width: '20px'}} src={service.icon.asset.fluid.src}/></div>
                             <h3 className="serviceTitle">{service.servicetitle} Services</h3>
                             <p>{service.servicetext}</p>
-                            <a href={service.servicelink} className="serviceLink" style={{color: data.sanityCompanyInfo.secondarycolor.hex}}>Go to {service.servicetitle} Page <FaAngleRight /></a>
+                            <a href={service.servicelink + "" + citylink} className="serviceLink" style={{color: data.sanityCompanyInfo.secondarycolor.hex}}>Go to {service.servicetitle} Page <FaAngleRight /></a>
+
                         </div>
                     </div>
                     )}
@@ -279,7 +286,7 @@ export default ({ data }) => (
                     ))}
                 </div>
                 <div className="reviews-btn">
-                    <a href="/reviews/" class="buttonstyle" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>See More Reviews</a>
+                    <a href={"/reviews" + "" + citylink} class="buttonstyle" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>See More Reviews</a>
                 </div>
             </div>
             {/* </Fade> */}
@@ -296,7 +303,6 @@ export default ({ data }) => (
                         <div className="couponOffer">{data.sanityPages.coupon.title}</div>
                         <div className="couponType">{data.sanityPages.coupon.type}</div>
                         <p className="couponInfo">{data.sanityPages.coupon.coupontext}</p>
-                        <p className="disclaimer">*Restrictions may apply. Call office for details.</p>
                     </div>
                     </div>
                 </div>
@@ -320,7 +326,9 @@ export default ({ data }) => (
     </div>
     </div>
     
-
+    <div className="sticky-mobile">
+              <a onClick={changeActive} className="schedule-btn" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityPages.coupon.title} <FaArrowRight /></a>
+            </div>
     
   </Layout>
 )

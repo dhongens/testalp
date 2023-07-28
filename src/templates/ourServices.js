@@ -40,7 +40,10 @@ function changeActive(e){
       var cityplace = " in " + cityDash;
       var citytitle = cityDash+"'s";
 
-  }
+      var citylink = "?city=" + city;
+    } else{
+      var citylink ="";
+    }
 
 export const query = graphql`
     query ourServicesQuery{
@@ -143,7 +146,6 @@ export default ({ data }) => (
                               <span className="coupon-title">{data.sanityPages.coupon.title}</span>
                               <span className="coupon-type">{data.sanityPages.coupon.type}</span>
                               <span className="coupon-text">{data.sanityPages.coupon.coupontext}</span>
-                        <p className="disclaimer">*Restrictions may apply. Call office for details.</p>
 
                             </div>
                           </div>
@@ -182,7 +184,7 @@ export default ({ data }) => (
         <div className="column2 column">
           <div className="column-inner">
               <div className="location" style={{color: data.sanityCompanyInfo.accentcolor.hex}}><FaMapMarkerAlt /> Providing Same Day Service {cityplace}</div>
-              <h1 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>{citytitle} {data.sanityPages.pageIntroTitle}</h1>
+              <h1 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>{data.sanityPages.pageIntroTitle} {cityplace}</h1>
               <p style={{color: data.sanityCompanyInfo.primarycolor.hex}}>
                 <PortableText blocks={data.sanityPages._rawPageIntro} />
 
@@ -209,7 +211,7 @@ export default ({ data }) => (
                             <h3>{services.servicemaintitle} Services</h3>
                             <ul>
                                 {services.servicelist.map(item => (
-                                    <li><a href={item.servicelink}>{item.servicename}</a></li>
+                                    <li><a href={item.servicelink + citylink}>{item.servicename}</a></li>
                                  ))}
                             </ul>
                         </div>
@@ -256,7 +258,6 @@ export default ({ data }) => (
                         <div className="couponOffer">{data.sanityPages.coupon.title}</div>
                         <div className="couponType">{data.sanityPages.coupon.type}</div>
                         <p className="couponInfo">{data.sanityPages.coupon.coupontext}</p>
-                        <p className="disclaimer">*Restrictions may apply. Call office for details.</p>
                     </div>
                     </div>
                 </div>
@@ -280,6 +281,8 @@ export default ({ data }) => (
         </div>
     </div>
     </div>
-    
+    <div className="sticky-mobile">
+              <a onClick={changeActive} className="schedule-btn" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityPages.coupon.title} <FaArrowRight /></a>
+            </div>
   </Layout>
 )

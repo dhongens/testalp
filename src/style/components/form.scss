@@ -181,7 +181,7 @@
               }
               @include phone-only(){
                   padding: 0;
-                  height: 500px;
+                  height: 300px;
                   .formLogo{
                     width: 150px!important;
                     height: 320px !important;
@@ -209,7 +209,7 @@
                   border-radius: 20px 0 0 20px;
                   width: 100%;
                   @include tablet-portrait(){
-                    padding: 50px  30px;
+                    padding: 2em;
                     border-radius: 0;
 
                     
@@ -231,9 +231,12 @@
                       justify-content: center;
                       @include tablet-portrait(){
                         height: auto;
-                        padding: 20px;
+                        padding: 0;
                         width: 100%;
+                        background-color: initial !important;
+                        border: 0;
                       }
+                      
                       .scheduleText{
                         font-weight: 600;
                         font-size: 1.1em;
@@ -247,7 +250,9 @@
                           line-height: 60px;
                           @include tablet-portrait(){
                               font-size: 1.3em;
-                              line-height: 30px;
+                              line-height: 25px;
+                              font-weight: 700;
+                              padding: 15px 0;
 
                           }
                       }
@@ -257,11 +262,18 @@
                           line-height: 50px;
                           @include tablet-portrait(){
                               font-size: 1em;
-                              line-height: 30px;
+                              line-height: 20px;
+                              font-weight: 500;
                           }
 
                       }
-                      .coupon-text{}
+                      .coupon-text{
+                        @include tablet-portrait(){
+                            font-size: .8em;
+                            padding-top: 25px;
+                            line-height: 14px;
+                        }
+                      }
                       .disclaimer{
                         color: #fff;
                       }

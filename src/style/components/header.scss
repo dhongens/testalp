@@ -171,6 +171,9 @@ header{
         @include tablet-portrait{
             width: 200px;
         }
+        @include phone-only{
+            font-size: 1.2em !important;
+        }
         @include small-phone{
             width: 200px;
             font-size: 0.7em !important;
@@ -180,6 +183,11 @@ header{
         }
         span{
             margin-right: 10px;
+        }
+        .calltext{
+            @include phone-only{
+                display: none;
+            }
         }
     }
     .gatsby-image-wrapper{

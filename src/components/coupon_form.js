@@ -74,7 +74,7 @@ export default class ContactForm extends React.Component {
     //email validation
     const emailvalidation = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    var emailinput = document.getElementById('mail-email');
+    var emailinput = document.getElementById('mail-emailfield');
     var emailinputValue = emailinput.value;
     
     var emailerrormsg = document.createElement("p");
@@ -97,9 +97,9 @@ export default class ContactForm extends React.Component {
         name: this.state.name,
         honeypot: this.state.honeypot,
         message: this.state.message,
-        // tel: this.state.tel,
+        tel: this.state.tel,
         // city: this.state.city,
-        zipcode: this.state.zipcode,
+        // zipcode: this.state.zipcode,
         vsref: this.state.vsref,
         gclid: this.state.gclid,
         });
@@ -137,7 +137,7 @@ export default class ContactForm extends React.Component {
       <>
       <StaticQuery
           query={graphql`
-              query formquery($slug: String) {
+              query coupon_formquery($slug: String) {
                 sanityCompanyInfo {
                   companyname
                   phone
@@ -177,9 +177,10 @@ export default class ContactForm extends React.Component {
             `}
                  render={data => (
                    <>
-                      <form ref={this.formRef} id="form-metrics" onSubmit={this.handleSubmit} action={"https://metrics.vitalstorm.com/email_form_submission/" + data.sanityCompanyInfo.formhash} method="POST">
+                   <div className="coupon_form">                   
+                      <form ref={this.formRef} id="form-metrics" onSubmit={this.handleSubmit} action={this.state.formAction} method="POST">
                         <input id="mail-name" className="inputfield" type="text" name="name" value={this.state.name} onChange={this.handleInputChange} placeholder="Enter your full name" required />
-                        <input id="mail-email" className="inputfield" type="text" name="honeypot" value={this.state.honeypot} onChange={this.handleInputChange} placeholder="Email address" minLength="3" maxLength="64" required />
+                        <input id="mail-emailfield" className="inputfield" type="text" name="honeypot" value={this.state.honeypot} onChange={this.handleInputChange} placeholder="Email address" minLength="3" maxLength="64" required />
                         <input id="mail-honey" className="inputfield" type="text" name="email" />
                         <input id="mail-tel" className="inputfield" name="tel" value={this.state.tel} pattern="^\d{10}$" type="tel" onChange={this.handleInputChange} placeholder="Phone Number (Format: 1234567890)" required />
                         <input id="mail-message" className="inputfield" type="text" value={this.state.message} onChange={this.handleInputChange} name="message" placeholder="Request a service" required />
@@ -190,6 +191,7 @@ export default class ContactForm extends React.Component {
                         </div>
                         <FormMessage submitted={this.state.submitted} />
                       </form>
+                      </div>
                     </>
                   )}  
               />

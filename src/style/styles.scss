@@ -68,6 +68,7 @@ $transition: 0.2s ease all;
 @import './pages/coupons.scss';
 @import './404.scss';
 @import './pages/about-page.scss';
+@import './pages/thankyou.scss';
 
 body{
     background: #fff;
@@ -261,5 +262,27 @@ body{
         padding: 20px 0;
         text-transform: uppercase;
         color: #fff;
+    }
+}
+
+.sticky-mobile{
+    display:none;
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    z-index: 299;
+    
+    @include tablet-portrait(){
+        display:block;
+    }
+    a{
+        display: block;
+        border-radius: 20px; 
+        padding: 20px 35px; 
+        color: #fff;
+        box-shadow: 0 0 10px 0px rgba(0,0,0,0.3);
+
     }
 }
