@@ -25,7 +25,18 @@ import $ from 'jquery';
     }
     var city = getUrlVars()["city"];
 
-
+    if (city !== undefined){
+      let cityDash = city;
+      cityDash = cityDash.replace(/-/g, ' ');
+  
+        var cityplace = " in " + cityDash;
+        var citytitle = cityDash+"'s";
+          
+        var citylink = "?city=" + city;
+    } else{
+      var citylink ="";
+    }
+  
       
 
   
