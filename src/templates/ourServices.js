@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Layout from "../components/layout"
 import Form from "../components/form"
+import CouponForm from "../components/coupon_form"
 import Helmet from 'react-helmet'
 import BackgroundImage from 'gatsby-background-image';
 import SocialProof from '../components/socialProof';
@@ -265,14 +266,7 @@ export default ({ data }) => (
                     <div className="inner">
                     <h3>Don’t Wait All Day for Service!</h3>
                     <p>Fill out the form below and we’ll reach out to schedule your appointment.</p>
-                    <form action="">
-                        <input type="text" placeholder="Name" name="" id="" />
-                        <input type="email" placeholder="Email" name="" id="" />
-                        <input type="tel" placeholder="Phone Number" name="" id="" />
-                        <input type="text" placeholder="Service Requested" name="" id="" />
-                        <input type="submit" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}} value="Request Service" />
-
-                    </form>
+                    <CouponForm />
                     </div>
                 </div>
                 </div>
@@ -282,7 +276,7 @@ export default ({ data }) => (
     </div>
     </div>
     <div className="sticky-mobile">
-              <a onClick={changeActive} className="schedule-btn" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityPages.coupon.title} <FaArrowRight /></a>
+              <a onClick={changeActive} className="schedule-btn" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityPages.coupon.title} {data.sanityPages.coupon.type}<FaArrowRight /></a>
             </div>
   </Layout>
 )

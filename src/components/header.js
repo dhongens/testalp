@@ -104,7 +104,7 @@ export default () => (
                     </div>
                     <div className="headerBtns">
                       <div className="btns-wrap">
-                        <a className="headerbtn phone" style={{ backgroundColor: data.sanityCompanyInfo.secondarycolor.hex, borderColor: data.sanityCompanyInfo.secondarycolor.hex}} href={"tel:" + data.sanityCompanyInfo.phone}><span className="calltext" style={{color: data.sanityCompanyInfo.primarycolor.hex}}>Call 24/7</span> {data.sanityCompanyInfo.phone}</a>
+                        <a className="headerbtn phone" style={{ backgroundColor: data.sanityCompanyInfo.secondarycolor.hex, borderColor: data.sanityCompanyInfo.secondarycolor.hex}} href={"tel:" + data.sanityCompanyInfo.phone}><span className="calltext" style={{color: data.sanityCompanyInfo.primarycolor.hex}}>Call 24/7</span> <span id="number_rewrite">{data.sanityCompanyInfo.phone}</span></a>
                       </div>
                     </div>
                   </div>

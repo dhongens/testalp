@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Layout from "../components/layout"
 import Form from "../components/form"
+import CouponForm from "../components/coupon_form"
 import Helmet from 'react-helmet'
 import SocialProof from '../components/socialProof';
 import Fade from 'react-reveal/Fade';
@@ -175,7 +176,7 @@ export default ({ data }) => (
                     <PortableText style={{color: data.sanityCompanyInfo.primarycolor.hex}} blocks={data.sanityServicepages._rawPageIntro} />
 
                     <div className="schedule-btn">
-                        <a onClick={changeActive} className="buttonstyle" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}} >Schedule Today for {data.sanityServicepages.coupon.title} <FaArrowRight /></a>
+                        <a onClick={changeActive} className="buttonstyle" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}} >Schedule Today for {data.sanityServicepages.coupon.title} {data.sanityServicepages.coupon.type}<FaArrowRight /></a>
                     </div>
                     <div className="servicesSelection">
                         <h3 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>Count on {data.sanityCompanyInfo.companyname} for all of your {data.sanityServicepages.pagetitle} needs!</h3>
@@ -219,7 +220,7 @@ export default ({ data }) => (
                     <div className="inner">
                     <h3>Don’t Wait All Day for Service!</h3>
                     <p>Fill out the form below and we’ll reach out to schedule your appointment.</p>
-                    <Form />
+                    <CouponForm />
                     </div>
                 </div>
                 </div>
@@ -244,7 +245,7 @@ export default ({ data }) => (
                             style={{height: "100%"}}
                             fluid={data.sanityServicepages.serviceimage.asset.fluid}>
                         </Image>
-                        <div className="schedule-btn"><a className="buttonstyle" role="button" tabIndex={0} onClick={changeActive} style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule today for {data.sanityServicepages.coupon.title} <FaArrowRight /></a></div>
+                        <div className="schedule-btn"><a className="buttonstyle" role="button" tabIndex={0} onClick={changeActive} style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule today for {data.sanityServicepages.coupon.title} {data.sanityServicepages.coupon.type} <FaArrowRight /></a></div>
                         </div>
                     </div>
                 </div>
@@ -252,7 +253,7 @@ export default ({ data }) => (
             </div>
         </div>
         <div className="sticky-mobile">
-              <a onClick={changeActive} className="schedule-btn" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityServicepages.coupon.title} <FaArrowRight /></a>
+              <a onClick={changeActive} className="schedule-btn" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityServicepages.coupon.title} {data.sanityServicepages.coupon.type} <FaArrowRight /></a>
             </div>
   </Layout>
 )
