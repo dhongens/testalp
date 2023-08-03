@@ -85,7 +85,14 @@ export default class ContactForm extends React.Component {
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
     }
 
-    if (/*phoneinput.value.match(phoneno) &&*/ emailIsValid(emailinputValue)){
+    var honeypotfield = document.getElementById("mail-honey");
+
+    if(honeypotfield.value !== ''){
+      event.preventDefault();
+      alert("Please do not fill in the hidden field.");
+    }
+
+   else if (/*phoneinput.value.match(phoneno) &&*/ emailIsValid(emailinputValue)){
       const elements = document.getElementsByClassName('form-error-text-shown');
 
       emailinput.classList.remove('form-error'); 
@@ -97,9 +104,9 @@ export default class ContactForm extends React.Component {
         name: this.state.name,
         honeypot: this.state.honeypot,
         message: this.state.message,
-        // tel: this.state.tel,
+        tel: this.state.tel,
         // city: this.state.city,
-        zipcode: this.state.zipcode,
+        // zipcode: this.state.zipcode,
         vsref: this.state.vsref,
         gclid: this.state.gclid,
         });

@@ -85,7 +85,14 @@ export default class ContactForm extends React.Component {
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
     }
 
-    if (/*phoneinput.value.match(phoneno) &&*/ emailIsValid(emailinputValue)){
+    var honeypotfield = document.getElementById("mail-honeyfield");
+
+    if(honeypotfield.value !== ''){
+      event.preventDefault();
+      alert("Please do not fill in the hidden field.");
+    }
+
+    else if (/*phoneinput.value.match(phoneno) &&*/ emailIsValid(emailinputValue)){
       const elements = document.getElementsByClassName('form-error-text-shown');
 
       emailinput.classList.remove('form-error'); 
@@ -181,7 +188,7 @@ export default class ContactForm extends React.Component {
                       <form ref={this.formRef} id="form-metrics" onSubmit={this.handleSubmit} action={this.state.formAction} method="POST">
                         <input id="mail-name" className="inputfield" type="text" name="name" value={this.state.name} onChange={this.handleInputChange} placeholder="Enter your full name" required />
                         <input id="mail-emailfield" className="inputfield" type="text" name="honeypot" value={this.state.honeypot} onChange={this.handleInputChange} placeholder="Email address" minLength="3" maxLength="64" required />
-                        <input id="mail-honey" className="inputfield" type="text" name="email" />
+                        <input id="mail-honeyfield" className="inputfield" type="text" name="email" />
                         <input id="mail-tel" className="inputfield" name="tel" value={this.state.tel} pattern="^\d{10}$" type="tel" onChange={this.handleInputChange} placeholder="Phone Number (Format: 1234567890)" required />
                         <input id="mail-message" className="inputfield" type="text" value={this.state.message} onChange={this.handleInputChange} name="message" placeholder="Request a service" required />
                         <input type="hidden" name="gclid" value={this.state.gclid} />
