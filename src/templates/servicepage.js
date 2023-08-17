@@ -52,6 +52,7 @@ export const query = graphql`
             slug {
                 current
             }
+            topPageTitle
             pageIntroTitle
             _rawFirstcopy
             _rawPageIntro
@@ -75,6 +76,7 @@ export const query = graphql`
                     }
                 }
             }
+            servicetitle
             services{
                 slug{current}
                 pagetitle
@@ -170,16 +172,16 @@ export default ({ data }) => (
                 </div>
                 <div className="column2 column">
                 <div className="column-inner">
-                    <div className="location" style={{color: data.sanityCompanyInfo.accentcolor.hex}}><FaMapMarkerAlt /> Providing Same Day Service {cityplace}</div>
+                    <div className="location" style={{color: data.sanityCompanyInfo.accentcolor.hex}}><FaMapMarkerAlt /> {data.sanityServicepages.topPageTitle} {cityplace}</div>
                     <h1 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>{data.sanityServicepages.pageIntroTitle} {cityplace}</h1>
 
                     <PortableText style={{color: data.sanityCompanyInfo.primarycolor.hex}} blocks={data.sanityServicepages._rawPageIntro} />
 
                     <div className="schedule-btn">
-                        <a onClick={changeActive} className="buttonstyle" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}} >Schedule Today for {data.sanityServicepages.coupon.title} {data.sanityServicepages.coupon.type}<FaArrowRight /></a>
+                        <a onClick={changeActive} className="buttonstyle" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}} >Schedule Today for {data.sanityServicepages.coupon.title} <FaArrowRight /></a>
                     </div>
                     <div className="servicesSelection">
-                        <h3 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>Count on {data.sanityCompanyInfo.companyname} for all of your {data.sanityServicepages.pagetitle} needs!</h3>
+                        <h3 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>Count on {data.sanityCompanyInfo.companyname} for all of your {data.sanityServicepages.servicetitle} needs!</h3>
                         <div className="servicesIcons">
                         {data.sanityServicepages.services.map(service => 
                          <div className="service">

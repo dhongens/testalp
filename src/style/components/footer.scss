@@ -90,23 +90,23 @@ footer{
             display:flex;
             justify-content: space-evenly;
             align-items: center;
-            margin: 2em 20em;
+            margin: 0em 20em;
             @include desktop(){
-                margin: 2em 20em;
+                margin: 0em 20em;
             }
             @include tablet-landscape(){
-                margin: 2em 15em;
+                margin: 0em 15em;
             }
             @include tablet-portrait(){
-                margin: 2em 8em;
+                margin: 0em 8em;
                 flex-wrap: wrap;
             }
             @include phone-only(){
-                margin: 1em 4em;
+                margin: 0em 4em;
                 padding-top: 50px;
             }
             @include small-phone(){
-                margin: 1em 2em;
+                margin: 0em 2em;
             }
             .gatsby-image-wrapper{
                 display: flex;
@@ -134,6 +134,7 @@ footer{
         justify-content: center;
         flex-direction: column;
         align-items: center;
+        padding-top: 2em;
         .licenses{
             display:flex;
             div{

@@ -197,7 +197,7 @@ export default ({ data }) => (
 
               </p>
               <div className="schedule-btn">
-              <a onClick={changeActive} className="buttonstyle" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityPages.coupon.title} {data.sanityPages.coupon.type} <FaArrowRight /></a>
+              <a onClick={changeActive} className="buttonstyle" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityPages.coupon.title} <FaArrowRight /></a>
 
               </div>
           </div>
@@ -242,7 +242,7 @@ export default ({ data }) => (
                             style={{height: "100%"}}
                             fluid={data.sanityPages.serviceimage.asset.fluid}>
                         </Image>
-                        <div className="schedule-btn"><a onClick={changeActive} className="buttonstyle" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule today for {data.sanityPages.coupon.title} {data.sanityPages.coupon.type} <FaArrowRight /></a></div>
+                        <div className="schedule-btn"><a onClick={changeActive} className="buttonstyle" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule today for {data.sanityPages.coupon.title} <FaArrowRight /></a></div>
                         </div>
                     </div>
                 </div>
@@ -306,7 +306,7 @@ export default ({ data }) => (
     </div>
 
     <div className="sticky-mobile">
-              <a onClick={changeActive} className="schedule-btn" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityPages.coupon.title} {data.sanityPages.coupon.type} <FaArrowRight /></a>
+              <a onClick={changeActive} className="schedule-btn" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityPages.coupon.title} <FaArrowRight /></a>
             </div>
   </Layout>
 )

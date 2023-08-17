@@ -119,10 +119,6 @@ const Layout = ({ children }) => {
     
     <Helmet>
 
-          <link rel="icon"
-          type="image/png"
-          src={data.sanityCompanyInfo.favicon.asset.fluid.src}
-          defer="false" />
          <script
         src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossOrigin="anonymous" />
         <meta name="robots" content="noindex, nofollow" />
@@ -130,6 +126,7 @@ const Layout = ({ children }) => {
 
         <meta property="og:image" content={data.sanityPages.headerimage.asset.fluid.src} />
         <meta property="og:title" content={data.sanityCompanyInfo.companyname + " | " + data.sanityPages.pagetitle} />
+        <link rel="icon" type="image/png" href={data.sanityCompanyInfo.favicon.asset.fluid.src} sizes="16x16"/>
 
         {data.sanityCompanyInfo.analytics ? (
           <script async className="AnalyticsCode" src={`https://www.googletagmanager.com/gtag/js?id=${data.sanityCompanyInfo.analytics}`}/> 
