@@ -70,6 +70,7 @@
             }
             .schedule-btn{
                 margin-top: 50px;
+                // text-align: center;
                 a, span{
                     // background: linear-gradient(to right, #E49B74, #CC562E);
                     padding: 20px 30px 20px;
@@ -78,10 +79,10 @@
                     transition: all ease .2s;
                     cursor: pointer;
                     font-size: 0.9em;
-                    display: block;
-                    width: 440px;
+                    display: inline-block;
+                    // width: 440px;
                     @include desktop-small{
-                        width: 320px;
+                        // width: 320px;
                     }
 
                     @include tablet-portrait{

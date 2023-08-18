@@ -63,7 +63,6 @@ $transition: 0.2s ease all;
 
 /**** PAGES ****/
 @import './ourServices.scss';
-@import './servicePage.scss';
 @import './pages/reviews.scss';
 @import './pages/coupons.scss';
 @import './404.scss';
@@ -138,13 +137,13 @@ body{
         }
     }
     .buttonstyle{
-        // background: linear-gradient(to right, #E49B74, #CC562E);
-        padding: 20px;
+        padding: 20px 50px 20px;
         border-radius: 20px;
         color: #fff;
         transition: all ease .2s;
+        display: inline-block;
+        // min-width: 430px;
             &:hover{
-                // background: linear-gradient(to right, #CC562E, #E49B74);
                 transition: all ease .2s;
                 color: #fff;
             }
@@ -153,6 +152,7 @@ body{
                 animation: bounce .8s infinite alternate ease-in-out;
                 position: relative;
                 top: 3px;
+                left: 10px;
             }
     }
 .pageHeaderbg{

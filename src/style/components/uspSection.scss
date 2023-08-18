@@ -67,9 +67,12 @@
                     }
                 }
             }
-            .column:nth-child(2){
-                img{
-                    transform: scale(1.2);
+            .column:nth-child(3){
+                @media screen and (max-width: 1205px){
+                    grid-column-start: span 2;
+                }
+                @include tablet-portrait{
+                    grid-column-start: auto;
                 }
             }
         }

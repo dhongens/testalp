@@ -31,10 +31,6 @@
                     border-radius: 50px 0 50px 0;
                 }
                 .schedule-btn{
-                    // position: absolute;
-                    // top: 450px;
-                    // left: 50%;
-                    // transform: translateX(-50%);
                     width: auto;
                     margin: 0 auto;
                     margin-top: 50px;
@@ -50,13 +46,10 @@
                         margin-top: 40px;
                     }
                     a, span{
-                        // background: linear-gradient(to right, #E49B74, #CC562E);
-                        padding: 20px;
                         border-radius: 20px;
                         color: #fff;
                         transition: all ease .2s;
                         border: 0;
-                        width: 100%;
                         font-size: 0.9em;
                         cursor: pointer;
                         @include tablet-portrait{
@@ -69,7 +62,6 @@
                             text-align: left;
                         }
                         &:hover{
-                            // background: linear-gradient(to right, #CC562E, #E49B74);
                             transition: all ease .2s;
                         }
                     }

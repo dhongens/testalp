@@ -247,7 +247,7 @@ export default ({ data }) => (
                             style={{height: "100%"}}
                             fluid={data.sanityServicepages.serviceimage.asset.fluid}>
                         </Image>
-                        <div className="schedule-btn"><a className="buttonstyle" role="button" tabIndex={0} onClick={changeActive} style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule today for {data.sanityServicepages.coupon.title} {data.sanityServicepages.coupon.type} <FaArrowRight /></a></div>
+                        <div className="schedule-btn"><a className="buttonstyle" role="button" tabIndex={0} onClick={changeActive} style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule today for {data.sanityServicepages.coupon.title} <FaArrowRight /></a></div>
                         </div>
                     </div>
                 </div>

@@ -134,6 +134,7 @@ header{
     }
     .menu{
         justify-self: end;
+        align-self: center;
         @include tablet-portrait{
             grid-row: 2;
 
@@ -166,16 +167,17 @@ header{
         text-transform: uppercase;
         text-decoration: none;
         border:1px solid;
-        width: 160px;
+        // width: 160px;
         border-radius: 20px;
+        display: block;
         @include tablet-portrait{
-            width: 200px;
+            width: 280px;
         }
         @include phone-only{
             font-size: 1.2em !important;
+            width: auto;
         }
         @include small-phone{
-            width: 200px;
             font-size: 0.7em !important;
         }
         &.phone{

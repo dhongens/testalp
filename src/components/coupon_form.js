@@ -149,14 +149,6 @@ export default class ContactForm extends React.Component {
                   companyname
                   phone
                   companyTagline
-                  logoWhite {
-                    asset {
-                      fluid{
-                        ...GatsbySanityImageFluid
-                        src
-                      }
-                    }
-                  }
                   primarycolor{
                       hex
                   }
