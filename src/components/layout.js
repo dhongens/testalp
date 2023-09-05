@@ -196,37 +196,6 @@ const Layout = ({ children }) => {
                     }
                     `}
                   </style>
-
-                  <script type="text/javascript">
-                    {`
-                      function getUrlVars(){
-                        var vars = [], hash;
-                        if(typeof window !== 'undefined'){
-                            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-                            for(var i = 0; i < hashes.length; i++)
-                            {
-                                hash = hashes[i].split('=');
-                                vars.push(hash[0]);
-                                vars[hash[0]] = hash[1];
-                            }
-                        }
-                        return vars;
-                      }
-                      var city = getUrlVars()["city"];
-                      
-                      if (city !== undefined){
-                        let cityDash = city;
-                        cityDash = cityDash.replace(/-/g, ' ');
-                      
-                          var cityplace = " in " + cityDash;
-                          var citytitle = cityDash+"'s";
-                            
-                          var citylink = "?city=" + city;
-                      } else{
-                        var citylink ="";
-                      }
-                    `}
-                  </script>
     </Helmet>
     <noscript>
    <a href='https://www.clickcease.com' rel='nofollow'><img src='https://monitor.clickcease.com/stats/stats.aspx' alt='ClickCease'/></a>
