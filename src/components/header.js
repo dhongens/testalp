@@ -48,6 +48,8 @@ var urlparameters = new URLSearchParams(window.location.search)
 
 }
 
+console.log(urlparameters);
+
 export default () => (
   <StaticQuery query={ graphql`
           query CompanyQuery {
