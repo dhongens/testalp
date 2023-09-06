@@ -41,10 +41,8 @@ if (city !== undefined){
 }
 
 
-if(typeof window !== 'undefined'){
 
   var urlparameters = new URLSearchParams(window.location.search);
-  }
     
 
 export default () => (
@@ -82,6 +80,7 @@ export default () => (
         
         render={data => (
           // <Fade bottom cascade>
+          
           <header>
             
               <div className="header-inner">
