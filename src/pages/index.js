@@ -1,4 +1,4 @@
-import React , { useEffect } from 'react';
+import React , { useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
 import Layout from "../components/layout"
 import Form from "../components/form"
@@ -156,22 +156,34 @@ export const query = graphql`
 
 
 export default ({ data }) => {
-  let reviewsLink = ""; 
+  
+  // Define reviewsLink as a state variable
+  const [reviewsLink, setReviewsLink] = useState('');
 
   useEffect(() => {
-
     const urlSearchParams = new URLSearchParams(window.location.search);
     const urlParams = Object.fromEntries(urlSearchParams.entries());
 
+  
     // Update the links with URL parameters
     document.querySelectorAll('.serviceLink').forEach((link) => {
       const serviceSlug = link.getAttribute('data-service-slug');
       const modifiedLink = `${serviceSlug}?${Object.entries(urlParams).map(([key, value]) => `${key}=${value}`).join('&')}`;
       link.href = modifiedLink;
     });
+  
+     // Update the "See More Reviews" link
+    const updatedReviewsLink = `/reviews${
+      Object.keys(urlParams).length > 0
+        ? '?' + Object.entries(urlParams).map(([key, value]) => `${key}=${value}`).join('&')
+        : ''
+    }`;
 
-    // Update the "See More Reviews" link
-    reviewsLink = `/reviews${Object.keys(urlParams).length > 0 ? "?" + Object.entries(urlParams).map(([key, value]) => `${key}=${value}`).join("&") : ""}`;
+    // Set the reviewsLink state with the updated link
+    setReviewsLink(updatedReviewsLink);
+
+    console.log("reviewsLink:", reviewsLink); // Add this console.log statement
+  
   }, []);
 
 return (
