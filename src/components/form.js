@@ -30,11 +30,11 @@ export default class ContactForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
 
     
-    if(typeof window !== 'undefined') {
-      var queryString = window.location.search;
-      var urlParams = new URLSearchParams(queryString);
-      var gclid = urlParams.get('gclid')
-    }
+    // if(typeof window !== 'undefined') {
+    //   var queryString = window.location.search;
+    //   var urlParams = new URLSearchParams(queryString);
+    //   var gclid = urlParams.get('gclid')
+    // }
 
     // if(typeof document !== 'undefined'){
     //   var phone = document.getElementById("number_rewrite").innerHTML;
@@ -47,7 +47,7 @@ export default class ContactForm extends React.Component {
       tel: "",
       message: "",
       // vsref: vsref,
-      gclid: gclid,
+      // gclid: gclid,
       submitted: false,
       formAction: 'https://metrics.vitalstorm.com/email_form_submission/0d8f2890-7cef-4a35-9eb0-43dce093bbe6/'
     };
