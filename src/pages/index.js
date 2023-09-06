@@ -1,4 +1,4 @@
-import React from 'react';
+import React , { useEffect } from 'react';
 import { graphql } from 'gatsby';
 import Layout from "../components/layout"
 import Form from "../components/form"
@@ -155,7 +155,28 @@ export const query = graphql`
 
 
 
-export default ({ data }) => (
+export default ({ data }) => {
+
+  useEffect(() => {
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const urlParams = Object.fromEntries(urlSearchParams.entries());
+
+    // Update the links with URL parameters
+    document.querySelectorAll('.serviceLink').forEach((link) => {
+      const serviceSlug = link.getAttribute('data-service-slug');
+      const modifiedLink = `${serviceSlug}?${Object.entries(urlParams).map(([key, value]) => `${key}=${value}`).join('&')}`;
+      link.href = modifiedLink;
+    });
+
+    // Update the "See More Reviews" link
+    const reviewsLink = document.querySelector('.reviews-btn a');
+    if (reviewsLink) {
+      const modifiedReviewsLink = `/reviews${Object.keys(urlParams).length > 0 ? "?" + Object.entries(urlParams).map(([key, value]) => `${key}=${value}`).join("&") : ""}`;
+      reviewsLink.href = modifiedReviewsLink;
+    }
+  }, []);
+
+return (
     <Layout>
     <Helmet>
     <title>{data.sanityCompanyInfo.companyname} | {data.sanityPages.pagetitle}</title>   
@@ -240,7 +261,7 @@ export default ({ data }) => (
                             <div className="icon" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex}}><img style={{width: '20px'}} src={service.icon.asset.fluid.src}/></div>
                             <h3 className="serviceTitle">{service.servicetitle} Services</h3>
                             <p>{service.servicetext}</p>
-                            <a href={`${service.servicelink}?${Object.entries(urlParams).map(([key, value]) => `${key}=${value}`).join('&')}`} className="serviceLink" style={{ color: data.sanityCompanyInfo.secondarycolor.hex }}>
+                            <a href={`${service.servicelink}`} className="serviceLink" data-service-slug={`${service.servicelink}`} style={{ color: data.sanityCompanyInfo.secondarycolor.hex }}>
   Go to {service.servicetitle} Page <FaAngleRight />
 </a>
                         </div>
@@ -300,7 +321,7 @@ export default ({ data }) => (
                     ))}
                 </div>
                 <div className="reviews-btn">
-                  <a href={`/reviews${Object.keys(urlParams).length > 0 ? "?" + Object.entries(urlParams).map(([key, value]) => `${key}=${value}`).join("&") : ""}`} className="buttonstyle" style={{ background: `linear-gradient(to right, ${data.sanityCompanyInfo.gradientcolor1.hex}, ${data.sanityCompanyInfo.gradientcolor2.hex})` }}>
+                  <a href={modifiedReviewsLink} className="buttonstyle" style={{ background: `linear-gradient(to right, ${data.sanityCompanyInfo.gradientcolor1.hex}, ${data.sanityCompanyInfo.gradientcolor2.hex})` }}>
                     See More Reviews
                   </a>
                 </div>
@@ -341,4 +362,6 @@ export default ({ data }) => (
             </div>
     
   </Layout>
-)
+
+);
+}
