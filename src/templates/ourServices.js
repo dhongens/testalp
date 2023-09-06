@@ -1,4 +1,4 @@
-import React from 'react';
+import React , { useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
 import Layout from "../components/layout"
 import Form from "../components/form"
@@ -6,11 +6,9 @@ import CouponForm from "../components/coupon_form"
 import Helmet from 'react-helmet'
 import BackgroundImage from 'gatsby-background-image';
 import SocialProof from '../components/socialProof';
-import Fade from 'react-reveal/Fade';
 import PortableText from '@sanity/block-content-to-react'
 import { FaArrowRight, FaMapMarkerAlt, FaTimes } from "react-icons/fa"
 import Image from 'gatsby-image'
-import couponBackground from "../images/couponBackground.png"
 import $ from 'jquery';
 
 
@@ -46,19 +44,6 @@ function changeActive(e){
       var citylink ="";
     }
 
-
-    function getUrlParams() {
-      if (typeof window !== 'undefined') {
-        const urlSearchParams = new URLSearchParams(window.location.search);
-        const params = Object.fromEntries(urlSearchParams.entries());
-        return params;
-      }
-      return {};
-    }
-    
-    const urlParams = getUrlParams();
-
-    
 export const query = graphql`
     query ourServicesQuery{
         sanityPages(slug: {current: {eq: "our-services"}}) {
@@ -142,7 +127,23 @@ export const query = graphql`
     }
 `
 
-export default ({ data }) => (
+export default ({ data }) => {
+  const [serviceLinks, setServiceLinks] = useState([]);
+  useEffect(() => {
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const urlParams = Object.fromEntries(urlSearchParams.entries());
+
+  
+    // Update the links with URL parameters
+    document.querySelectorAll('.serviceLink').forEach((link) => {
+      const serviceSlug = link.getAttribute('data-service-slug');
+      const modifiedLink = `${serviceSlug}?${Object.entries(urlParams).map(([key, value]) => `${key}=${value}`).join('&')}`;
+      link.href = modifiedLink;
+    });
+   
+  }, []);
+
+  return (
     <Layout>
     <Helmet>
     <title>{data.sanityCompanyInfo.companyname} | {data.sanityPages.pagetitle}</title>   
@@ -226,11 +227,7 @@ export default ({ data }) => (
                             <h3>{services.servicemaintitle} Services</h3>
                             <ul>
                                 {services.servicelist.map(item => (
-                                    <li>
-                                    <a href={`${item.servicelink}${Object.keys(urlParams).length > 0 ? "?" + Object.entries(urlParams).map(([key, value]) => `${key}=${value}`).join("&") : ""}`}>
-                                      {item.servicename}
-                                    </a>
-                                  </li>
+                                    <li><a href={item.servicelink} className="serviceLink" data-service-slug={`${item.servicelink}`}>{item.servicename}</a></li>
                                  ))}
                             </ul>
                         </div>
@@ -297,4 +294,4 @@ export default ({ data }) => (
               <a onClick={changeActive} className="schedule-btn" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityPages.coupon.title} <FaArrowRight /></a>
             </div>
   </Layout>
-)
+)}
