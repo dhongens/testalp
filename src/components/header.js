@@ -40,9 +40,9 @@ if (city !== undefined){
   var citylink ="";
 }
 
-const isBrowser = () => typeof window !== "undefined";
+const isBrowser = () => typeof window !== "undefined"
 
-var urlparameters = isBrowser() && new URLSearchParams(window.location.search);
+var urlparameters = isBrowser() && new URLSearchParams(window.location.search)
 
 
     
