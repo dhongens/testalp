@@ -321,7 +321,7 @@ return (
                     ))}
                 </div>
                 <div className="reviews-btn">
-                  <a href={modifiedReviewsLink} className="buttonstyle" style={{ background: `linear-gradient(to right, ${data.sanityCompanyInfo.gradientcolor1.hex}, ${data.sanityCompanyInfo.gradientcolor2.hex})` }}>
+                  <a href={reviewsLink} className="buttonstyle" style={{ background: `linear-gradient(to right, ${data.sanityCompanyInfo.gradientcolor1.hex}, ${data.sanityCompanyInfo.gradientcolor2.hex})` }}>
                     See More Reviews
                   </a>
                 </div>
