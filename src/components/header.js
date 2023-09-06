@@ -119,6 +119,7 @@ changeActive(event){
                         <li><a href={"/our-services?"  + this.state.urlparams}>Our Services</a></li>
                         <li><a href={"/coupons?"  + this.state.urlparams}>Specials</a></li>
                         <li><a href={"/reviews?"  + this.state.urlparams}>Reviews</a></li>
+                        {this.state.urlparams}
                       </ul>
                     </div>
                     <div className="headerBtns">
