@@ -115,7 +115,7 @@ changeActive(event){
                   <div className="items">
                     <div className="menu">
                       <ul>
-                        <li><a href={"/about-us?" + this.state.urlparams}>About Us</a></li>
+                        <li><a href={this.state.urlparams}>About Us</a></li>
                         <li><a href={"/our-services?"  + this.state.urlparams}>Our Services</a></li>
                         <li><a href={"/coupons?"  + this.state.urlparams}>Specials</a></li>
                         <li><a href={"/reviews?"  + this.state.urlparams}>Reviews</a></li>
