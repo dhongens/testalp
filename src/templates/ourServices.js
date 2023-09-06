@@ -128,7 +128,7 @@ export const query = graphql`
 `
 
 export default ({ data }) => {
-  const [serviceLinks, setServiceLinks] = useState([]);
+
   useEffect(() => {
     const urlSearchParams = new URLSearchParams(window.location.search);
     const urlParams = Object.fromEntries(urlSearchParams.entries());

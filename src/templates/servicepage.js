@@ -1,4 +1,5 @@
-import React from 'react';
+import React , { useEffect, useState } from 'react';
+
 import { graphql } from 'gatsby';
 import Layout from "../components/layout"
 import Form from "../components/form"
@@ -131,7 +132,24 @@ export const query = graphql`
     }
 `
 
-export default ({ data }) => (
+export default ({ data }) => {
+
+
+        useEffect(() => {
+          const urlSearchParams = new URLSearchParams(window.location.search);
+          const urlParams = Object.fromEntries(urlSearchParams.entries());
+      
+        
+          // Update the links with URL parameters
+          document.querySelectorAll('.serviceLink').forEach((link) => {
+            const serviceSlug = link.getAttribute('data-service-slug');
+            const modifiedLink = `${serviceSlug}?${Object.entries(urlParams).map(([key, value]) => `${key}=${value}`).join('&')}`;
+            link.href = modifiedLink;
+          });
+         
+        }, []);
+
+        return (
     <Layout>
     <Helmet>
     <title>{data.sanityCompanyInfo.companyname} | {data.sanityServicepages.pagetitle}</title>   
@@ -197,7 +215,7 @@ export default ({ data }) => (
                         {data.sanityServicepages.services.map(service => 
                          <div className="service">
                          <div className="service-inner">
-                         <a href={`/${service.slug.current}${Object.keys(urlParams).length > 0 ? "?" + Object.entries(urlParams).map(([key, value]) => `${key}=${value}`).join("&") : ""}`}>
+                         <a href={service.slug.current} className="serviceLink" data-service-slug={`${service.slug.current}`}>
                         <div className="icon">
                             <img src={data.sanityCompanyInfo.favicon.asset.fluid.src} alt="" />
                         </div>
@@ -271,4 +289,4 @@ export default ({ data }) => (
               <a onClick={changeActive} className="schedule-btn" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityServicepages.coupon.title} {data.sanityServicepages.coupon.type} <FaArrowRight /></a>
             </div>
   </Layout>
-)
+)}
