@@ -40,12 +40,13 @@ if (city !== undefined){
   var citylink ="";
 }
 
-const isBrowser = () => typeof window !== "undefined"
 
-var urlparameters = isBrowser() && new URLSearchParams(window.location.search)
+if(typeof window !== 'undefined'){
+
+var urlparameters = new URLSearchParams(window.location.search)
 
 
-    
+}
 
 export default () => (
   <StaticQuery query={ graphql`
