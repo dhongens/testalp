@@ -48,7 +48,8 @@ var urlparameters = new URLSearchParams(window.location.search)
 
 }
 
-console.log(urlparameters);
+console.log(urlparameters.get('gclid'));
+console.log(urlparameters.get('vsref'));
 
 export default () => (
   <StaticQuery query={ graphql`
