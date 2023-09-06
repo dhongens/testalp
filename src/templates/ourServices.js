@@ -46,6 +46,19 @@ function changeActive(e){
       var citylink ="";
     }
 
+
+    function getUrlParams() {
+      if (typeof window !== 'undefined') {
+        const urlSearchParams = new URLSearchParams(window.location.search);
+        const params = Object.fromEntries(urlSearchParams.entries());
+        return params;
+      }
+      return {};
+    }
+    
+    const urlParams = getUrlParams();
+
+    
 export const query = graphql`
     query ourServicesQuery{
         sanityPages(slug: {current: {eq: "our-services"}}) {
@@ -213,7 +226,11 @@ export default ({ data }) => (
                             <h3>{services.servicemaintitle} Services</h3>
                             <ul>
                                 {services.servicelist.map(item => (
-                                    <li><a href={item.servicelink + citylink}>{item.servicename}</a></li>
+                                    <li>
+                                    <a href={`${item.servicelink}${Object.keys(urlParams).length > 0 ? "?" + Object.entries(urlParams).map(([key, value]) => `${key}=${value}`).join("&") : ""}`}>
+                                      {item.servicename}
+                                    </a>
+                                  </li>
                                  ))}
                             </ul>
                         </div>

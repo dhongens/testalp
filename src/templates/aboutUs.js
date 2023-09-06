@@ -49,6 +49,17 @@ function changeActive(e){
       var citylink ="";
     }
 
+
+    function getUrlParams() {
+      if (typeof window !== 'undefined') {
+        const urlSearchParams = new URLSearchParams(window.location.search);
+        const params = Object.fromEntries(urlSearchParams.entries());
+        return params;
+      }
+      return {};
+    }
+    
+    const urlParams = getUrlParams();
 export const query = graphql`
     query aboutQuery{
         sanityPages(slug: {current: {eq: "home"}}) {
@@ -229,7 +240,9 @@ export default ({ data }) => (
                             <div className="icon" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex}}><img style={{width: '20px'}} src={service.icon.asset.fluid.src}/></div>
                             <h3 className="serviceTitle">{service.servicetitle} Services</h3>
                             <p>{service.servicetext}</p>
-                            <a href={service.servicelink + "" + citylink} className="serviceLink" style={{color: data.sanityCompanyInfo.secondarycolor.hex}}>Go to {service.servicetitle} Page <FaAngleRight /></a>
+                            <a href={`${service.servicelink}?${Object.entries(urlParams).map(([key, value]) => `${key}=${value}`).join('&')}`} className="serviceLink" style={{ color: data.sanityCompanyInfo.secondarycolor.hex }}>
+  Go to {service.servicetitle} Page <FaAngleRight />
+</a>
 
                         </div>
                     </div>
@@ -288,7 +301,9 @@ export default ({ data }) => (
                     ))}
                 </div>
                 <div className="reviews-btn">
-                    <a href={"/reviews" + "" + citylink} class="buttonstyle" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>See More Reviews</a>
+                  <a href={`/reviews${Object.keys(urlParams).length > 0 ? "?" + Object.entries(urlParams).map(([key, value]) => `${key}=${value}`).join("&") : ""}`} className="buttonstyle" style={{ background: `linear-gradient(to right, ${data.sanityCompanyInfo.gradientcolor1.hex}, ${data.sanityCompanyInfo.gradientcolor2.hex})` }}>
+                    See More Reviews
+                  </a>
                 </div>
             </div>
             {/* </Fade> */}

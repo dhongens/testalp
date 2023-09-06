@@ -45,6 +45,17 @@ function changeActive(){
       var citylink ="";
     }
 
+    function getUrlParams() {
+        if (typeof window !== 'undefined') {
+          const urlSearchParams = new URLSearchParams(window.location.search);
+          const params = Object.fromEntries(urlSearchParams.entries());
+          return params;
+        }
+        return {};
+      }
+      
+      const urlParams = getUrlParams();
+
 export const query = graphql`
     query servicePageQuery($slug: String){
         sanityServicepages(slug: {current: {eq: $slug}}) {
@@ -186,12 +197,14 @@ export default ({ data }) => (
                         {data.sanityServicepages.services.map(service => 
                          <div className="service">
                          <div className="service-inner">
-                         <a href={"/" + service.slug.current + citylink}>
-                             <div className="icon">
-                             <img src={data.sanityCompanyInfo.favicon.asset.fluid.src} alt="" />
-                             </div>
-                             <div className="serviceName" style={{color: data.sanityCompanyInfo.secondarycolor.hex}}>{service.pagetitle}</div>
-                         </a>
+                         <a href={`/${service.slug.current}${Object.keys(urlParams).length > 0 ? "?" + Object.entries(urlParams).map(([key, value]) => `${key}=${value}`).join("&") : ""}`}>
+                        <div className="icon">
+                            <img src={data.sanityCompanyInfo.favicon.asset.fluid.src} alt="" />
+                        </div>
+                        <div className="serviceName" style={{ color: data.sanityCompanyInfo.secondarycolor.hex }}>
+                            {service.pagetitle}
+                        </div>
+                        </a>
                          </div>
                      </div>
                         )}
