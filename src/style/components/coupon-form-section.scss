@@ -181,6 +181,13 @@
                         #mail-honeyfield{
                             display: none;
                         }
+                        button{
+                            &:disabled{
+                                background: #c5c5c5 !important;
+                                // color: #353535;
+                                cursor:not-allowed;
+                            }
+                        }
                     }
                     .form-message{
                         background-color: #4fb14f;

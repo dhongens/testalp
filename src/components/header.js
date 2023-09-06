@@ -40,6 +40,11 @@ if (city !== undefined){
   var citylink ="";
 }
 
+
+if(typeof window !== 'undefined'){
+
+  var urlparameters = new URLSearchParams(window.location.search);
+  }
     
 
 export default () => (
@@ -96,10 +101,10 @@ export default () => (
                   <div className="items">
                     <div className="menu">
                       <ul>
-                        <li><a href={"/about-us" + citylink}>About Us</a></li>
-                        <li><a href={"/our-services"  + citylink}>Our Services</a></li>
-                        <li><a href={"/coupons"  + citylink}>Specials</a></li>
-                        <li><a href={"/reviews"  + citylink}>Reviews</a></li>
+                        <li><a href={"/about-us?" + urlparameters}>About Us</a></li>
+                        <li><a href={"/our-services?"  + urlparameters}>Our Services</a></li>
+                        <li><a href={"/coupons?"  + urlparameters}>Specials</a></li>
+                        <li><a href={"/reviews?"  + urlparameters}>Reviews</a></li>
                       </ul>
                     </div>
                     <div className="headerBtns">

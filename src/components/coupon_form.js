@@ -97,9 +97,12 @@ export default class ContactForm extends React.Component {
 
       emailinput.classList.remove('form-error'); 
       // emailerrormsg.classList.remove('form-error-text-shown');
+
+      
       while(elements.length > 0){
         elements[0].parentNode.removeChild(elements[0]);
       }
+      $("#mail-submit").prop('disabled', true);
       const fieldData = new URLSearchParams({
         name: this.state.name,
         honeypot: this.state.honeypot,

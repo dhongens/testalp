@@ -374,7 +374,11 @@
               font-family: "Inter";
               border-radius: 20px;
               width: 100%;
-  
+              &:disabled{
+                background: #c5c5c5 !important;
+                // color: #353535;
+                cursor:not-allowed;
+            }
               &:hover{
                   color: #fff;
                   transition: $transition;

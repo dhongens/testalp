@@ -100,6 +100,9 @@ export default class ContactForm extends React.Component {
       while(elements.length > 0){
         elements[0].parentNode.removeChild(elements[0]);
       }
+
+      $("#mail-submit").prop('disabled', true);
+
       const fieldData = new URLSearchParams({
         name: this.state.name,
         honeypot: this.state.honeypot,
