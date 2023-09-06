@@ -156,8 +156,10 @@ export const query = graphql`
 
 
 export default ({ data }) => {
+  let reviewsLink = ""; 
 
   useEffect(() => {
+
     const urlSearchParams = new URLSearchParams(window.location.search);
     const urlParams = Object.fromEntries(urlSearchParams.entries());
 
@@ -169,11 +171,7 @@ export default ({ data }) => {
     });
 
     // Update the "See More Reviews" link
-    const reviewsLink = document.querySelector('.reviews-btn a');
-    if (reviewsLink) {
-      const modifiedReviewsLink = `/reviews${Object.keys(urlParams).length > 0 ? "?" + Object.entries(urlParams).map(([key, value]) => `${key}=${value}`).join("&") : ""}`;
-      reviewsLink.href = modifiedReviewsLink;
-    }
+    reviewsLink = `/reviews${Object.keys(urlParams).length > 0 ? "?" + Object.entries(urlParams).map(([key, value]) => `${key}=${value}`).join("&") : ""}`;
   }, []);
 
 return (
