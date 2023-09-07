@@ -184,12 +184,6 @@ export default ({ data }) => {
     <Layout>
     <Helmet>
     <title>{data.sanityCompanyInfo.companyname} | {data.sanityPages.pagetitle}</title>   
-    <script
-        data-api-key="ckgb6628g00ld06moclq6whc8"
-        data-defer="true"
-        id="se-widget-embed"
-        src="https://embed.scheduleengine.net/schedule-engine-v3.js"
-        ></script>
     </Helmet>
     <div className="about-us">
     <div className="popupForm">

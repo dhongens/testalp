@@ -102,10 +102,10 @@ export default class Header extends Component {
                         <HiX style={{fontSize: '2em', color: data.sanityCompanyInfo.primarycolor.hex}} />
                       </div>
                         <ul>
-                          {/* <li><a href={"/about-us" + citylink}>About Us</a></li>
-                          <li><a href={"/our-services"  + citylink}>Our Services</a></li>
-                          <li><a href={"/coupons"  + citylink}>Specials</a></li>
-                          <li><a href={"/reviews"  + citylink}>Reviews</a></li> */}
+                          <li><a href={"/about-us" + (urlparams ? "?" + urlparams : "")}>About Us</a></li>
+                          <li><a href={"/our-services"  + (urlparams ? "?" + urlparams : "")}>Our Services</a></li>
+                          <li><a href={"/coupons"  + (urlparams ? "?" + urlparams : "")}>Specials</a></li>
+                          <li><a href={"/reviews"  + (urlparams ? "?" + urlparams : "")}>Reviews</a></li>
                         </ul>
                     </div>
               </header>

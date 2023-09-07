@@ -135,21 +135,21 @@ export const query = graphql`
 export default ({ data }) => {
 
 
-        useEffect(() => {
-          const urlSearchParams = new URLSearchParams(window.location.search);
-          const urlParams = Object.fromEntries(urlSearchParams.entries());
-      
+    useEffect(() => {
+        const urlSearchParams = new URLSearchParams(window.location.search);
+        const urlParams = Object.fromEntries(urlSearchParams.entries());
+    
+    
+        // Update the links with URL parameters
+        document.querySelectorAll('.serviceLink').forEach((link) => {
+        const serviceSlug = link.getAttribute('data-service-slug');
+        const modifiedLink = `${serviceSlug}?${Object.entries(urlParams).map(([key, value]) => `${key}=${value}`).join('&')}`;
+        link.href = modifiedLink;
+        });
         
-          // Update the links with URL parameters
-          document.querySelectorAll('.serviceLink').forEach((link) => {
-            const serviceSlug = link.getAttribute('data-service-slug');
-            const modifiedLink = `${serviceSlug}?${Object.entries(urlParams).map(([key, value]) => `${key}=${value}`).join('&')}`;
-            link.href = modifiedLink;
-          });
-         
-        }, []);
+    }, []);
 
-        return (
+    return (
     <Layout>
     <Helmet>
     <title>{data.sanityCompanyInfo.companyname} | {data.sanityServicepages.pagetitle}</title>   

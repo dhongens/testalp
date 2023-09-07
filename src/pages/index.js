@@ -272,8 +272,8 @@ return (
                             <h3 className="serviceTitle">{service.servicetitle} Services</h3>
                             <p>{service.servicetext}</p>
                             <a href={`${service.servicelink}`} className="serviceLink" data-service-slug={`${service.servicelink}`} style={{ color: data.sanityCompanyInfo.secondarycolor.hex }}>
-  Go to {service.servicetitle} Page <FaAngleRight />
-</a>
+                              Go to {service.servicetitle} Page <FaAngleRight />
+                            </a>
                         </div>
                     </div>
                     )}
