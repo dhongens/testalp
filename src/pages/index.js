@@ -4,16 +4,13 @@ import Layout from "../components/layout"
 import Form from "../components/form"
 import Helmet from 'react-helmet'
 import SocialProof from '../components/socialProof';
-import Fade from 'react-reveal/Fade';
 import PortableText from '@sanity/block-content-to-react'
 import { FaArrowRight, FaAngleRight, FaMapMarkerAlt, FaTimes } from "react-icons/fa"
 import Image from 'gatsby-image'
 import BackgroundImage from 'gatsby-background-image'
 import QuoteIcon from "../images/quote-left-solid.png"
 import CouponForm from "../components/coupon_form"
-import couponBackground from "../images/couponBackground.png"
 import $ from 'jquery';
-import { Player, Controls } from '@lottiefiles/react-lottie-player';
 
 
 

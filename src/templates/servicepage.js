@@ -1,16 +1,13 @@
-import React , { useEffect, useState } from 'react';
-
+import React , { useEffect } from 'react';
 import { graphql } from 'gatsby';
 import Layout from "../components/layout"
 import Form from "../components/form"
 import CouponForm from "../components/coupon_form"
 import Helmet from 'react-helmet'
 import SocialProof from '../components/socialProof';
-import Fade from 'react-reveal/Fade';
 import PortableText from '@sanity/block-content-to-react'
 import { FaArrowRight, FaMapMarkerAlt, FaTimes } from "react-icons/fa"
 import Image from 'gatsby-image'
-import couponBackground from "../images/couponBackground.png"
 import $ from 'jquery';
 
 

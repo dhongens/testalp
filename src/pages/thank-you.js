@@ -2,16 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Layout from "../components/layout"
 import Helmet from 'react-helmet'
-import SocialProof from '../components/socialProof';
-import Fade from 'react-reveal/Fade';
-import PortableText from '@sanity/block-content-to-react'
-import { FaArrowRight, FaAngleRight, FaMapMarkerAlt, FaTimes } from "react-icons/fa"
-import Image from 'gatsby-image'
-import BackgroundImage from 'gatsby-background-image'
-import QuoteIcon from "../images/quote-left-solid.png"
-import thankyouImg from "../images/van.png"
 import $ from 'jquery';
-import { Player, Controls } from '@lottiefiles/react-lottie-player';
 
 
 
@@ -120,6 +111,14 @@ export const query = graphql`
                   }
                 }
               }
+              thankyouimg{
+                asset{
+                  fluid{
+                    ...GatsbySanityImageFluid
+                    src
+                  }
+                }
+              }
         }
         allSanityReviews(limit: 2) {
             edges {
@@ -163,7 +162,7 @@ export default ({ data }) => (
                       <a href="/" className="buttonstyle" style={{background: "linear-gradient(to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Go Back</a>
                   </div>
                   <div className="column column2">
-                      <img src={thankyouImg} />
+                      <img src={data.sanityCompanyInfo.thankyouimg.asset.fluid.src} />
                   </div>
               </div>
         </div>
