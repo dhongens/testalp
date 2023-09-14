@@ -103,7 +103,7 @@ footer{
             }
             @include phone-only(){
                 margin: 0em 4em;
-                padding-top: 50px;
+                padding-top: 0px;
             }
             @include small-phone(){
                 margin: 0em 2em;
