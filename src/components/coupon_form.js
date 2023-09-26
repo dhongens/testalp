@@ -4,6 +4,8 @@ import { StaticQuery, graphql } from "gatsby"
 import { FaTimesCircle, FaEnvelope, FaPhone } from 'react-icons/fa'
 import Image from "gatsby-image"
 
+
+//Setting Form Message
 const FormMessage = props => {
   let message = 'Thank you for your submission, we will be with you shortly.';
   let style = {};
@@ -29,12 +31,15 @@ export default class ContactForm extends React.Component {
     this.changeActive = this.changeActive.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
-    
+    //Grabbing 'gclid' from url
     if(typeof window !== 'undefined') {
       var queryString = window.location.search;
       var urlParams = new URLSearchParams(queryString);
       var gclid = urlParams.get('gclid')
     }
+
+    //Grabbing vsref from phone number on page
+    //Needs to be commented out to run locally
 
     // if(typeof document !== 'undefined'){
     //   var phone = document.getElementById("number_rewrite").innerHTML;

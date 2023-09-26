@@ -24,8 +24,8 @@ export default class Header extends Component {
   }
 
   changeActive(event) {
-    $(".form").toggleClass("expanded");
-    $("body").toggleClass("formExpanded");
+    $(".mobile-menu").toggleClass("active");
+    $("body").toggleClass("overflow-hidden");
   }
 
   render() {
