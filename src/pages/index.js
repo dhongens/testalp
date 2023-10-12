@@ -117,7 +117,7 @@ export const query = graphql`
             gradientcolor2{hex}
             couponbackground{
                 asset{
-                    fluid{
+                    fixed(width: 1920){
                         src
                     }
                 }
@@ -193,7 +193,7 @@ return (
             <div className="popupForm">
                    <div className="form">
                       <div className="two_columns">
-                      <div className="column1" style={{backgroundImage: 'url('+ data.sanityCompanyInfo.couponbackground.asset.fluid.src + ')'}}>
+                      <div className="column1" style={{backgroundImage: 'url('+ data.sanityCompanyInfo.couponbackground.asset.fixed.src + ')'}}>
                           <div className="column-inner" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex+"e3" }}>
                             <div className="coupon" style={{backgroundColor: "rgba(" + data.sanityCompanyInfo.primarycolor.rgb.r +","+ data.sanityCompanyInfo.primarycolor.rgb.g +","+ data.sanityCompanyInfo.primarycolor.rgb.b +","+ "0.7" +")"}}>
 
@@ -335,7 +335,7 @@ return (
             </div>
             {/* </Fade> */}
         </div>
-        <div className="coupon-form-section" style={{height: "100%", backgroundImage: "url(" + data.sanityCompanyInfo.couponbackground.asset.fluid.src + ")"}} >
+        <div className="coupon-form-section" style={{height: "100%", backgroundImage: "url(" + data.sanityCompanyInfo.couponbackground.asset.fixed.src + ")"}} >
         {/* <Fade bottom> */}
         <div className="background-overlay" style={{backgroundColor: "rgba(" + data.sanityCompanyInfo.primarycolor.rgb.r +","+ data.sanityCompanyInfo.primarycolor.rgb.g +","+ data.sanityCompanyInfo.primarycolor.rgb.b +","+ "0.7" +")"}}>
             <div className="inner">
