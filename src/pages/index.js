@@ -115,7 +115,7 @@ export const query = graphql`
             }
             gradientcolor1{hex}
             gradientcolor2{hex}
-            couponbackground{
+            couponbackground(width: 1920){
                 asset{
                     fluid{
                         src
