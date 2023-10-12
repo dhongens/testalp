@@ -12,9 +12,9 @@
 
         position: relative;
         .left-items{
-                width: 80%;
-                padding: 100px 300px 100px 100px;
-                border-radius: 200px 0 0 200px;
+                width: 100%;
+                padding: 100px 100px 100px 100px;
+                border-radius: 200px;
                 display: flex;
                 @include tiny-desktop{
                     padding-right: 350px;

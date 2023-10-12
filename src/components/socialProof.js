@@ -72,9 +72,9 @@ export default () => (
                         </div>
                     ))}
                 </div>
-                    <div className="van-img">
+                    {/* <div className="van-img">
                         <img src={Van} alt="" />
-                    </div>
+                    </div> */}
                 {/* </Fade> */}
             </div>
         </div>
