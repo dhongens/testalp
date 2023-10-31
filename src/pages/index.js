@@ -65,9 +65,6 @@ export const query = graphql`
     query homeQuery{
         sanityPages(slug: {current: {eq: "home"}}) {
             pagetitle
-            pagetype{
-                pagetype
-            }
             slug {
                 current
             }
@@ -115,7 +112,7 @@ export const query = graphql`
             }
             gradientcolor1{hex}
             gradientcolor2{hex}
-            couponbackground(width: 1920){
+            couponbackground{
                 asset{
                     fixed(width: 1920){
                         src

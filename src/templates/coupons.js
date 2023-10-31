@@ -45,9 +45,6 @@ export const query = graphql`
     query couponsQuery{
         sanityPages(slug: {current: {eq: "coupons"}}) {
             pagetitle
-            pagetype{
-                pagetype
-            }
             slug {
                 current
             }

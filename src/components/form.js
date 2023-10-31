@@ -53,20 +53,35 @@ export default class ContactForm extends React.Component {
     };
   }
   componentDidMount() {
-    // Move gclid and vsref extraction here
+    // Move gclid extraction here
     if (typeof window !== "undefined") {
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
       const gclid = urlParams.get("gclid") || "";
       this.setState({ gclid }); // Update the gclid state
     }
-
-    if (typeof document !== "undefined") {
-      const phone = document.getElementById("number_rewrite").innerHTML;
-      const vsref = phone.replace(/-/g, "");
-      this.setState({ vsref }); // Update the vsref state
+  
+    // Check for the existence of "number_rewrite" and wait if necessary
+    this.waitForVsrefElement();
+  }
+  
+  waitForVsrefElement() {
+    const vsrefElement = document.getElementById("number_rewrite");
+    if (vsrefElement) {
+      // If the element is found, extract vsref and update the state
+      const observer = new MutationObserver(() => {
+        const phone = vsrefElement.innerHTML;
+        const vsref = phone.replace(/-/g, "");
+        this.setState({ vsref }); // Update the vsref state
+        observer.disconnect(); // Stop observing once the value is extracted
+      });
+      observer.observe(vsrefElement, { childList: true, characterData: true, subtree: true });
+    } else {
+      // If the element is not found, wait and check again after a delay
+      setTimeout(this.waitForVsrefElement, 100); // Adjust the timeout as needed
     }
   }
+    
   
   handleInputChange(event){
     const target = event.target

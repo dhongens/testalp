@@ -65,9 +65,6 @@ export const query = graphql`
     query aboutQuery{
         sanityPages(slug: {current: {eq: "home"}}) {
             pagetitle
-            pagetype{
-                pagetype
-            }
             slug {
                 current
             }
