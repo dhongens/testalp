@@ -3,6 +3,8 @@ import $ from "jquery"
 import { StaticQuery, graphql } from "gatsby"
 import { FaTimesCircle, FaEnvelope, FaPhone } from 'react-icons/fa'
 import Image from "gatsby-image"
+import Uuid from '../util/conversionLogging'
+
 
 const FormMessage = props => {
   let message = 'Thank you for your submission, we will be with you shortly.';
@@ -49,7 +51,7 @@ export default class ContactForm extends React.Component {
       vsref: "",
       gclid: "",
       submitted: false,
-      formAction: 'https://metrics.vitalstorm.com/email_form_submission/0d8f2890-7cef-4a35-9eb0-43dce093bbe6/'
+      formAction: ''
     };
   }
   componentDidMount() {
@@ -60,6 +62,9 @@ export default class ContactForm extends React.Component {
       const gclid = urlParams.get("gclid") || "";
       this.setState({ gclid }); // Update the gclid state
     }
+
+
+    
   
     // Check for the existence of "number_rewrite" and wait if necessary
     this.waitForVsrefElement();
@@ -81,6 +86,8 @@ export default class ContactForm extends React.Component {
       setTimeout(this.waitForVsrefElement, 100); // Adjust the timeout as needed
     }
   }
+
+  
     
   
   handleInputChange(event){
@@ -210,7 +217,7 @@ export default class ContactForm extends React.Component {
             `}
                  render={data => (
                    <>
-                      <form ref={this.formRef} id="form-metrics" onSubmit={this.handleSubmit} action={"https://metrics.vitalstorm.com/email_form_submission/" + data.sanityCompanyInfo.formhash} method="POST">
+                      <form ref={this.formRef} id="form-metrics" onSubmit={this.handleSubmit} action={`https://metrics.vitalstorm.com/email_form_submission/${data.sanityCompanyInfo.formhash}`} method="POST">
                         <input id="mail-name" className="inputfield" type="text" name="name" value={this.state.name} onChange={this.handleInputChange} placeholder="Enter your full name" required />
                         <input id="mail-email" className="inputfield" type="text" name="honeypot" value={this.state.honeypot} onChange={this.handleInputChange} placeholder="Email address" minLength="3" maxLength="64" required />
                         <input id="mail-honey" className="inputfield" type="text" name="email" />

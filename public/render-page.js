@@ -112,7 +112,7 @@ var plugins = [{
   plugin: __webpack_require__(/*! ./node_modules/gatsby-source-sanity/gatsby-ssr */ "./node_modules/gatsby-source-sanity/gatsby-ssr.js"),
   options: {
     "plugins": [],
-    "projectId": "3r1tm2cj",
+    "projectId": "d0pq1vqp",
     "dataset": "production",
     "overlayDrafts": true,
     "watchMode": true

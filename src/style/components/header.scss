@@ -46,6 +46,9 @@ header{
             z-index: 100;
             left: 20px;
             top: 50px;
+            @supports (-webkit-touch-callout: none) {
+                top: 70px;
+              }
         }
     }
     .header-inner{
@@ -62,7 +65,9 @@ header{
             // position: fixed;
             margin-top: -2em;
             position: relative;
-
+            @supports (-webkit-touch-callout: none) {
+                margin-top: -4em;
+              }
         }
         @include small-phone{
             // margin-left: 30px;
@@ -97,6 +102,9 @@ header{
             position: relative;
             top: 80px;
         }
+        @supports (-webkit-touch-callout: none) {
+            top: 140px;
+          }
     }
     .items{
         display: grid;

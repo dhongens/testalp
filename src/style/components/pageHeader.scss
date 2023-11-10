@@ -19,6 +19,9 @@
     @include tablet-portrait{
         width: 100%;
     }
+    @supports (-webkit-touch-callout: none) {
+        margin-top: 6em;
+      }
     .columns{
         display: grid;
         // grid-template-columns: 1fr 1fr;

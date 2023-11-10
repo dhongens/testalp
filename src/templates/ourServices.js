@@ -219,7 +219,7 @@ export default ({ data }) => {
                     <div className="column1 column">
                         <div className="column-inner">
                             <div className="service-icon" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex}}>
-                                <img src={services.icon.asset.fluid.src} alt="" />
+                                <img style={{width: '20px'}} src={services.icon.asset.fluid.src} alt="" />
                             </div>
                             <h3>{services.servicemaintitle} Services</h3>
                             <ul>

@@ -3,7 +3,7 @@ var plugins = [{
       options: {"plugins":[]},
     },{
       plugin: require('/Users/pietertenret/Documents/VitalStorm/Sandbox/ALP 2.0/gatsby/node_modules/gatsby-source-sanity/gatsby-ssr'),
-      options: {"plugins":[],"projectId":"3r1tm2cj","dataset":"production","overlayDrafts":true,"watchMode":true},
+      options: {"plugins":[],"projectId":"d0pq1vqp","dataset":"production","overlayDrafts":true,"watchMode":true},
     },{
       plugin: require('/Users/pietertenret/Documents/VitalStorm/Sandbox/ALP 2.0/gatsby/node_modules/gatsby-plugin-styled-components/gatsby-ssr'),
       options: {"plugins":[],"displayName":true,"fileName":true,"minify":true,"namespace":"","transpileTemplateLiterals":true,"pure":false},
