@@ -45,7 +45,7 @@ header{
             display: inline-block;
             z-index: 100;
             left: 20px;
-            top: 50px;
+            top: 70px;
             @supports (-webkit-touch-callout: none) {
                 top: 70px;
               }
@@ -100,7 +100,7 @@ header{
             justify-self: center;
 
             position: relative;
-            top: 80px;
+            top: 100px;
         }
         @supports (-webkit-touch-callout: none) {
             top: 140px;
