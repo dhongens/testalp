@@ -58,14 +58,19 @@ export default class ContactForm extends React.Component {
   
   waitForVsrefElement() {
     const vsrefElement = document.getElementById("number_rewrite");
+  
+    const updateVsrefState = () => {
+      const phone = vsrefElement.innerHTML;
+      const vsref = phone.replace(/-/g, "");
+      this.setState({ vsref }); // Update the vsref state
+    };
+  
     if (vsrefElement) {
       // If the element is found, extract vsref and update the state
-      const observer = new MutationObserver(() => {
-        const phone = vsrefElement.innerHTML;
-        const vsref = phone.replace(/-/g, "");
-        this.setState({ vsref }); // Update the vsref state
-        observer.disconnect(); // Stop observing once the value is extracted
-      });
+      updateVsrefState();
+  
+      // Use a MutationObserver to watch for changes and update the state accordingly
+      const observer = new MutationObserver(updateVsrefState);
       observer.observe(vsrefElement, { childList: true, characterData: true, subtree: true });
     } else {
       // If the element is not found, wait and check again after a delay
