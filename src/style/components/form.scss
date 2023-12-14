@@ -86,6 +86,39 @@
             margin-bottom: 5em;
           }
       }
+      .formButton{
+            padding: 10px 20px;
+            border-radius: 10px;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            &:hover{
+                background-color: #204A69 !important;
+                span{
+                    color: #fff !important;
+                }
+            }
+
+            &.mobile-button{
+                display:none;
+                @include tablet-portrait(){
+                    display: block;
+                }
+            }
+            &.desktop-button{
+                @include tablet-portrait(){
+                    display:none;
+                }
+            }
+
+        a{
+            color: #fff;
+        }
+        span{
+            font-style: italic;
+            font-weight: 600;
+        }
+      }
       
   }
 
@@ -209,7 +242,7 @@
                   border-radius: 20px 0 0 20px;
                   width: 100%;
                   @include tablet-portrait(){
-                    padding: 2em;
+                    padding: 6em 2em 2em;
                     border-radius: 0;
 
                     
@@ -289,6 +322,7 @@
   
               @include desktop{
                   padding: 2em;
+                  padding-top: 4em;
               }
               @include tablet-landscape(){
                   display: flex;
