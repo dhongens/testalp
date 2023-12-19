@@ -40,7 +40,7 @@ export default class ContactForm extends React.Component {
       vsref: "",
       gclid: "",
       submitted: false,
-      formAction: 'https://metrics.vitalstorm.com/email_form_submission/0d8f2890-7cef-4a35-9eb0-43dce093bbe6/'
+      formAction: 'https://metrics.vitalstorm.com/email_form_submission/xxx/'
     };
   }
   componentDidMount() {
