@@ -229,10 +229,10 @@
                   }
               }
 
-              @supports (-webkit-overflow-scrolling: touch) {
-                  /* CSS specific to iOS devices */ 
-                  height: 450px;
-                }
+            //   @supports (-webkit-overflow-scrolling: touch) {
+            //       /* CSS specific to iOS devices */ 
+            //       height: 450px;
+            //     }
               .column-inner{
                   padding: 50px;
                   height: 100%;
