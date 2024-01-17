@@ -366,8 +366,16 @@
           color: #353535;
           font-weight: 800;
           margin-bottom: 0.5em;
+          @include tablet-portrait(){
+            margin: 0;
+          }
       }
   
+      p{
+        @include tablet-portrait(){
+            margin: 0;
+        }
+      }
       form {
           display: flex;
           flex-direction: column;
