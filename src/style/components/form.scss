@@ -381,6 +381,9 @@
           flex-direction: column;
           padding-top: 2em;
           gap: 10px;
+          @include tablet-portrait(){
+            padding-top: 1em;
+          }
   
           input[type=text], input[type=email], input[type=tel]{
             background-color: rgba(122, 160, 189, 0.10);
