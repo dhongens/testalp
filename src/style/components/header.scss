@@ -182,7 +182,7 @@ header{
             width: 280px;
         }
         @include phone-only{
-            font-size: 1.2em !important;
+            font-size: 1em !important;
             width: auto;
         }
         @include small-phone{
@@ -196,7 +196,7 @@ header{
         }
         .calltext{
             @include phone-only{
-                display: none;
+                // display: none;
             }
         }
     }
