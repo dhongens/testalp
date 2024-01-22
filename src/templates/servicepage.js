@@ -113,6 +113,9 @@ export const query = graphql`
             secondarycolor{
                 hex
             }
+            tertiarycolor{
+                hex
+            }
             accentcolor{
                 hex
             }
@@ -208,7 +211,8 @@ export default ({ data }) => {
                     <PortableText style={{color: data.sanityCompanyInfo.primarycolor.hex}} blocks={data.sanityServicepages._rawPageIntro} />
 
                     <div className="schedule-btn">
-                        <a onClick={changeActive} className="buttonstyle" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}} >Schedule Today for {data.sanityServicepages.coupon.title} <FaArrowRight /></a>
+                    <a onClick={changeActive} className="buttonstyle" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for <span style={{color: data.sanityCompanyInfo.tertiarycolor.hex }}>{data.sanityServicepages.coupon.title}</span> <FaArrowRight /></a>
+
                     </div>
                     <div className="servicesSelection">
                         <h3 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>Count on {data.sanityCompanyInfo.companyname} for all of your {data.sanityServicepages.servicetitle} needs!</h3>
@@ -279,7 +283,7 @@ export default ({ data }) => {
                             style={{height: "100%"}}
                             fluid={data.sanityServicepages.serviceimage.asset.fluid}>
                         </Image>
-                        <div className="schedule-btn"><a className="buttonstyle" role="button" tabIndex={0} onClick={changeActive} style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule today for {data.sanityServicepages.coupon.title} <FaArrowRight /></a></div>
+                        <div className="schedule-btn"><a onClick={changeActive} className="buttonstyle" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for <span style={{color: data.sanityCompanyInfo.tertiarycolor.hex }}>{data.sanityServicepages.coupon.title}</span> <FaArrowRight /></a></div>
                         </div>
                     </div>
                 </div>

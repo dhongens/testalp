@@ -50,7 +50,7 @@
                         color: #fff;
                         transition: all ease .2s;
                         border: 0;
-                        font-size: 0.9em;
+                        font-size: 1em !important; 
                         cursor: pointer;
                         @include tablet-portrait{
                             font-size: 0.7em !important;
