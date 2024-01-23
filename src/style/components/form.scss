@@ -87,8 +87,8 @@
           }
       }
       .formButton{
-            padding: 10px 20px;
-            border-radius: 10px;
+            padding: 15px 30px;
+            border-radius: 20px;
             position: absolute;
             right: 20px;
             top: 20px;
@@ -115,8 +115,10 @@
             color: #fff;
         }
         span{
-            font-style: italic;
+            // font-style: italic;
             font-weight: 600;
+            text-transform: uppercase;
+            margin-right: 10px;
         }
       }
       
