@@ -159,7 +159,7 @@ export default ({ data }) => (
                       <div className="column1" style={{backgroundImage: 'url('+ data.sanityCompanyInfo.couponbackground.asset.fluid.src + ')'}}>
                           <div className="column-inner" style={{backgroundColor: data.sanityCompanyInfo.primarycolor.hex+"e3" }}>
                             <div className="coupon">
-                            <div className="mobile-button formButton" style={{backgroundColor: data.sanityCompanyInfo.secondarycolor.hex}}><a href={"tel:" + data.sanityCompanyInfo.phone}><span style={{color: data.sanityCompanyInfo.primarycolor.hex}}>Call Now</span> {data.sanityCompanyInfo.phone}</a></div>
+                            <div className="mobile-button formButton" style={{backgroundColor: data.sanityCompanyInfo.accentcolor.hex}}><a href={"tel:" + data.sanityCompanyInfo.phone}><span style={{color: data.sanityCompanyInfo.primarycolor.hex}}>Call Now</span> {data.sanityCompanyInfo.phone}</a></div>
                             <div className="scheduleText" style={{color: data.sanityCompanyInfo.accentcolor.hex}}>Schedule Today For</div>
 
                             <span className="coupon-title">{data.sanityPages.coupon.title}</span>
@@ -171,7 +171,7 @@ export default ({ data }) => (
                         </div>
                         <div className="column2">
                           <div className="innerColumn">
-                          <div className="desktop-button formButton" style={{backgroundColor: data.sanityCompanyInfo.secondarycolor.hex}}><a href={"tel:" + data.sanityCompanyInfo.phone}><span style={{color: data.sanityCompanyInfo.primarycolor.hex}}>Call Now</span> {data.sanityCompanyInfo.phone}</a></div>
+                          <div className="desktop-button formButton" style={{backgroundColor: data.sanityCompanyInfo.accentcolor.hex}}><a href={"tel:" + data.sanityCompanyInfo.phone}><span style={{color: data.sanityCompanyInfo.primarycolor.hex}}>Call Now</span> {data.sanityCompanyInfo.phone}</a></div>
                             <h2>Schedule Service</h2>  
                             <p>Fill out the form below and we'll reach out to schedule your service appointment. </p>
                             <a className="closeForm" onClick={changeActive} style={{fill: "#fff", color: '#fff'}}><FaTimes /></a>
@@ -257,7 +257,7 @@ export default ({ data }) => (
     </div>
     </div>
     <div className="sticky-mobile">
-              <a onClick={changeActive} className="schedule-btn" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for {data.sanityPages.coupon.title} <FaArrowRight /></a>
+              <a onClick={changeActive} className="schedule-btn" style={{background: "linear-gradient( to right,"+ data.sanityCompanyInfo.gradientcolor1.hex + ","+ data.sanityCompanyInfo.gradientcolor2.hex +")"}}>Schedule Today for <span style={{color: data.sanityCompanyInfo.tertiarycolor.hex }}>{data.sanityPages.coupon.title}</span> <FaArrowRight /></a>
             </div>
   </Layout>
 )

@@ -176,7 +176,7 @@ export default ({ data }) => {
                         </div>
                         <div className="column2">
                           <div className="innerColumn">
-                          <div className="desktop-button formButton" style={{backgroundColor: data.sanityCompanyInfo.secondarycolor.hex}}><a href={"tel:" + data.sanityCompanyInfo.phone}><span style={{color: data.sanityCompanyInfo.primarycolor.hex}}>Call Now</span> {data.sanityCompanyInfo.phone}</a></div>
+                          <div className="desktop-button formButton" style={{backgroundColor: data.sanityCompanyInfo.accentcolor.hex}}><a href={"tel:" + data.sanityCompanyInfo.phone}><span style={{color: data.sanityCompanyInfo.primarycolor.hex}}>Call Now</span> {data.sanityCompanyInfo.phone}</a></div>
 
                           <h2 style={{color: data.sanityCompanyInfo.primarycolor.hex}}>Don’t Wait All Day for Service!</h2>  
                             <p>Fill out the form below and we'll reach out to schedule your service appointment. </p>

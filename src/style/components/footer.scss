@@ -135,12 +135,14 @@ footer{
         flex-direction: column;
         align-items: center;
         padding-top: 2em;
-        .licenses{
-            display:flex;
-            div{
-                font-size: 0.9em; 
-                padding-right: 0.5em;
-            }
+    }
+    .licenses{
+        display:flex;
+        justify-content: center;
+        gap: 20px;
+        div{
+            font-size: 0.9em; 
+            padding-right: 0.5em;
         }
     }
     p{
