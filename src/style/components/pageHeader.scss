@@ -71,6 +71,11 @@
             p{
 
             }
+            .buttonstyle{
+                @include phone-only{
+                    display:none;
+                }
+            }
             .schedule-btn{
                 margin-top: 50px;
                 // text-align: center;
