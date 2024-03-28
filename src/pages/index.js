@@ -263,7 +263,7 @@ export default ({ data }) => {
                 <div className="column1 column" key={service.id}>
                   <div className="column-inner" style={{ boxShadow: "0px 3px 50px rgba(" + data.sanityCompanyInfo.primarycolor.rgb.r + "," + data.sanityCompanyInfo.primarycolor.rgb.g + "," + data.sanityCompanyInfo.primarycolor.rgb.b + ", 0.3)" }}>
                     <div className="icon" style={{ backgroundColor: data.sanityCompanyInfo.primarycolor.hex }}>
-                      <img style={{ width: '20px' }} src={service.icon.asset.fluid.src} alt={service.servicetitle} />
+                      <img style={{ width: '40px' }} src={service.icon.asset.fluid.src} alt={service.servicetitle} />
                     </div>
                     <h3 className="serviceTitle">{service.servicetitle} Services</h3>
                     <p>{service.servicetext}</p>
