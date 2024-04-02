@@ -63,7 +63,7 @@ function changeActive(e){
     const urlParams = getUrlParams();
 export const query = graphql`
     query aboutQuery{
-        sanityPages(slug: {current: {eq: "home"}}) {
+        sanityPages(slug: {current: {eq: "about-us"}}) {
             pagetitle
             slug {
                 current
