@@ -182,7 +182,7 @@ const Layout = ({ children }) => {
           ) : null}
 
           
-          
+          <script type="text/javascript" src="//js.web-2-tel.com/sdk?identifier=f11413e32df5430d882d4a79609608e8" async></script>
 
           <meta name="theme-color" content={data.sanityCompanyInfo.secondarycolor.hex} />
           <script type="text/javascript">
